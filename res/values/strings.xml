@@ -5,17 +5,25 @@
 
     <!-- Login interface -->
     <string name="text_introduction">
-        Codeview is a simply app which allows you to view your source code in <a href="https://github.com/mthli">GitHub</a>
+        Codeview is a simple app which allows you to view your source code in <a href="https://github.com/mthli">GitHub</a>
     </string>
     <string name="action_username">GitHub Username</string>
     <string name="action_password">GitHub Password</string>
     <string name="action_login">Login</string>
-    <string name="action_exit">Exit</string>
+
+    <!-- About interface -->
+    <string name="about_designer">Designer</string>
+    <string name="desiger_name">ChansZen&lt;chanszen@gmail.com&gt;</string>
+    <string name="about_coder">Coder</string>
+    <string name="coder_name">Matthew Lee&lt;matthewlee0725@gmail.com&gt;</string>
+    <string name="about_version">Version</string>
+    <string name="version_num">1.0.0</string>
+    <string name="about_homepage">Homepage</string>
+    <string name="homepage_url">https://github.com/mthli</string>
 
     <!-- ActionBar -->
     <string name="action_branch">Branch</string>
-    <string name="action_setting">Setting</string>
-    <string name="action_help">Help</string>
+    <string name="action_refresh">Refresh</string>
     <string name="action_about">About</string>
     <string name="action_logout">Logout</string>
 

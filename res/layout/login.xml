@@ -8,29 +8,35 @@
         >
     <!-- Username -->
     <EditText
-            android:id="@+id/edit_text_username"
+            android:id="@+id/username_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:hint="@string/action_username"
+            android:inputType="textCapCharacters"
             />
 
-    <!-- Password -->
+    <!--
+        Password,
+        we need to change the font from monospace to sans-serif
+    -->
     <EditText
-            android:id="@+id/edit_text_password"
+            android:id="@+id/password_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10px"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:hint="@string/action_password"
+            android:fontFamily="sans-serif"
+            android:inputType="textPassword"
             />
 
     <!-- Login button -->
     <Button
-            android:id="@+id/button_login"
+            android:id="@+id/login_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -42,7 +48,7 @@
 
     <!-- Some introduction, we need to add some link method in related class -->
     <TextView
-            android:id="@+id/text_introduction"
+            android:id="@+id/introduction_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

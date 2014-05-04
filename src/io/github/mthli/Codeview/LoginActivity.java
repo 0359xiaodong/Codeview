@@ -8,19 +8,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 public class LoginActivity extends Activity {
-    /**
-     * Called when the activity is first created.
-     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
     }
 
-    /**
-     * To show the menu in ActionBar,
-     * we need to create this method
-     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -28,10 +21,6 @@ public class LoginActivity extends Activity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    /**
-     * Create a method to show the menu item,
-     * and we don't bring it out now, maybe next.
-     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

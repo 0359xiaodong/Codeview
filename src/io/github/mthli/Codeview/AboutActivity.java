@@ -10,6 +10,10 @@ import java.util.*;
 /**
  * Created by matthew on 5/3/14.
  * This class create a activity to show some information about app.
+ * 
+ * Sorry for my poor level, 
+ * I don't know how to add string which define in string.xml to String[],
+ * maybe next version we will fix this problem.
  */
 public class AboutActivity extends Activity{
     private String[] title = new String[] {
@@ -31,14 +35,15 @@ public class AboutActivity extends Activity{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about_listview);
-
         List<Map<String, String>> listItems = new ArrayList<Map<String, String>>();
+
         for (int i = 0; i < title.length; i++) {
             Map<String, String> listItem = new HashMap<String, String>();
             listItem.put("titles", title[i]);
             listItem.put("contents", content[i]);
             listItems.add(listItem);
         }
+
         SimpleAdapter simpleAdapter = new SimpleAdapter(
                 this,
                 listItems,
@@ -49,9 +54,8 @@ public class AboutActivity extends Activity{
 
         ListView listView = (ListView)findViewById(R.id.about_listview);
         listView.setAdapter(simpleAdapter);
-    }
 
-    /**
-     * We also need a method to call browser
-     */
+        /* We need to define main activity */
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+    }
 }

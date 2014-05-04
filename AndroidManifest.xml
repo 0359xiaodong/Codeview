@@ -3,7 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         package="io.github.mthli.Codeview"
         android:versionCode="1"
-        android:versionName="1.0"
+        android:versionName="1.0.0"
         >
 
     <uses-sdk android:minSdkVersion="19"/>
@@ -18,16 +18,22 @@
             If the login interface need to hide the ActionBar,
             we can add this in activity:
                 android:theme="@android:style/Theme.Holo.Light.NoActionBar"
+
+            There are some mystery about back logical, should be fix next time.
         -->
         <activity
                 android:name=".LoginActivity"
+                android:label="@string/label_login"
                 >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".AboutActivity" />
-
+        <activity
+                android:name=".AboutActivity"
+                android:label="@string/label_about"
+                android:parentActivityName=".LoginActivity"
+                />
     </application>
 </manifest>

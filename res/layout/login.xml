@@ -14,7 +14,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:hint="@string/action_username"
+            android:hint="@string/username_action"
             android:inputType="textCapCharacters"
             />
 
@@ -29,7 +29,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:hint="@string/action_password"
+            android:hint="@string/password_action"
             android:fontFamily="sans-serif"
             android:inputType="textPassword"
             />
@@ -43,7 +43,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:autoLink="web"
-            android:text="@string/action_login"
+            android:text="@string/login_action"
             />
 
     <!-- Some introduction, we need to add some link method in related class -->
@@ -55,6 +55,6 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:gravity="center"
-            android:text="@string/text_introduction"
+            android:text="@string/philosophy"
             />
 </LinearLayout>

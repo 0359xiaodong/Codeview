@@ -8,13 +8,13 @@
         >
     <!-- Username -->
     <EditText
-            android:id="@+id/username_edittext"
+            android:id="@+id/edit_text_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:hint="@string/username_action"
+            android:hint="@string/action_username"
             android:inputType="textCapCharacters"
             />
 
@@ -23,32 +23,31 @@
         we need to change the font from monospace to sans-serif
     -->
     <EditText
-            android:id="@+id/password_edittext"
+            android:id="@+id/edit_text_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:hint="@string/password_action"
+            android:hint="@string/action_password"
             android:fontFamily="sans-serif"
             android:inputType="textPassword"
             />
 
     <!-- Login button -->
     <Button
-            android:id="@+id/login_button"
+            android:id="@+id/button_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:autoLink="web"
-            android:text="@string/login_action"
+            android:text="@string/action_login"
             />
-
-    <!-- Some introduction, we need to add some link method in related class -->
+    <!-- Our philosophy -->
     <TextView
-            android:id="@+id/introduction_text"
+            android:id="@+id/philosophy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

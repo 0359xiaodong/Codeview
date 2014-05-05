@@ -25,32 +25,32 @@ public class LoginActivity extends Activity {
 
         shared_preferences = getSharedPreferences("login_info", MODE_PRIVATE);
         editor = shared_preferences.edit();
-        String username = shared_preferences.getString("username", null);
-        String password = shared_preferences.getString("password", null);
-        if (username == null || password == null) {
-            final EditText username_edit_text = (EditText)findViewById(R.id.password_edittext);
-            final EditText password_edit_text = (EditText)findViewById(R.id.password_edittext);
-            Button login_button = (Button)findViewById(R.id.login_button);
-            setContentView(R.layout.login);
 
-            login_button.setOnClickListener(new View.OnClickListener() {
+        String sp_username = shared_preferences.getString("username", null);
+        String sp_password = shared_preferences.getString("password", null);
+        if (sp_username == null || sp_password == null) {
+            final EditText et_username = (EditText)findViewById(R.id.edit_text_username);
+            final EditText et_password = (EditText)findViewById(R.id.edit_text_password);
+            Button button_login = (Button)findViewById(R.id.button_login);
+
+            button_login.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String get_username = username_edit_text.getText().toString();
-                    String get_password = password_edit_text.getText().toString();
-                    if (get_username == null && get_password == null) {
-                        Toast.makeText(LoginActivity.this, "Please enter your username and password.", 3000).show();
-                    } else if (get_username != null && get_password == null) {
-                        Toast.makeText(LoginActivity.this, "Please enter your username and password.", 3000).show();
-                    } else if (get_username == null && get_password != null) {
-                        Toast.makeText(LoginActivity.this, "Please enter your username.", 3000).show();
+                    String get_username = et_username.getText().toString();
+                    String get_password = et_password.getText().toString();
+
+                    if (get_username.length() == 0 && get_password.length() == 0) {
+                        Toast.makeText(LoginActivity.this, "Please input your username and password.", Toast.LENGTH_SHORT).show();
+                    } else if (get_username.length() != 0 && get_password.length() == 0) {
+                        Toast.makeText(LoginActivity.this, "Please input your password.", Toast.LENGTH_SHORT).show();
+                    } else if (get_username.length() == 0 && get_password.length() != 0) {
+                        Toast.makeText(LoginActivity.this, "Please input your username.", Toast.LENGTH_SHORT).show();
                     } else {
                         /* Login action */
                     }
                 }
             });
         } else {
-            setContentView(R.layout.login);
             /* Next interface */
         }
     }
@@ -58,7 +58,7 @@ public class LoginActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.login_menu, menu);
+        inflater.inflate(R.menu.menu_login, menu);
         return super.onCreateOptionsMenu(menu);
     }
 

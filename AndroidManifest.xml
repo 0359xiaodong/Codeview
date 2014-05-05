@@ -34,7 +34,7 @@
         -->
         <activity
                 android:name=".LoginActivity"
-                android:label="@string/login_label"
+                android:label="@string/label_login"
                 >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

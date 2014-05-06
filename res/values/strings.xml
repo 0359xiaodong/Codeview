@@ -3,9 +3,13 @@
     <!-- App -->
     <string name="app_name">Codeview</string>
 
+    <!-- DropDown -->
+    <string name="action_bar_drop_down_repo">Repo</string>
+    <string name="action_bar_drop_down_mark">Mark</string>
+
     <!-- Menu -->
+    <string name="menu_clone_or_search">Clone or search</string>
     <string name="menu_about">About</string>
-    <string name="menu_help">Help</string>
 
     <!-- About interface -->
     <string name="label_about">About</string>

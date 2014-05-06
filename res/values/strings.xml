@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App -->
+    <string name="app_name">Codeview</string>
+
+    <!-- Menu -->
+    <string name="menu_about">About</string>
+    <string name="menu_help">Help</string>
+
+    <!-- About interface -->
+    <string name="label_about">About</string>
+    <string name="about_title_designer">Designer</string>
+    <string name="about_content_designer">ChansZen &lt;chanszen@gmail.com&gt;</string>
+    <string name="about_title_coder">Coder</string>
+    <string name="about_content_coder">MatthewLee &lt;matthewlee0725@gmail.com&gt;</string>
+    <string name="about_title_version">Version</string>
+    <string name="about_content_version">1.0.0</string>
+    <string name="about_title_homepage">Homepage</string>
+    <string name="about_content_homepage">https://github.com/mthli/Codeview</string>
+    <string name="about_title_license">License</string>
+    <string name="about_content_license">Apache License, Version 2.0</string>
+</resources>

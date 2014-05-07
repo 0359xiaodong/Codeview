@@ -22,6 +22,8 @@ public class MainActivity
         implements ActionBar.OnNavigationListener {
 
     SwipeListView swipe_list_view;
+    SwipeListItemAdapter swipe_list_item_adapter;
+    List<SwipeListItem> swipe_list_item;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,44 +46,33 @@ public class MainActivity
                 this
         );
 
-        /* test */ /*
-        ArrayList<String> title = new ArrayList<String>();
-        title.add(getString(R.string.about_title_designer));
-        title.add(getString(R.string.about_title_coder));
-        title.add(getString(R.string.about_title_version));
-        title.add(getString(R.string.about_title_homepage));
-        title.add(getString(R.string.about_title_license));
 
-        ArrayList<String> content = new ArrayList<String>();
-        content.add(getString(R.string.about_content_designer));
-        content.add(getString(R.string.about_content_coder));
-        content.add(getString(R.string.about_content_version));
-        content.add(getString(R.string.about_content_homepage));
-        content.add(getString(R.string.about_content_license));
 
-        List<Map<String, String>> list_view_items = new ArrayList<Map<String, String>>();
 
-        for (int i = 0; i < 5; i++) {
-            Map<String, String> list_view_item = new HashMap<String, String>();
-            list_view_item.put("title", title.get(i));
-            list_view_item.put("content", content.get(i));
-            list_view_items.add(list_view_item);
-        }
-
-        SimpleAdapter simple_adapter = new SimpleAdapter(
-                this,
-                list_view_items,
-                R.layout.list_view_item_main,
-                new String[] {"title", "content"},
-                new int[] {R.id.list_view_main_front_text_title, R.id.list_view_main_front_text_content}
-        ); */
+        /* ******************************************* */
 
         swipe_list_view = (SwipeListView) findViewById(R.id.list_view_main);
-        /* Your method {} */
-        // swipe_list_view.setSwipeListViewListener(new BaseSwipeListViewListener(){});
+        swipe_list_item = new ArrayList<SwipeListItem>();
+        swipe_list_item_adapter = new SwipeListItemAdapter(
+                this,
+                R.layout.list_view_item_main,
+                swipe_list_item
+        );
 
-        // swipe_list_view.setAdapter(simple_adapter);
-        //simple_adapter.notifyDataSetChanged();
+        swipe_list_view.setAdapter(swipe_list_item_adapter);
+
+        for(int i=0;i<10;i++)
+        {
+            swipe_list_item.add(new SwipeListItem("Swipe Item" + i, "sdadadada"));
+        }
+
+        swipe_list_item_adapter.notifyDataSetChanged();
+
+        /* ******************************************** */
+
+
+
+
     }
 
     @Override

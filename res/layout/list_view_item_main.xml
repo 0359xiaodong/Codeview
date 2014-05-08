@@ -12,34 +12,35 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/list_view_main_back_color"
             >
         <Button
                 android:id="@+id/list_view_main_back_button_delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?android:buttonStyle"
-                android:text="del"
+                android:text="@string/list_view_main_back_button_delete"
                 />
         <Button
                 android:id="@+id/list_view_main_back_button_refresh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?android:buttonStyle"
-                android:text="rfh"
+                android:text="@string/list_view_main_back_button_refresh"
                 />
         <Button
                 android:id="@+id/list_view_main_back_button_mark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?android:buttonStyle"
-                android:text="mak"
+                android:text="@string/list_view_main_back_button_mark"
                 />
         <Button
                 android:id="@+id/list_view_main_back_button_log"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?android:buttonStyle"
-                android:text="log"
+                android:text="@string/list_view_main_back_button_log"
                 />
     </LinearLayout>
 
@@ -49,16 +50,16 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/list_view_main_front_color"
             >
         <ImageView
                 android:id="@+id/list_view_main_front_image"
-                android:contentDescription="@string/list_view_item_main_image"
+                android:contentDescription="@string/list_view_item_main_front_image"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
                 android:paddingTop="10dp"
-                android:paddingBottom="10dp"
                 />
         <LinearLayout
                 android:orientation="vertical"

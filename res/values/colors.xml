@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="list_view_main_front_color">#e8e8e7</color>
+    <color name="list_view_main_back_color">#858585</color>
+    <color name="list_view_main_divider_color">#858585</color>
+</resources>

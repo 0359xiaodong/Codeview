@@ -58,7 +58,7 @@ public class MainActivity
 
         for(int i=0;i<10;i++)
         {
-            swipe_list_item.add(new SwipeListItem(getResources().getDrawable(R.drawable.ic_filetype_repo) ,"Swipe Item" + i, "sdadadada"));
+            swipe_list_item.add(new SwipeListItem(getResources().getDrawable(R.drawable.ic_filetype_folder) ,"Swipe Item" + i, "sdadadada"));
         }
 
         swipe_list_item_adapter.notifyDataSetChanged();

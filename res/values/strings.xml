@@ -23,4 +23,10 @@
     <string name="about_content_homepage">https://github.com/mthli/Codeview</string>
     <string name="about_title_license">License</string>
     <string name="about_content_license">Apache License, Version 2.0</string>
+
+    <!-- Main interface -->
+    <string name="list_view_item_main_image">Repo icon</string>
+
+
+
 </resources>

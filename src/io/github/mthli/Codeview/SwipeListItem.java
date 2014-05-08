@@ -1,14 +1,30 @@
 package io.github.mthli.Codeview;
 
+import android.graphics.drawable.Drawable;
+
 public class SwipeListItem {
+    Drawable item_image;
     String item_title;
     String item_content;
 
-    public SwipeListItem(String item_title, String item_content) {
+    public SwipeListItem(
+            Drawable item_image,
+            String item_title,
+            String item_content
+    ) {
         super();
 
+        this.item_image = item_image;
         this.item_title = item_title;
         this.item_content = item_content;
+    }
+
+    public Drawable getItemImage() {
+        return item_image;
+    }
+
+    public void setItemImage() {
+        this.item_image = item_image;
     }
 
     public String getItemTitle() {

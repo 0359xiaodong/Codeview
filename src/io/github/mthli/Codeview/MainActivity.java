@@ -4,18 +4,13 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class MainActivity
         extends Activity
@@ -63,7 +58,7 @@ public class MainActivity
 
         for(int i=0;i<10;i++)
         {
-            swipe_list_item.add(new SwipeListItem("Swipe Item" + i, "sdadadada"));
+            swipe_list_item.add(new SwipeListItem(getResources().getDrawable(R.drawable.ic_filetype_repo) ,"Swipe Item" + i, "sdadadada"));
         }
 
         swipe_list_item_adapter.notifyDataSetChanged();

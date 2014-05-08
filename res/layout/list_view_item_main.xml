@@ -14,49 +14,72 @@
             android:layout_height="match_parent"
             >
         <Button
-                android:id="@+id/list_view_main_back_button_1"
+                android:id="@+id/list_view_main_back_button_delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?android:buttonStyle"
-                android:text="11111"
+                android:text="del"
                 />
         <Button
-                android:id="@+id/list_view_main_back_button_2"
+                android:id="@+id/list_view_main_back_button_refresh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?android:buttonStyle"
-                android:text="22222"
+                android:text="rfh"
                 />
         <Button
-                android:id="@+id/list_view_main_back_button_3"
+                android:id="@+id/list_view_main_back_button_mark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?android:buttonStyle"
-                android:text="33333"
+                android:text="mak"
+                />
+        <Button
+                android:id="@+id/list_view_main_back_button_log"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?android:buttonStyle"
+                android:text="log"
                 />
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
             android:id="@+id/list_view_main_front"
-            android:orientation="vertical"
             android:tag="list_view_main_front"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
-        <TextView
-                android:id="@+id/list_view_main_front_text_title"
+        <ImageView
+                android:id="@+id/list_view_main_front_image"
+                android:contentDescription="@string/list_view_item_main_image"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                />
+        <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:textSize="20sp"
-                />
-        <TextView
-                android:id="@+id/list_view_main_front_text_content"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:textSize="12sp"
-                />
-    </LinearLayout>
-
+                android:layout_toRightOf="@id/list_view_main_front_image"
+                >
+            <TextView
+                    android:id="@+id/list_view_main_front_text_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:textSize="20sp"
+                    />
+            <TextView
+                    android:id="@+id/list_view_main_front_text_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:textSize="12sp"
+                    />
+        </LinearLayout>
+    </RelativeLayout>
 </FrameLayout>

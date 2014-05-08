@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -29,11 +30,13 @@ public class SwipeListItemAdapter extends ArrayAdapter<SwipeListItem> {
     }
 
     static class NewHolder {
+        ImageView item_image;
         TextView item_title;
         TextView item_content;
         Button button_1;
         Button button_2;
         Button button_3;
+        Button button_4;
     }
 
     @Override
@@ -52,11 +55,13 @@ public class SwipeListItemAdapter extends ArrayAdapter<SwipeListItem> {
 
             holder = new NewHolder();
 
+            holder.item_image = (ImageView) view.findViewById(R.id.list_view_main_front_image);
             holder.item_title = (TextView) view.findViewById(R.id.list_view_main_front_text_title);
             holder.item_content = (TextView) view.findViewById(R.id.list_view_main_front_text_content);
-            holder.button_1 = (Button) view.findViewById(R.id.list_view_main_back_button_1);
-            holder.button_2 = (Button) view.findViewById(R.id.list_view_main_back_button_2);
-            holder.button_3 = (Button) view.findViewById(R.id.list_view_main_back_button_3);
+            holder.button_1 = (Button) view.findViewById(R.id.list_view_main_back_button_delete);
+            holder.button_2 = (Button) view.findViewById(R.id.list_view_main_back_button_refresh);
+            holder.button_3 = (Button) view.findViewById(R.id.list_view_main_back_button_mark);
+            holder.button_4 = (Button) view.findViewById(R.id.list_view_main_back_button_log);
 
             view.setTag(holder);
         } else {
@@ -64,6 +69,7 @@ public class SwipeListItemAdapter extends ArrayAdapter<SwipeListItem> {
         }
 
         SwipeListItem an_item =  swipe_list_item.get(position);
+        holder.item_image.setImageDrawable(an_item.getItemImage());
         holder.item_title.setText(an_item.getItemTitle());
         holder.item_content.setText(an_item.getItemContent());
 

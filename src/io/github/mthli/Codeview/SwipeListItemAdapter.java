@@ -5,10 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.*;
 
 import java.util.List;
 
@@ -33,10 +30,10 @@ public class SwipeListItemAdapter extends ArrayAdapter<SwipeListItem> {
         ImageView item_image;
         TextView item_title;
         TextView item_content;
-        Button button_1;
-        Button button_2;
-        Button button_3;
-        Button button_4;
+        ImageButton button_1;
+        ImageButton button_2;
+        ImageButton button_3;
+        ImageButton button_4;
     }
 
     @Override
@@ -58,10 +55,10 @@ public class SwipeListItemAdapter extends ArrayAdapter<SwipeListItem> {
             holder.item_image = (ImageView) view.findViewById(R.id.list_view_main_front_image);
             holder.item_title = (TextView) view.findViewById(R.id.list_view_main_front_text_title);
             holder.item_content = (TextView) view.findViewById(R.id.list_view_main_front_text_content);
-            holder.button_1 = (Button) view.findViewById(R.id.list_view_main_back_button_delete);
-            holder.button_2 = (Button) view.findViewById(R.id.list_view_main_back_button_refresh);
-            holder.button_3 = (Button) view.findViewById(R.id.list_view_main_back_button_mark);
-            holder.button_4 = (Button) view.findViewById(R.id.list_view_main_back_button_log);
+            holder.button_1 = (ImageButton) view.findViewById(R.id.list_view_main_back_button_delete);
+            holder.button_2 = (ImageButton) view.findViewById(R.id.list_view_main_back_button_refresh);
+            holder.button_3 = (ImageButton) view.findViewById(R.id.list_view_main_back_button_mark);
+            holder.button_4 = (ImageButton) view.findViewById(R.id.list_view_main_back_button_log);
 
             view.setTag(holder);
         } else {

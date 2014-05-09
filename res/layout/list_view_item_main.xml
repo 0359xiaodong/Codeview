@@ -19,28 +19,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?android:buttonStyle"
-                android:text="@string/list_view_main_back_button_delete"
+                android:drawableBottom="@drawable/ic_action_delete"
                 />
         <Button
                 android:id="@+id/list_view_main_back_button_refresh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?android:buttonStyle"
-                android:text="@string/list_view_main_back_button_refresh"
+                android:drawableBottom="@drawable/ic_action_refresh"
                 />
         <Button
                 android:id="@+id/list_view_main_back_button_mark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?android:buttonStyle"
-                android:text="@string/list_view_main_back_button_mark"
+                android:drawableBottom="@drawable/ic_action_mark"
                 />
         <Button
                 android:id="@+id/list_view_main_back_button_log"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?android:buttonStyle"
-                android:text="@string/list_view_main_back_button_log"
+                android:drawableBottom="@drawable/ic_action_log"
                 />
     </LinearLayout>
 

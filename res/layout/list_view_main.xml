@@ -11,12 +11,13 @@
             android:id="@+id/list_view_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:dividerHeight="1dp"
+            android:divider="@color/list_view_main_divider_color"
 
             app:swipeFrontView="@+id/list_view_main_front"
             app:swipeBackView="@+id/list_view_main_back"
             app:swipeCloseAllItemsWhenMoveList="true"
-            app:swipeMode="left"
+            app:swipeMode="right"
+            app:swipeOffsetRight="100dp"
             >
     </io.github.mthli.Codeview.SwipeListView>
 </LinearLayout>

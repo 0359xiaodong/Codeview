@@ -15,7 +15,6 @@ public class LogActivity extends Activity {
          * such as setTitle() and so on.
          */
         Intent intent_log = getIntent();
-        String get_title = intent_log.getStringExtra("item_title");
-        getActionBar().setTitle(get_title);
+        getActionBar().setTitle(intent_log.getStringExtra("item_title"));
     }
 }

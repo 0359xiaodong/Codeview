@@ -41,9 +41,6 @@ public class MainActivity
                 this
         );
 
-
-
-
         /* ******************************************* */
 
         swipe_list_view = (SwipeListView) findViewById(R.id.list_view_main);
@@ -54,13 +51,12 @@ public class MainActivity
                 swipe_list_item
         );
 
-        swipe_list_view.setAdapter(swipe_list_item_adapter);
-
         for(int i=0;i<10;i++)
         {
             swipe_list_item.add(new SwipeListItem(getResources().getDrawable(R.drawable.ic_filetype_folder) ,"Swipe Item" + i, "sdadadada"));
         }
 
+        swipe_list_view.setAdapter(swipe_list_item_adapter);
         swipe_list_item_adapter.notifyDataSetChanged();
 
         /* ******************************************** */
@@ -72,7 +68,6 @@ public class MainActivity
 
     @Override
     public boolean onNavigationItemSelected(int i, long j) {
-        System.out.println("jdish");
         return true;
     }
 

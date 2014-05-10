@@ -39,7 +39,7 @@ public class SwipeListItemAdapter extends ArrayAdapter<SwipeListItem> {
 
     @Override
     public View getView(
-            int position,
+            final int position,
             View convert_view,
             ViewGroup parent
     ) {
@@ -77,7 +77,15 @@ public class SwipeListItemAdapter extends ArrayAdapter<SwipeListItem> {
         holder.button_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Toast.makeText(context, "Delete needs to be implemented.", Toast.LENGTH_SHORT).show();
+                // Just demo, needed to be iplemented.
+                if (swipe_list_item.size() > 0) {
+                    swipe_list_item.remove(position);
+                    Toast.makeText(context, "Size" + swipe_list_item.size(), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(context, "Zero.", Toast.LENGTH_SHORT).show();
+                }
+                // Key!
+                notifyDataSetChanged();
             }
         });
 
@@ -98,14 +106,8 @@ public class SwipeListItemAdapter extends ArrayAdapter<SwipeListItem> {
         holder.button_4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Toast.makeText(context, "Log needs to be implemented.", Toast.LENGTH_SHORT).show();
-                // Intent intent_log = new Intent(context, LogActivity.class);
-                // context.startActivity(intent_log);
-
-                String get_title = an_item.getItemTitle();
-
                 Intent intent_log = new Intent(context, LogActivity.class);
-                intent_log.putExtra("item_title", get_title);
+                intent_log.putExtra("item_title", an_item.getItemTitle());
                 context.startActivity(intent_log);
             }
         });

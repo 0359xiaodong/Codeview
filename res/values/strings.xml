@@ -31,4 +31,7 @@
     <string name="list_view_main_back_button_mark">Mark</string>
     <string name="list_view_main_back_button_log">Log</string>
 
+    <!-- Log interface -->
+    <string name="label_log">Log</string>
+
 </resources>

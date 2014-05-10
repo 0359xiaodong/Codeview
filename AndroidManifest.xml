@@ -17,6 +17,7 @@
             android:theme="@android:style/Theme.Holo.Light"
             android:allowBackup="true"
             >
+
         <activity
                 android:name="MainActivity"
                 >
@@ -31,5 +32,12 @@
                 android:label="@string/label_about"
                 android:parentActivityName=".MainActivity"
                 />
+
+        <activity
+                android:name=".LogActivity"
+                android:label="@string/label_log"
+                android:parentActivityName=".MainActivity"
+                />
+
     </application>
 </manifest>

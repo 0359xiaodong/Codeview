@@ -43,7 +43,6 @@ public class MainActivity
 
         /* ******************************************* */
 
-        swipe_list_view = (SwipeListView) findViewById(R.id.list_view_main);
         swipe_list_item = new ArrayList<SwipeListItem>();
         swipe_list_item_adapter = new SwipeListItemAdapter(
                 this,
@@ -56,13 +55,20 @@ public class MainActivity
             swipe_list_item.add(new SwipeListItem(getResources().getDrawable(R.drawable.ic_filetype_folder) ,"Swipe Item" + i, "sdadadada"));
         }
 
-        swipe_list_view.setAdapter(swipe_list_item_adapter);
+        swipe_list_view = (SwipeListView) findViewById(R.id.list_view_main);
+        swipe_list_view.setAdapter(swipe_list_item_adapter);swipe_list_view.setSwipeListViewListener(new BaseSwipeListViewListener() {
+            @Override
+            public void onDismiss(int[] reverse_sorted_positions) {
+                for (int position : reverse_sorted_positions) {
+                    swipe_list_item.remove(position);
+                }
+                swipe_list_item_adapter.notifyDataSetChanged();
+            }
+        });
+
         swipe_list_item_adapter.notifyDataSetChanged();
 
         /* ******************************************** */
-
-
-
 
     }
 

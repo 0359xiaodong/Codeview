@@ -31,10 +31,9 @@ public class SwipeListItemAdapter extends ArrayAdapter<SwipeListItem> {
         ImageView item_image;
         TextView item_title;
         TextView item_content;
-        ImageButton button_1;
-        ImageButton button_2;
-        ImageButton button_3;
-        ImageButton button_4;
+        ImageButton button_refresh;
+        ImageButton button_mark;
+        ImageButton button_log;
     }
 
     @Override
@@ -56,10 +55,9 @@ public class SwipeListItemAdapter extends ArrayAdapter<SwipeListItem> {
             holder.item_image = (ImageView) view.findViewById(R.id.list_view_main_front_image);
             holder.item_title = (TextView) view.findViewById(R.id.list_view_main_front_text_title);
             holder.item_content = (TextView) view.findViewById(R.id.list_view_main_front_text_content);
-            holder.button_1 = (ImageButton) view.findViewById(R.id.list_view_main_back_button_delete);
-            holder.button_2 = (ImageButton) view.findViewById(R.id.list_view_main_back_button_refresh);
-            holder.button_3 = (ImageButton) view.findViewById(R.id.list_view_main_back_button_mark);
-            holder.button_4 = (ImageButton) view.findViewById(R.id.list_view_main_back_button_log);
+            holder.button_refresh = (ImageButton) view.findViewById(R.id.list_view_main_back_button_refresh);
+            holder.button_mark = (ImageButton) view.findViewById(R.id.list_view_main_back_button_mark);
+            holder.button_log = (ImageButton) view.findViewById(R.id.list_view_main_back_button_log);
 
             view.setTag(holder);
         } else {
@@ -74,36 +72,21 @@ public class SwipeListItemAdapter extends ArrayAdapter<SwipeListItem> {
         holder.item_content.setText(an_item.getItemContent());
 
         /* Now back button setting */
-        holder.button_1.setOnClickListener(new View.OnClickListener() {
+        holder.button_refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Just demo, needed to be iplemented.
-                if (swipe_list_item.size() > 0) {
-                    swipe_list_item.remove(position);
-                    Toast.makeText(context, "Size" + swipe_list_item.size(), Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(context, "Zero.", Toast.LENGTH_SHORT).show();
-                }
-                // Key!
-                notifyDataSetChanged();
+                Toast.makeText(context, "Refresh needs to be implements.", Toast.LENGTH_SHORT).show();
             }
         });
 
-        holder.button_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, "Refresh needs to be implemented.", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        holder.button_3.setOnClickListener(new View.OnClickListener() {
+        holder.button_mark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, "Mark needs to be implemented.", Toast.LENGTH_SHORT).show();
             }
         });
 
-        holder.button_4.setOnClickListener(new View.OnClickListener() {
+        holder.button_log.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent_log = new Intent(context, LogActivity.class);

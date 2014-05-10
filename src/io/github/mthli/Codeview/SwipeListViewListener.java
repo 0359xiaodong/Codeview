@@ -116,5 +116,4 @@ public interface SwipeListViewListener {
      * User is in last item of list
      */
     void onLastListItem();
-
 }

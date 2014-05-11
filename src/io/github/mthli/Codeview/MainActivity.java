@@ -7,9 +7,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
-import android.widget.ListView;
+import android.view.View;
+import android.widget.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +20,8 @@ public class MainActivity
     ListView view;
     MainListViewItemAdapter adapter;
     List<MainListViewItem> item;
+
+    final int FILE_CHOOSER = 1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,36 +43,6 @@ public class MainActivity
                 ),
                 this
         );
-
-        /* *******************************************
-
-        swipe_list_item = new ArrayList<MainListViewItem>();
-        swipe_list_item_adapter = new MainListItemAdapter(
-                this,
-                R.layout.list_view_item_main,
-                swipe_list_item
-        );
-
-        for(int i=0;i<10;i++)
-        {
-            swipe_list_item.add(new MainListViewItem(getResources().getDrawable(R.drawable.ic_filetype_folder) ,"Swipe Item" + i, "sdadadada"));
-        }
-
-        swipe_list_view = (SwipeListView) findViewById(R.id.list_view_main);
-        swipe_list_view.setAdapter(swipe_list_item_adapter);
-        swipe_list_view.setSwipeListViewListener(new BaseSwipeListViewListener() {
-            @Override
-            public void onDismiss(int[] reverse_sorted_positions) {
-                for (int position : reverse_sorted_positions) {
-                    swipe_list_item.remove(position);
-                }
-                swipe_list_item_adapter.notifyDataSetChanged();
-            }
-        });
-
-        swipe_list_item_adapter.notifyDataSetChanged();
-
-        /* ******************************************** */
 
         item = new ArrayList<MainListViewItem>();
         adapter = new MainListViewItemAdapter(
@@ -95,6 +66,16 @@ public class MainActivity
         view = (ListView) findViewById(R.id.list_view_main);
         view.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+
+        view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MainActivity.this, FileChooserActivity.class);
+                startActivityForResult(intent, FILE_CHOOSER);
+            }
+        });
+
+
     }
 
     @Override

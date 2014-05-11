@@ -10,9 +10,9 @@ import android.widget.*;
 import java.util.List;
 
 public class MainListViewItemAdapter extends ArrayAdapter<MainListViewItem> {
-    Context context;
-    int layout_res_id;
-    List<MainListViewItem> items;
+    private Context context;
+    private int layout_res_id;
+    private List<MainListViewItem> items;
 
     public MainListViewItemAdapter(
             Context context,
@@ -26,7 +26,7 @@ public class MainListViewItemAdapter extends ArrayAdapter<MainListViewItem> {
         this.items = items;
     }
 
-    class Holder {
+    private class Holder {
         ImageView item_image;
         TextView item_title;
         TextView item_content;
@@ -38,7 +38,7 @@ public class MainListViewItemAdapter extends ArrayAdapter<MainListViewItem> {
     public View getView(
             int position,
             View content_view,
-            ViewGroup parents
+            ViewGroup parent
     ) {
         Holder holder = null;
         View view = content_view;
@@ -46,7 +46,7 @@ public class MainListViewItemAdapter extends ArrayAdapter<MainListViewItem> {
 
         if (view == null) {
             LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-            view = inflater.inflate(layout_res_id, parents, false);
+            view = inflater.inflate(layout_res_id, parent, false);
 
             holder = new Holder();
 

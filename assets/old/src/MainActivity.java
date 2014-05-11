@@ -58,8 +58,7 @@ public class MainActivity
         }
 
         swipe_list_view = (SwipeListView) findViewById(R.id.list_view_main);
-        swipe_list_view.setAdapter(swipe_list_item_adapter);
-        swipe_list_view.setSwipeListViewListener(new BaseSwipeListViewListener() {
+        swipe_list_view.setAdapter(swipe_list_item_adapter);swipe_list_view.setSwipeListViewListener(new BaseSwipeListViewListener() {
             @Override
             public void onDismiss(int[] reverse_sorted_positions) {
                 for (int position : reverse_sorted_positions) {
@@ -93,7 +92,6 @@ public class MainActivity
         }
 
         view = (ListView) findViewById(R.id.list_view_main);
-        view.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
 

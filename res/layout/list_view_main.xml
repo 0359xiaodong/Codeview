@@ -2,26 +2,14 @@
 
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res/io.github.mthli.Codeview"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
-    <io.github.mthli.Codeview.SwipeListView
+    <ListView
             android:id="@+id/list_view_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:listSelector="@color/list_view_main_list_selector"
             android:dividerHeight="1dp"
-
-            app:swipeFrontView="@+id/list_view_main_front"
-            app:swipeBackView="@+id/list_view_main_back"
-            app:swipeCloseAllItemsWhenMoveList="false"
-            app:swipeOpenOnLongPress="false"
-            app:swipeMode="both"
-            app:swipeActionLeft="reveal"
-            app:swipeOffsetLeft="167dp"
-            app:swipeActionRight="dismiss"
-            >
-    </io.github.mthli.Codeview.SwipeListView>
+            />
 </LinearLayout>

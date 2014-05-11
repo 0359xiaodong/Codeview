@@ -25,8 +25,11 @@
     <string name="about_content_license">Apache License, Version 2.0</string>
 
     <!-- Main interface -->
-    <string name="list_view_item_main_relative_image">Folder icon</string>
-    <string name="list_view_item_main_relative_mark">Mark</string>
+    <string name="list_view_item_main_front_image">Folder icon</string>
+    <string name="list_view_main_back_button_delete">Delete</string>
+    <string name="list_view_main_back_button_refresh">Refresh</string>
+    <string name="list_view_main_back_button_mark">Mark</string>
+    <string name="list_view_main_back_button_log">Log</string>
 
     <!-- Log interface -->
     <string name="label_log">Log</string>

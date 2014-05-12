@@ -5,10 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.*;
 
 import java.util.List;
 
@@ -106,6 +103,7 @@ public class FileListViewItemAdapter extends ArrayAdapter<FileListViewItem> {
             holder.item_mark.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Toast.makeText(context, "GaGa.", Toast.LENGTH_SHORT).show();
                 }
             });
         }

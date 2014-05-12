@@ -9,11 +9,11 @@
         android:descendantFocusability="blocksDescendants"
         >
     <ImageView
-            android:id="@+id/list_view_item_main_image"
+            android:id="@+id/list_view_item_fc_image"
             android:contentDescription="@string/list_view_item_main_relative_image"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
             android:paddingLeft="15dp"
             android:paddingRight="10dp"
             />
@@ -25,22 +25,22 @@
             android:paddingBottom="10dp"
             android:descendantFocusability="blocksDescendants"
             >
-       <TextView
-               android:id="@+id/list_view_item_main_title"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:ellipsize="start"
-               android:maxWidth="230dp"
-               android:textSize="20sp"
-               />
-       <TextView
-               android:id="@+id/list_view_item_main_content"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:ellipsize="start"
-               android:maxWidth="230dp"
-               android:textSize="12sp"
-               />
+        <TextView
+                android:id="@+id/list_view_item_fc_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="start"
+                android:maxWidth="230dp"
+                android:textSize="20sp"
+                />
+        <TextView
+                android:id="@+id/list_view_item_fc_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="start"
+                android:maxWidth="230dp"
+                android:textSize="12sp"
+                />
     </LinearLayout>
     <LinearLayout
             android:orientation="vertical"
@@ -53,13 +53,14 @@
             android:descendantFocusability="blocksDescendants"
             >
         <TextView
-                android:id="@+id/list_view_item_main_date"
+                android:id="@+id/list_view_item_fc_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:singleLine="true"
                 android:textSize="12sp"
                 />
         <ImageButton
-                android:id="@+id/list_view_item_main_mark"
+                android:id="@+id/list_view_item_fc_mark"
                 android:contentDescription="@string/list_view_item_main_relative_mark"
                 android:src="@drawable/ic_action_unmark"
                 android:background="#00000000"

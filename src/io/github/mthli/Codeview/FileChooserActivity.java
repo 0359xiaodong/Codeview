@@ -66,12 +66,9 @@ public class FileChooserActivity extends ListActivity {
                     dirs.add(
                             new FileListViewItem(
                                     file.getName(),
-                                    "content",
-                                    "date",
-
                                     file.getPath(),
-                                    "data",
-
+                                    "date",
+                                    FileConstants.FOLDER,
                                     true,
                                     false
                                     )
@@ -81,12 +78,9 @@ public class FileChooserActivity extends ListActivity {
                         files.add(
                                 new FileListViewItem(
                                         file.getName(),
-                                        "content",
-                                        "date",
-
                                         file.getPath(),
-                                        "data",
-
+                                        "date",
+                                        file.getAbsolutePath(),
                                         false,
                                         false
                                         )
@@ -108,12 +102,9 @@ public class FileChooserActivity extends ListActivity {
                     0,
                     new FileListViewItem(
                             "..",
-                            "content",
-                            "date",
-
                             f.getParent(),
-                            "data",
-
+                            "date",
+                            FileConstants.PARENT,
                             false,
                             true
                     )

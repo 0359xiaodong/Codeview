@@ -2,30 +2,23 @@ package io.github.mthli.Codeview;
 
 public class FileListViewItem implements Comparable<FileListViewItem> {
     private String title;
-    private String content;
-    private String date;
-
     private String path;
+    private String date;
     private String data;
-
     private boolean folder;
     private boolean parent;
 
     public FileListViewItem(
             String title,
-            String content,
-            String date,
-
             String path,
+            String date,
             String data,
-
             boolean folder,
             boolean parent
     ) {
         this.title = title;
-        this.content = content;
-        this.date = date;
         this.path = path;
+        this.date = date;
         this.data = data;
         this.folder = folder;
         this.parent = parent;
@@ -37,10 +30,6 @@ public class FileListViewItem implements Comparable<FileListViewItem> {
 
     public String getPath() {
         return path;
-    }
-
-    public String getContent() {
-        return content;
     }
 
     public String getDate() {

@@ -69,10 +69,12 @@ public class FileListViewItemAdapter extends ArrayAdapter<FileListViewItem> {
         FileListViewItem an_item = items.get(position);
         if (an_item != null) {
             /* first we set image */
-            if (an_item.getData().equalsIgnoreCase(FileConstants.FOLDER)) { //
+            if (an_item.getData().equalsIgnoreCase(FileConstants.FOLDER)) {
                 holder.item_image.setImageResource(R.drawable.ic_filetype_folder);
             } else if (an_item.getData().equalsIgnoreCase(FileConstants.PARENT)) {
-                holder.item_image.setImageResource(R.drawable.ic_filetype_folder);
+                holder.item_image.setImageResource(R.drawable.ic_action_back);
+                holder.item_date.setVisibility(View.INVISIBLE);
+                holder.item_mark.setVisibility(View.INVISIBLE);
             } else {
                 String name = an_item.getTitle().toLowerCase();
                 if (name.endsWith(FileConstants.C)) {
@@ -97,9 +99,9 @@ public class FileListViewItemAdapter extends ArrayAdapter<FileListViewItem> {
                     holder.item_image.setImageResource(R.drawable.ic_filetype_unknown);
                 }
             }
-            holder.item_title.setText(an_item.getTitle()); // File name
-            holder.item_content.setText(an_item.getContent()); // File size
-            holder.item_date.setText(an_item.getDate()); // File date
+            holder.item_title.setText(an_item.getTitle());
+            holder.item_content.setText(an_item.getPath());
+            holder.item_date.setText(an_item.getDate());
             holder.item_mark.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -55,6 +55,7 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
+                android:paddingRight="10dp"
                 android:descendantFocusability="blocksDescendants"
                 android:layout_toLeftOf="@+id/fc_date_and_mark"
                 android:layout_alignParentLeft="true"
@@ -63,14 +64,12 @@
                     android:id="@+id/list_view_item_fc_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ellipsize="start"
                     android:textSize="20sp"
                     />
             <TextView
                     android:id="@+id/list_view_item_fc_content"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ellipsize="start"
                     android:textSize="12sp"
                     />
         </LinearLayout>

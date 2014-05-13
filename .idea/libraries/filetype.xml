@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="filetype">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/assets/drawable_zip/filetype/ic_filetype_rb.zip!/" />
+      <root url="jar://$PROJECT_DIR$/assets/drawable_zip/filetype/ic_filetype_folder.zip!/" />
+      <root url="jar://$PROJECT_DIR$/assets/drawable_zip/filetype/ic_filetype_py.zip!/" />
+      <root url="jar://$PROJECT_DIR$/assets/drawable_zip/filetype/ic_filetype_unknown.zip!/" />
+      <root url="jar://$PROJECT_DIR$/assets/drawable_zip/filetype/ic_filetype_cs.zip!/" />
+      <root url="jar://$PROJECT_DIR$/assets/drawable_zip/filetype/ic_filetype_java.zip!/" />
+      <root url="jar://$PROJECT_DIR$/assets/drawable_zip/filetype/ic_filetype_php.zip!/" />
+      <root url="jar://$PROJECT_DIR$/assets/drawable_zip/filetype/ic_filetype_js.zip!/" />
+      <root url="jar://$PROJECT_DIR$/assets/drawable_zip/filetype/ic_filetype_cpp.zip!/" />
+      <root url="jar://$PROJECT_DIR$/assets/drawable_zip/filetype/ic_filetype_c.zip!/" />
+      <root url="jar://$PROJECT_DIR$/assets/drawable_zip/filetype/ic_filetype_css.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

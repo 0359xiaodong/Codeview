@@ -73,6 +73,7 @@ public class FileListViewItemAdapter extends ArrayAdapter<FileListViewItem> {
                 holder.item_image.setImageResource(R.drawable.ic_filetype_folder);
             } else if (an_item.getData().equalsIgnoreCase(FileConstants.PARENT)) {
                 holder.item_image.setImageResource(R.drawable.ic_action_back);
+                holder.item_image.setVisibility(View.INVISIBLE);
                 holder.item_date.setVisibility(View.INVISIBLE);
                 holder.item_mark.setVisibility(View.INVISIBLE);
             } else {

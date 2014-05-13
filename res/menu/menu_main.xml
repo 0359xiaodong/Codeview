@@ -6,7 +6,7 @@
         android:title="@string/menu_clone_or_search"
         android:icon="@drawable/ic_action_search"
         android:showAsAction="ifRoom|collapseActionView"
-        android:actionLayout="@layout/search_view"
+        android:actionViewClass="android.widget.SearchView"
         />
     <item
         android:id="@+id/menu_about"

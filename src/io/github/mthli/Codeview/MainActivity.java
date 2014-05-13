@@ -13,11 +13,10 @@ import android.widget.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity
-        extends Activity
-        implements ActionBar.OnNavigationListener {
+public class MainActivity extends Activity implements ActionBar.OnNavigationListener {
 
     ListView view;
+    SearchView search_view;
     MainListViewItemAdapter adapter;
     List<MainListViewItem> item;
 
@@ -74,8 +73,6 @@ public class MainActivity
                 startActivityForResult(intent, FILE_CHOOSER);
             }
         });
-
-
     }
 
     @Override
@@ -87,6 +84,23 @@ public class MainActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
+        search_view = (SearchView) menu.findItem(R.id.menu_clone_or_search).getActionView();
+
+        SearchView.OnQueryTextListener sv_listener = new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextChange(String text) {
+                return true;
+            }
+            @Override
+            public boolean onQueryTextSubmit(String text) {
+                if (text.length() != 0) {
+                    System.out.println(text);
+                }
+                return true;
+            }
+        };
+        search_view.setOnQueryTextListener(sv_listener);
+
         return super.onCreateOptionsMenu(menu);
     }
 

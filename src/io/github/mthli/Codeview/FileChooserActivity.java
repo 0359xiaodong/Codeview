@@ -9,6 +9,7 @@ import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -22,6 +23,8 @@ public class FileChooserActivity extends ListActivity {
     private FileFilter file_filter;
     private File file_selected;
     private ArrayList<String> extensions;
+    /* Key */
+    private String code_view = "Android";
 
     @Override
     public void onCreate(Bundle saved_instance_state) {
@@ -41,7 +44,7 @@ public class FileChooserActivity extends ListActivity {
                 };
             }
         }
-        current_folder = new File(Environment.getExternalStorageDirectory().getAbsolutePath());
+        current_folder = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + code_view);
         listFill(current_folder);
     }
 
@@ -80,7 +83,7 @@ public class FileChooserActivity extends ListActivity {
                                         file.getName(),
                                         file.getPath(),
                                         "date",
-                                        file.getAbsolutePath(),
+                                        file.getPath(),
                                         false,
                                         false
                                         )
@@ -95,9 +98,7 @@ public class FileChooserActivity extends ListActivity {
         Collections.sort(dirs);
         Collections.sort(files);
         dirs.addAll(files);
-        if (!f.getName().equalsIgnoreCase(
-                Environment.getExternalStorageDirectory().getName()
-        )) {
+        if (!f.getName().equalsIgnoreCase(code_view)) {
             dirs.add(
                     0,
                     new FileListViewItem(
@@ -118,24 +119,6 @@ public class FileChooserActivity extends ListActivity {
         this.setListAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     @Override
     protected void onListItemClick(

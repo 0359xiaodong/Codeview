@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,7 +95,21 @@ public class MainActivity extends Activity implements ActionBar.OnNavigationList
             @Override
             public boolean onQueryTextSubmit(String text) {
                 if (text.length() != 0) {
-                    System.out.println(text);
+                    try {
+                        Process p = Runtime.getRuntime().exec("ping -c 3 -w 500 www.baidu.com");
+                        try {
+                            int status = p.waitFor();
+                            if (status == 0) {
+                                System.out.println("yes");
+                            } else {
+                                System.out.println("no");
+                            }
+                        } catch (InterruptedException i) {
+                            System.out.println("sdfsdscfa");
+                        }
+                    } catch (IOException i) {
+                        System.out.println("errorrrr");
+                    }
                 }
                 return true;
             }

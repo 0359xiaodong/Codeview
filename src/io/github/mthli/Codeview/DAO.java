@@ -39,7 +39,7 @@ public class DAO {
                 null,
                 null
         );
-        
+
         if (cursor != null) {
             boolean result = false;
             if (cursor.moveToFirst()) {

@@ -1,8 +1,9 @@
-package io.github.mthli.Codeview;
+package io.github.mthli.Codeview.Git.DAO;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import io.github.mthli.Codeview.Git.Repo;
 
 public class DAOHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "repo.db";

@@ -1,9 +1,10 @@
-package io.github.mthli.Codeview;
+package io.github.mthli.Codeview.Git.DAO;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import io.github.mthli.Codeview.Git.Repo;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

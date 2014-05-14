@@ -1,9 +1,10 @@
-package io.github.mthli.Codeview;
+package io.github.mthli.Codeview.Activity;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import io.github.mthli.Codeview.R;
 
 import java.util.*;
 

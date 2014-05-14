@@ -1,4 +1,4 @@
-package io.github.mthli.Codeview;
+package io.github.mthli.Codeview.FileChooser;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -9,7 +9,7 @@ import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.SearchView;
+import io.github.mthli.Codeview.R;
 
 import java.io.File;
 import java.io.FileFilter;

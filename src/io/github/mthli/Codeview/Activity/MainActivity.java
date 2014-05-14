@@ -1,4 +1,4 @@
-package io.github.mthli.Codeview;
+package io.github.mthli.Codeview.Activity;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -9,8 +9,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
+import io.github.mthli.Codeview.FileChooser.FileChooserActivity;
+import io.github.mthli.Codeview.R;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 

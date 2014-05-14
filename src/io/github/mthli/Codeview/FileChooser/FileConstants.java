@@ -1,4 +1,4 @@
-package io.github.mthli.Codeview;
+package io.github.mthli.Codeview.FileChooser;
 
 public interface FileConstants {
     /* Filetype, more needed to be added */

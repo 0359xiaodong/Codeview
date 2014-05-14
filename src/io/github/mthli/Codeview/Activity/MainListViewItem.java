@@ -1,4 +1,4 @@
-package io.github.mthli.Codeview;
+package io.github.mthli.Codeview.Activity;
 
 import android.graphics.drawable.Drawable;
 import android.widget.ImageButton;

@@ -1,4 +1,4 @@
-package io.github.mthli.Codeview;
+package io.github.mthli.Codeview.FileChooser;
 
 public class FileListViewItem implements Comparable<FileListViewItem> {
     private String title;

@@ -24,7 +24,7 @@
             >
 
         <activity
-                android:name="MainActivity"
+                android:name=".Activity.MainActivity"
                 >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -33,15 +33,15 @@
         </activity>
 
         <activity
-                android:name=".FileChooserActivity"
+                android:name=".FileChooser.FileChooserActivity"
                 android:label=""
-                android:parentActivityName=".MainActivity"
+                android:parentActivityName=".Activity.MainActivity"
                 />
 
         <activity
-                android:name=".AboutActivity"
+                android:name=".Activity.AboutActivity"
                 android:label="@string/label_about"
-                android:parentActivityName=".MainActivity"
+                android:parentActivityName=".Activity.MainActivity"
                 />
 
     </application>

@@ -1,9 +1,9 @@
 package io.github.mthli.Codeview;
 
 public class Repo {
-    private static final long serialVersionUID = 8753374579416116856L;
+    private static final long serial_version_uid = 8753374579416116856L;
     public static final String TABLE = "repos";
-    public static final String _ID = "_ID";
+    public static final String ID = "ID";
     public static final String FOLDER = "FOLDER";
     public static final String NAME = "NAME";
     public static final String ADDRESS = "ADDRESS";
@@ -19,7 +19,7 @@ public class Repo {
     public static final String CREATE_SQL = "CREATE TABLE "
             + TABLE
             + " ("
-            + "_ID integer primary key autoincrement,"
+            + "ID integer primary key autoincrement,"
             + " FOLDER text,"
             + " NAME text,"
             + " ADDRESS text,"

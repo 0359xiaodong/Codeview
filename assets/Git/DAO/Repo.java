@@ -1,4 +1,4 @@
-package io.github.mthli.Codeview.Git;
+package io.github.mthli.Codeview.Git.DAO;
 
 public class Repo {
     private static final long serial_version_uid = 8753374579416116856L;

@@ -3,6 +3,34 @@
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$USER_HOME$/GitHub/jgit/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$USER_HOME$/GitHub/jgit/org.eclipse.jgit.ant.test/pom.xml" />
+        <option value="$USER_HOME$/GitHub/jgit/org.eclipse.jgit.ant/pom.xml" />
+        <option value="$USER_HOME$/GitHub/jgit/org.eclipse.jgit.archive/pom.xml" />
+        <option value="$USER_HOME$/GitHub/jgit/org.eclipse.jgit.console/pom.xml" />
+        <option value="$USER_HOME$/GitHub/jgit/org.eclipse.jgit.http.apache/pom.xml" />
+        <option value="$USER_HOME$/GitHub/jgit/org.eclipse.jgit.http.server/pom.xml" />
+        <option value="$USER_HOME$/GitHub/jgit/org.eclipse.jgit.http.test/pom.xml" />
+        <option value="$USER_HOME$/GitHub/jgit/org.eclipse.jgit.java7.test/pom.xml" />
+        <option value="$USER_HOME$/GitHub/jgit/org.eclipse.jgit.java7/pom.xml" />
+        <option value="$USER_HOME$/GitHub/jgit/org.eclipse.jgit.junit.http/pom.xml" />
+        <option value="$USER_HOME$/GitHub/jgit/org.eclipse.jgit.junit/pom.xml" />
+        <option value="$USER_HOME$/GitHub/jgit/org.eclipse.jgit.pgm.test/pom.xml" />
+        <option value="$USER_HOME$/GitHub/jgit/org.eclipse.jgit.pgm/pom.xml" />
+        <option value="$USER_HOME$/GitHub/jgit/org.eclipse.jgit.test/pom.xml" />
+        <option value="$USER_HOME$/GitHub/jgit/org.eclipse.jgit.ui/pom.xml" />
+        <option value="$USER_HOME$/GitHub/jgit/org.eclipse.jgit/pom.xml" />
+        <option value="$USER_HOME$/GitHub/jgit/pom.xml" />
+      </set>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="Android API 19 Platform" project-jdk-type="Android SDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>

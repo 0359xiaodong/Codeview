@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.widget.Toast;
 
 import io.github.mthli.Codeview.Git.DAO.DAO;
+import io.github.mthli.Codeview.Git.DAO.Repo;
 import io.github.mthli.Codeview.Git.Error.AuthFailError;
 import io.github.mthli.Codeview.Git.Error.ConnectionError;
 import io.github.mthli.Codeview.Git.Error.GitError;

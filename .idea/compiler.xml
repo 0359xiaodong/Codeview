@@ -17,7 +17,32 @@
       <profile default="true" name="Default" enabled="false">
         <processorPath useClasspath="true" />
       </profile>
+      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+      </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="org.eclipse.jgit" target="1.5" />
+      <module name="org.eclipse.jgit-parent" target="1.5" />
+      <module name="org.eclipse.jgit.ant" target="1.5" />
+      <module name="org.eclipse.jgit.ant.test" target="1.5" />
+      <module name="org.eclipse.jgit.archive" target="1.5" />
+      <module name="org.eclipse.jgit.console" target="1.6" />
+      <module name="org.eclipse.jgit.http.apache" target="1.5" />
+      <module name="org.eclipse.jgit.http.server" target="1.5" />
+      <module name="org.eclipse.jgit.http.test" target="1.5" />
+      <module name="org.eclipse.jgit.java7" target="1.7" />
+      <module name="org.eclipse.jgit.java7.test" target="1.5" />
+      <module name="org.eclipse.jgit.junit" target="1.5" />
+      <module name="org.eclipse.jgit.junit.http" target="1.5" />
+      <module name="org.eclipse.jgit.pgm" target="1.5" />
+      <module name="org.eclipse.jgit.pgm.test" target="1.5" />
+      <module name="org.eclipse.jgit.test" target="1.5" />
+      <module name="org.eclipse.jgit.ui" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
 

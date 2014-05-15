@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="ic_launcher">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/assets/drawable_zip/ic_launcher.zip!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

@@ -16,7 +16,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/org.eclipse.jgit-3.4.0-SNAPSHOT.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/org.eclipse.jgit-2.3.1.201302201838-r.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -25,7 +25,16 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/commons-io-2.5-SNAPSHOT.jar!/" />
+          <root url="jar:///opt/android-sdk/extras/android/support/v4/android-support-v4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/libs/jsch-0.1.50.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

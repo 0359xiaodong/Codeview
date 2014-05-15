@@ -4,14 +4,26 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.NetworkOnMainThreadException;
+import android.os.StrictMode;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
+
 import io.github.mthli.Codeview.FileChooser.FileChooserActivity;
 import io.github.mthli.Codeview.R;
 
+import org.eclipse.jgit.dircache.DirCacheEditor;
+import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
+
+import org.eclipse.jgit.api.CloneCommand;
+import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.api.errors.GitAPIException;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,6 +87,19 @@ public class MainActivity extends Activity implements ActionBar.OnNavigationList
                 startActivityForResult(intent, FILE_CHOOSER);
             }
         });
+
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                .detectDiskReads()
+                .detectDiskWrites()
+                .detectNetwork()   // or .detectAll() for all detectable problems
+                .penaltyLog()
+                .build());
+        StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+                .detectLeakedSqlLiteObjects()
+                .detectLeakedClosableObjects()
+                .penaltyLog()
+                .penaltyDeath()
+                .build());
     }
 
     @Override
@@ -96,7 +121,26 @@ public class MainActivity extends Activity implements ActionBar.OnNavigationList
             @Override
             public boolean onQueryTextSubmit(String text) {
                 if (text.length() != 0) {
-                    /* Some action */
+                    CloneCommand clone = Git.cloneRepository();
+                    clone.setTimeout(30);
+                    clone.setURI(text);
+                    clone.setDirectory(new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "ggg"));
+                    UsernamePasswordCredentialsProvider access = new UsernamePasswordCredentialsProvider(
+                            "",
+                            ""
+                    );
+                    clone.setCredentialsProvider(access);
+                    try {
+                        try {
+                            clone.call();
+                        } catch (VerifyError v) {
+                            System.out.println("FUCK!");
+                        } catch (NetworkOnMainThreadException n) {
+                            System.out.println("FUCK AGAIN!");
+                        }
+                    } catch (GitAPIException g) {
+                        System.out.println("ggg");
+                    }
                 }
                 return true;
             }

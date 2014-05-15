@@ -51,11 +51,21 @@ public class MainListViewItemAdapter extends ArrayAdapter<MainListViewItem> {
 
             holder = new Holder();
 
-            holder.item_image = (ImageView) view.findViewById(R.id.list_view_item_main_image);
-            holder.item_title = (TextView) view.findViewById(R.id.list_view_item_main_title);
-            holder.item_content = (TextView) view.findViewById(R.id.list_view_item_main_content);
-            holder.item_date = (TextView) view.findViewById(R.id.list_view_item_main_date);
-            holder.item_mark = (ImageButton) view.findViewById(R.id.list_view_item_main_mark);
+            holder.item_image =
+                    (ImageView)
+                            view.findViewById(R.id.list_view_item_main_image);
+            holder.item_title =
+                    (TextView)
+                            view.findViewById(R.id.list_view_item_main_title);
+            holder.item_content =
+                    (TextView)
+                            view.findViewById(R.id.list_view_item_main_content);
+            holder.item_date =
+                    (TextView)
+                            view.findViewById(R.id.list_view_item_main_date);
+            holder.item_mark =
+                    (ImageButton)
+                            view.findViewById(R.id.list_view_item_main_mark);
 
             view.setTag(holder);
         } else {

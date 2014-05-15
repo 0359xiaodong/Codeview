@@ -4,8 +4,6 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.NetworkOnMainThreadException;
 import android.os.StrictMode;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,14 +14,6 @@ import android.widget.*;
 import io.github.mthli.Codeview.FileChooser.FileChooserActivity;
 import io.github.mthli.Codeview.R;
 
-import org.eclipse.jgit.dircache.DirCacheEditor;
-import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
-
-import org.eclipse.jgit.api.CloneCommand;
-import org.eclipse.jgit.api.Git;
-import org.eclipse.jgit.api.errors.GitAPIException;
-
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,13 +47,16 @@ public class MainActivity extends Activity implements ActionBar.OnNavigationList
                 this
         );
 
+        /*
+         * We need to use new method to add list,
+         * this method just show demo
+         */
         item = new ArrayList<MainListViewItem>();
         adapter = new MainListViewItemAdapter(
                 this,
                 R.layout.list_view_item_main,
                 item
         );
-
         for (int i = 0; i < 10; i++) {
             item.add(
                     new MainListViewItem(
@@ -75,11 +68,9 @@ public class MainActivity extends Activity implements ActionBar.OnNavigationList
                     )
             );
         }
-
         view = (ListView) findViewById(R.id.list_view_main);
         view.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-
         view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -88,6 +79,7 @@ public class MainActivity extends Activity implements ActionBar.OnNavigationList
             }
         });
 
+        /* Just for use netvork in main activity */
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                 .detectDiskReads()
                 .detectDiskWrites()
@@ -121,26 +113,10 @@ public class MainActivity extends Activity implements ActionBar.OnNavigationList
             @Override
             public boolean onQueryTextSubmit(String text) {
                 if (text.length() != 0) {
-                    CloneCommand clone = Git.cloneRepository();
-                    clone.setTimeout(30);
-                    clone.setURI(text);
-                    clone.setDirectory(new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "ggg"));
-                    UsernamePasswordCredentialsProvider access = new UsernamePasswordCredentialsProvider(
-                            "",
-                            ""
-                    );
-                    clone.setCredentialsProvider(access);
-                    try {
-                        try {
-                            clone.call();
-                        } catch (VerifyError v) {
-                            System.out.println("FUCK!");
-                        } catch (NetworkOnMainThreadException n) {
-                            System.out.println("FUCK AGAIN!");
-                        }
-                    } catch (GitAPIException g) {
-                        System.out.println("ggg");
-                    }
+                    /*
+                     * ProgressDialog,
+                     * we use new thread to clone
+                     */
                 }
                 return true;
             }

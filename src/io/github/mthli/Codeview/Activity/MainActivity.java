@@ -122,33 +122,11 @@ public class MainActivity
                      * we use new thread to clone
                      */
                     if ((!text.startsWith("https://")) && (!text.startsWith("http://"))) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this)
-                                .setTitle(getString(R.string.uri_error_title))
-                                .setMessage(getString(R.string.uri_error_https));
-                        builder.setPositiveButton(
-                                getString(R.string.uri_button),
-                                new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        /* Nothing */
-                                    }
-                                }
-                        ).create().show();
+                        Toast.makeText(MainActivity.this, getString(R.string.uri_error_https), Toast.LENGTH_SHORT).show();
                     } else if ((!text.endsWith(".git"))) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this)
-                                .setTitle(getString(R.string.uri_error_title))
-                                .setMessage(getString(R.string.uri_error_git));
-                        builder.setPositiveButton(
-                                getString(R.string.uri_button),
-                                new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        /* Nothing */
-                                    }
-                                }
-                        ).create().show();
+                        Toast.makeText(MainActivity.this, getString(R.string.uri_error_git), Toast.LENGTH_SHORT).show();
                     } else {
-
+                        /* Start clone */
                     }
                 }
                 return true;

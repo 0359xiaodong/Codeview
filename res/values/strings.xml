@@ -39,8 +39,8 @@
     <string name="git_error_generic">Failed. Check stack trace</string>
     <string name="git_error_head">Not in branch\nCheckout master first</string>
     <string name="uri_error_title">Error</string>
-    <string name="uri_error_https">Need "https://" or "http://" at uri</string>
-    <string name="uri_error_git">Need ".git" at uri</string>
+    <string name="uri_error_https">Miss \"https://\" or \"http://\" at URI</string>
+    <string name="uri_error_git">Miss \".git\" at URI</string>
     <string name="uri_button">OK</string>
 
 </resources>

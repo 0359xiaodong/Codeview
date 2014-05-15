@@ -13,7 +13,7 @@ public class CloneActivity extends Activity {
     private String username;
     private String password;
     public String uri;
-
+/*
     public void onCreate(Bundle saved_instance_state) {
         super.onCreate(saved_instance_state);
 
@@ -54,5 +54,5 @@ public class CloneActivity extends Activity {
 
     protected String getUri() {
         return;
-    }
+    } */
 }

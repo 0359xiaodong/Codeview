@@ -2,6 +2,8 @@ package io.github.mthli.Codeview.Activity;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -17,7 +19,9 @@ import io.github.mthli.Codeview.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends Activity implements ActionBar.OnNavigationListener {
+public class MainActivity
+        extends Activity
+        implements ActionBar.OnNavigationListener {
 
     ListView view;
     SearchView search_view;
@@ -117,6 +121,35 @@ public class MainActivity extends Activity implements ActionBar.OnNavigationList
                      * ProgressDialog,
                      * we use new thread to clone
                      */
+                    if ((!text.startsWith("https://")) && (!text.startsWith("http://"))) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this)
+                                .setTitle(getString(R.string.uri_error_title))
+                                .setMessage(getString(R.string.uri_error_https));
+                        builder.setPositiveButton(
+                                getString(R.string.uri_button),
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        /* Nothing */
+                                    }
+                                }
+                        ).create().show();
+                    } else if ((!text.endsWith(".git"))) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this)
+                                .setTitle(getString(R.string.uri_error_title))
+                                .setMessage(getString(R.string.uri_error_git));
+                        builder.setPositiveButton(
+                                getString(R.string.uri_button),
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        /* Nothing */
+                                    }
+                                }
+                        ).create().show();
+                    } else {
+
+                    }
                 }
                 return true;
             }

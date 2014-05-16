@@ -11,16 +11,6 @@
     <string name="menu_clone_or_search">Clone Or Search</string>
     <string name="menu_about">About</string>
 
-    <!-- Login interface -->
-    <string name="lable_login">Login</string>
-    <string name="login_username">Username</string>
-    <string name="login_password">Password</string>
-    <string name="login_button">Login</string>
-    <string name="login_philosophy">Do one thing and do it well.</string>
-    <string name="login_error_miss_username">Miss Username.</string>
-    <string name="login_error_miss_password">Miss Password.</string>
-    <string name="login_error_miss_username_and_password">Miss Username and Password.</string>
-
     <!-- About interface -->
     <string name="label_about">About</string>
     <string name="about_title_designer">Designer</string>
@@ -37,6 +27,10 @@
     <!-- Main interface -->
     <string name="list_view_item_main_relative_image">Folder icon</string>
     <string name="list_view_item_main_relative_mark">Mark</string>
+
+    <!-- Clone -->
+    <string name="clone_username">codeview</string>
+    <string name="clone_password">311922</string>
 
     <!-- Log interface -->
     <string name="label_log">Log</string>

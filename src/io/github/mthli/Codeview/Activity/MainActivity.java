@@ -6,6 +6,8 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.os.StrictMode;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,6 +18,14 @@ import android.widget.*;
 import io.github.mthli.Codeview.FileChooser.FileChooserActivity;
 import io.github.mthli.Codeview.R;
 
+import org.apache.commons.io.FileUtils;
+import org.eclipse.jgit.api.CloneCommand;
+import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,19 +38,14 @@ public class MainActivity
     MainListViewItemAdapter adapter;
     List<MainListViewItem> item;
 
+    String uri;
+
     final int FILE_CHOOSER = 1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_view_main);
-
-        /*
-         * First we need t check the username and password,
-         * if no username and password,
-         * we use LoginActivity,
-         * else next
-         */
 
         ActionBar action_bar = getActionBar();
         action_bar.setDisplayShowTitleEnabled(false);
@@ -134,6 +139,11 @@ public class MainActivity
                         Toast.makeText(MainActivity.this, getString(R.string.uri_error_git), Toast.LENGTH_SHORT).show();
                     } else {
                         /* Start clone */
+                        uri = text;
+                        HandlerThread thread = new HandlerThread("cloneThread");
+                        thread.start();
+                        Handler handle = new Handler(thread.getLooper());
+                        handle.post(cloneThread);
                     }
                 }
                 return true;
@@ -155,4 +165,34 @@ public class MainActivity
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    Runnable cloneThread = new Runnable() {
+        @Override
+        public void run() {
+            String str[] = uri.split("/");
+            String folder_path = MainActivity.this.getFilesDir() + File.separator + str[str.length - 1];
+
+            CloneCommand clone = Git.cloneRepository();
+            clone.setTimeout(30);
+            clone.setURI(uri);
+            clone.setDirectory(new File(folder_path));
+            UsernamePasswordCredentialsProvider access =
+                    new UsernamePasswordCredentialsProvider(
+                            getString(R.string.clone_username),
+                            getString(R.string.clone_password)
+                    );
+            clone.setCredentialsProvider(access);
+
+            try {
+                try {
+                    FileUtils.deleteDirectory(new File(folder_path));
+                } catch (IOException i) {
+                    /* Do something */
+                }
+                clone.call();
+            } catch (GitAPIException g) {
+                /* Do somthing */
+            }
+        }
+    };
 }

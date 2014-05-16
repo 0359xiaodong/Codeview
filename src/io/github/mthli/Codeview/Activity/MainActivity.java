@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -25,7 +26,6 @@ import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class MainActivity
@@ -36,10 +36,14 @@ public class MainActivity
     private SearchView search_view;
     private MainListViewItemAdapter adapter;
     private List<MainListViewItem> item;
-    private SharedPreferences shared_preferences;
-    private SharedPreferences.Editor editor;
+
     private ProgressDialog pd_cloning;
+
     private String uri;
+
+    private SQLiteDatabase database;
+    private
+
 
     final int FILE_CHOOSER = 1;
 
@@ -207,11 +211,7 @@ public class MainActivity
                     );
             clone.setCredentialsProvider(access);
 
-            shared_preferences = getSharedPreferences(
-                    getString(R.string.sp_main),
-                    MODE_PRIVATE
-            );
-            editor = shared_preferences.edit();
+
 
             try {
                 try {
@@ -226,11 +226,11 @@ public class MainActivity
                     ).show();
                 }
                 clone.call();
-                editor.putString(getString(R.string.sp_main_title), title);
-                editor.putString(getString(R.string.sp_main_content), content);
-                editor.putString(getString(R.string.sp_main_date), date);
-                editor.putBoolean(getString(R.string.sp_main_mark), false);
-                editor.commit();
+
+                /* Need SQLite to add new repo info */
+
+
+
                 pd_cloning.dismiss();
                 Toast.makeText(
                         MainActivity.this,

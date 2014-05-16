@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
@@ -24,7 +23,8 @@ public class FileChooserActivity extends ListActivity {
     private File file_selected;
     private ArrayList<String> extensions;
     /* Key */
-    private String code_view = "Android";
+
+    private String path = FileChooserActivity.this.getFilesDir() + File.separator;
 
     @Override
     public void onCreate(Bundle saved_instance_state) {
@@ -44,7 +44,7 @@ public class FileChooserActivity extends ListActivity {
                 };
             }
         }
-        current_folder = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + code_view);
+        current_folder = new File(path);
         listFill(current_folder);
     }
 
@@ -98,7 +98,7 @@ public class FileChooserActivity extends ListActivity {
         Collections.sort(dirs);
         Collections.sort(files);
         dirs.addAll(files);
-        if (!f.getName().equalsIgnoreCase(code_view)) {
+        if (!f.getName().equalsIgnoreCase(path)) {
             dirs.add(
                     0,
                     new FileListViewItem(

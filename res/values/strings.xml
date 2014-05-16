@@ -31,11 +31,15 @@
     <!-- Clone -->
     <string name="clone_username">codeview</string>
     <string name="clone_password">311922</string>
+    <string name="clone_pd">Cloning...</string>
+    <string name="clone_successful">Clone successful.</string>
 
     <!-- Log interface -->
     <string name="label_log">Log</string>
 
     <!-- Error -->
+    <string name="unknown_error">Unknown error.</string>
+    <string name="git_error_clone">Clone failed.</string>
     <string name="git_error_connect">Can\'t connect</string>
     <string name="git_error_not_git">Not a git repo</string>
     <string name="git_error_not_git_guess">Not a git repo. Try with .git at the url end.</string>

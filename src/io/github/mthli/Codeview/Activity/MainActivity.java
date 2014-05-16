@@ -3,6 +3,7 @@ package io.github.mthli.Codeview.Activity;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,6 +39,8 @@ public class MainActivity
     MainListViewItemAdapter adapter;
     List<MainListViewItem> item;
 
+    ProgressDialog pd_cloning;
+    ProgressDialog pd_error;
     String uri;
 
     final int FILE_CHOOSER = 1;
@@ -95,7 +98,7 @@ public class MainActivity
             }
         });
 
-        /* Just for use netvork in main activity */
+        /* Just for use netvork in main activity */ /*
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                 .detectDiskReads()
                 .detectDiskWrites()
@@ -107,7 +110,7 @@ public class MainActivity
                 .detectLeakedClosableObjects()
                 .penaltyLog()
                 .penaltyDeath()
-                .build());
+                .build()); */
     }
 
     @Override
@@ -138,7 +141,12 @@ public class MainActivity
                     } else if ((!text.endsWith(".git"))) {
                         Toast.makeText(MainActivity.this, getString(R.string.uri_error_git), Toast.LENGTH_SHORT).show();
                     } else {
-                        /* Start clone */
+                        /* ProgressDialog */
+                        pd_cloning = new ProgressDialog(MainActivity.this);
+                        pd_cloning.setMessage(getString(R.string.clone_pd));
+                        pd_cloning.setCancelable(false);
+                        pd_cloning.show();
+                        /* Start clone thread */
                         uri = text;
                         HandlerThread thread = new HandlerThread("cloneThread");
                         thread.start();
@@ -170,7 +178,14 @@ public class MainActivity
         @Override
         public void run() {
             String str[] = uri.split("/");
-            String folder_path = MainActivity.this.getFilesDir() + File.separator + str[str.length - 1];
+            String folder_path =
+                    MainActivity.this.getFilesDir() +
+                    File.separator + str[str.length - 1].substring(
+                            0,
+                            str[str.length - 1].lastIndexOf(".")
+                    );
+            System.out.println(folder_path);
+
 
             CloneCommand clone = Git.cloneRepository();
             clone.setTimeout(30);
@@ -188,10 +203,28 @@ public class MainActivity
                     FileUtils.deleteDirectory(new File(folder_path));
                 } catch (IOException i) {
                     /* Do something */
+                    pd_cloning.dismiss();
+                    Toast.makeText(
+                            MainActivity.this,
+                            getString(R.string.unknown_error),
+                            Toast.LENGTH_SHORT
+                    ).show();
                 }
                 clone.call();
+                pd_cloning.dismiss();
+                Toast.makeText(
+                        MainActivity.this,
+                        getString(R.string.clone_successful),
+                        Toast.LENGTH_SHORT
+                ).show();
             } catch (GitAPIException g) {
                 /* Do somthing */
+                pd_cloning.dismiss();
+                Toast.makeText(
+                        MainActivity.this,
+                        getString(R.string.git_error_clone),
+                        Toast.LENGTH_SHORT
+                ).show();
             }
         }
     };

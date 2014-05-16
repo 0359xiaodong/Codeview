@@ -22,9 +22,9 @@ public class FileChooserActivity extends ListActivity {
     private FileFilter file_filter;
     private File file_selected;
     private ArrayList<String> extensions;
-    /* Key */
-
-    private String path = FileChooserActivity.this.getFilesDir() + File.separator;
+    /* Key, we need use intent to set folder_name and and folder_name*/
+    private String folder_path;
+    private String folder_name;
 
     @Override
     public void onCreate(Bundle saved_instance_state) {
@@ -44,7 +44,8 @@ public class FileChooserActivity extends ListActivity {
                 };
             }
         }
-        current_folder = new File(path);
+        folder_path = getIntent().getStringExtra("folder_path");
+        current_folder = new File(folder_path);
         listFill(current_folder);
     }
 
@@ -98,7 +99,8 @@ public class FileChooserActivity extends ListActivity {
         Collections.sort(dirs);
         Collections.sort(files);
         dirs.addAll(files);
-        if (!f.getName().equalsIgnoreCase(path)) {
+        folder_name = getIntent().getStringExtra("folder_name");
+        if (!f.getName().equalsIgnoreCase(folder_name)) {
             dirs.add(
                     0,
                     new FileListViewItem(

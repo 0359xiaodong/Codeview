@@ -2,14 +2,12 @@ package io.github.mthli.Codeview.Activity;
 
 import android.app.ActionBar;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.os.StrictMode;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -27,21 +25,21 @@ import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class MainActivity
         extends Activity
         implements ActionBar.OnNavigationListener {
 
-    ListView view;
-    SearchView search_view;
-    MainListViewItemAdapter adapter;
-    List<MainListViewItem> item;
-
-    ProgressDialog pd_cloning;
-    ProgressDialog pd_error;
-    String uri;
+    private ListView view;
+    private SearchView search_view;
+    private MainListViewItemAdapter adapter;
+    private List<MainListViewItem> item;
+    private SharedPreferences shared_preferences;
+    private SharedPreferences.Editor editor;
+    private ProgressDialog pd_cloning;
+    private String uri;
 
     final int FILE_CHOOSER = 1;
 
@@ -90,27 +88,22 @@ public class MainActivity
         view = (ListView) findViewById(R.id.list_view_main);
         view.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+
         view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(
+                    AdapterView<?> parent,
+                    View view,
+                    int position,
+                    long id
+            ) {
+                String temp = "/data/data/io.github.mthli.Codeview/";
                 Intent intent = new Intent(MainActivity.this, FileChooserActivity.class);
+                intent.putExtra("folder_name", "DSNA");
+                intent.putExtra("folder_path", temp);
                 startActivityForResult(intent, FILE_CHOOSER);
             }
         });
-
-        /* Just for use netvork in main activity */ /*
-        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-                .detectDiskReads()
-                .detectDiskWrites()
-                .detectNetwork()   // or .detectAll() for all detectable problems
-                .penaltyLog()
-                .build());
-        StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-                .detectLeakedSqlLiteObjects()
-                .detectLeakedClosableObjects()
-                .penaltyLog()
-                .penaltyDeath()
-                .build()); */
     }
 
     @Override
@@ -137,9 +130,17 @@ public class MainActivity
                      * we use new thread to clone
                      */
                     if ((!text.startsWith("https://")) && (!text.startsWith("http://"))) {
-                        Toast.makeText(MainActivity.this, getString(R.string.uri_error_https), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(
+                                MainActivity.this,
+                                getString(R.string.uri_error_https),
+                                Toast.LENGTH_SHORT
+                        ).show();
                     } else if ((!text.endsWith(".git"))) {
-                        Toast.makeText(MainActivity.this, getString(R.string.uri_error_git), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(
+                                MainActivity.this,
+                                getString(R.string.uri_error_git),
+                                Toast.LENGTH_SHORT
+                        ).show();
                     } else {
                         /* ProgressDialog */
                         pd_cloning = new ProgressDialog(MainActivity.this);
@@ -178,14 +179,22 @@ public class MainActivity
         @Override
         public void run() {
             String str[] = uri.split("/");
+            String title = str[str.length - 1].substring(
+                    0,
+                    str[str.length - 1].lastIndexOf(".")
+            );
+            String content = uri;
             String folder_path =
                     MainActivity.this.getFilesDir() +
-                    File.separator + str[str.length - 1].substring(
-                            0,
-                            str[str.length - 1].lastIndexOf(".")
-                    );
-            System.out.println(folder_path);
-
+                    File.separator +
+                    title;
+            Calendar now = Calendar.getInstance();
+            String date =
+                    now.get(Calendar.YEAR) +
+                    "-" +
+                    now.get(Calendar.MONTH) +
+                    "-" +
+                    now.get(Calendar.DATE);
 
             CloneCommand clone = Git.cloneRepository();
             clone.setTimeout(30);
@@ -197,6 +206,12 @@ public class MainActivity
                             getString(R.string.clone_password)
                     );
             clone.setCredentialsProvider(access);
+
+            shared_preferences = getSharedPreferences(
+                    getString(R.string.sp_main),
+                    MODE_PRIVATE
+            );
+            editor = shared_preferences.edit();
 
             try {
                 try {
@@ -211,6 +226,11 @@ public class MainActivity
                     ).show();
                 }
                 clone.call();
+                editor.putString(getString(R.string.sp_main_title), title);
+                editor.putString(getString(R.string.sp_main_content), content);
+                editor.putString(getString(R.string.sp_main_date), date);
+                editor.putBoolean(getString(R.string.sp_main_mark), false);
+                editor.commit();
                 pd_cloning.dismiss();
                 Toast.makeText(
                         MainActivity.this,

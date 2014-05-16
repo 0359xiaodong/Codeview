@@ -27,6 +27,11 @@
     <!-- Main interface -->
     <string name="list_view_item_main_relative_image">Folder icon</string>
     <string name="list_view_item_main_relative_mark">Mark</string>
+    <string name="sp_main">sp_main</string>
+    <string name="sp_main_title">sp_main_title</string>
+    <string name="sp_main_content">sp_main_content</string>
+    <string name="sp_main_date">sp_main_date</string>
+    <string name="sp_main_mark">sp_main_mark</string>
 
     <!-- Clone -->
     <string name="clone_username">codeview</string>

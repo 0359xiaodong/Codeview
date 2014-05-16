@@ -96,6 +96,7 @@ public class MainActivity
         view.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
+        /* Also we need new method to reach the right path */
         view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(
@@ -112,6 +113,25 @@ public class MainActivity
             }
         });
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     @Override
     public boolean onNavigationItemSelected(int i, long j) {
@@ -132,10 +152,6 @@ public class MainActivity
             @Override
             public boolean onQueryTextSubmit(String text) {
                 if (text.length() != 0) {
-                    /*
-                     * ProgressDialog,
-                     * we use new thread to clone
-                     */
                     if ((!text.startsWith("https://")) && (!text.startsWith("http://"))) {
                         Toast.makeText(
                                 MainActivity.this,
@@ -149,12 +165,12 @@ public class MainActivity
                                 Toast.LENGTH_SHORT
                         ).show();
                     } else {
-                        /* ProgressDialog */
+                        /* 创建一个ProgressDialog用于提示 */
                         pd_cloning = new ProgressDialog(MainActivity.this);
                         pd_cloning.setMessage(getString(R.string.clone_pd));
                         pd_cloning.setCancelable(false);
                         pd_cloning.show();
-                        /* Start clone thread */
+                        /* 开启一个新的线程用于clone */
                         uri = text;
                         HandlerThread thread = new HandlerThread("cloneThread");
                         thread.start();
@@ -182,27 +198,39 @@ public class MainActivity
         }
     }
 
+    /* 开启一个新线程用于git clone */
     Runnable cloneThread = new Runnable() {
         @Override
         public void run() {
+            /* 从输入的uri中截取需要的信息 */
             String str[] = uri.split("/");
+            /* 获取Repo的名称（设置为ListViewItem的标题） */
             String title = str[str.length - 1].substring(
                     0,
                     str[str.length - 1].lastIndexOf(".")
             );
+            /* 获取Repo的讯息（从哪里来） */
             String content = uri;
-            String folder_path =
-                    MainActivity.this.getFilesDir() +
-                    File.separator +
-                    title;
+            /* 设置存放Repo的路径 */
+            String folder_path = MainActivity.this.getFilesDir()
+                    + File.separator
+                    + title;
+            /* 获取clone Repo时的时间 */
             Calendar now = Calendar.getInstance();
-            String date =
-                    now.get(Calendar.YEAR) +
-                    "-" +
-                    now.get(Calendar.MONTH) +
-                    "-" +
-                    now.get(Calendar.DATE);
+            String date = now.get(Calendar.YEAR)
+                    + "-"
+                    + now.get(Calendar.MONTH)
+                    + "-"
+                    + now.get(Calendar.DATE);
 
+            /* 设置数据库需要的数据 */
+            Repo repo = new Repo();
+            repo.setTitle(title);
+            repo.setContent(content);
+            repo.setDate(date);
+            repo.setState(Repo.State.Unmark);
+
+            /* git clone的初始化设置 */
             CloneCommand clone = Git.cloneRepository();
             clone.setTimeout(30);
             clone.setURI(uri);
@@ -214,20 +242,18 @@ public class MainActivity
                     );
             clone.setCredentialsProvider(access);
 
+            /* 开始git clone */
             DBAction db_action = new DBAction(MainActivity.this);
             try {
+                /* 打开数据库 */
                 db_action.openDB(true);
+                /* 检查Repo是否重复（根据来源） */
                 boolean er = db_action.existRepo(uri);
-                Repo repo = new Repo();
-                repo.setTitle(title);
-                repo.setContent(content);
-                repo.setDate(date);
-                repo.setState(Repo.State.Unmark);
                 try {
                     try {
                         FileUtils.deleteDirectory(new File(folder_path));
                     } catch (IOException i) {
-                    /* Do something */
+                        db_action.closeDB(); //
                         pd_cloning.dismiss();
                         Toast.makeText(
                                 MainActivity.this,
@@ -236,11 +262,15 @@ public class MainActivity
                         ).show();
                     }
                     clone.call();
+                    /* 如果Repo在数据库中重复，则更新信息 */
                     if (er) {
                         db_action.updateRepo(repo);
+                        System.out.println("GaGa.");
+                    /* 否则将新建的Repo加入到数据库中 */
                     } else {
                         db_action.newRepo(repo);
                     }
+                    db_action.closeDB();
                     pd_cloning.dismiss();
                     Toast.makeText(
                             MainActivity.this,
@@ -248,7 +278,7 @@ public class MainActivity
                             Toast.LENGTH_SHORT
                     ).show();
                 } catch (GitAPIException g) {
-                /* Do somthing */
+                    db_action.closeDB(); //
                     pd_cloning.dismiss();
                     Toast.makeText(
                             MainActivity.this,

@@ -1,7 +1,5 @@
 package io.github.mthli.Codeview.Database;
 
-import org.eclipse.jgit.api.RebaseCommand;
-
 public class Repo {
     public static final String TABLE = "repos";
     public static final String ID = "ID";
@@ -19,10 +17,10 @@ public class Repo {
             + TABLE
             + " ("
             + " ID integer primary key autoincrement,"
-            + " TITLE text"
-            + " CONTENT text"
-            + " DATE text"
-            + " MARK int"
+            + " TITLE text,"
+            + " CONTENT text,"
+            + " DATE text,"
+            + " STATE integer"
             + ")";
 
     private int id;

@@ -15,6 +15,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 
+import io.github.mthli.Codeview.Database.DBAction;
+import io.github.mthli.Codeview.Database.Repo;
 import io.github.mthli.Codeview.FileChooser.FileChooserActivity;
 import io.github.mthli.Codeview.R;
 
@@ -26,6 +28,7 @@ import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.*;
 
 public class MainActivity
@@ -211,38 +214,52 @@ public class MainActivity
                     );
             clone.setCredentialsProvider(access);
 
-
-
+            DBAction db_action = new DBAction(MainActivity.this);
             try {
+                db_action.openDB(true);
+                boolean er = db_action.existRepo(uri);
+                Repo repo = new Repo();
+                repo.setTitle(title);
+                repo.setContent(content);
+                repo.setDate(date);
+                repo.setState(Repo.State.Unmark);
                 try {
-                    FileUtils.deleteDirectory(new File(folder_path));
-                } catch (IOException i) {
+                    try {
+                        FileUtils.deleteDirectory(new File(folder_path));
+                    } catch (IOException i) {
                     /* Do something */
+                        pd_cloning.dismiss();
+                        Toast.makeText(
+                                MainActivity.this,
+                                getString(R.string.unknown_error),
+                                Toast.LENGTH_SHORT
+                        ).show();
+                    }
+                    clone.call();
+                    if (er) {
+                        db_action.updateRepo(repo);
+                    } else {
+                        db_action.newRepo(repo);
+                    }
                     pd_cloning.dismiss();
                     Toast.makeText(
                             MainActivity.this,
-                            getString(R.string.unknown_error),
+                            getString(R.string.clone_successful),
+                            Toast.LENGTH_SHORT
+                    ).show();
+                } catch (GitAPIException g) {
+                /* Do somthing */
+                    pd_cloning.dismiss();
+                    Toast.makeText(
+                            MainActivity.this,
+                            getString(R.string.git_error_clone),
                             Toast.LENGTH_SHORT
                     ).show();
                 }
-                clone.call();
-
-                /* Need SQLite to add new repo info */
-
-
-
-                pd_cloning.dismiss();
+            } catch (SQLException e) {
                 Toast.makeText(
                         MainActivity.this,
-                        getString(R.string.clone_successful),
-                        Toast.LENGTH_SHORT
-                ).show();
-            } catch (GitAPIException g) {
-                /* Do somthing */
-                pd_cloning.dismiss();
-                Toast.makeText(
-                        MainActivity.this,
-                        getString(R.string.git_error_clone),
+                        getString(R.string.database_error_open),
                         Toast.LENGTH_SHORT
                 ).show();
             }

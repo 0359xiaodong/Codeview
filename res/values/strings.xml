@@ -44,6 +44,7 @@
 
     <!-- Error -->
     <string name="unknown_error">Unknown error.</string>
+    <string name="database_error_open">Open database failed.</string>
     <string name="git_error_clone">Clone failed.</string>
     <string name="git_error_connect">Can\'t connect</string>
     <string name="git_error_not_git">Not a git repo</string>

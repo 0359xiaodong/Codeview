@@ -33,8 +33,11 @@
         </activity>
 
         <activity
+                android:name=".Activity.LoginActivity"
+                />
+
+        <activity
                 android:name=".FileChooser.FileChooserActivity"
-                android:label=""
                 android:parentActivityName=".Activity.MainActivity"
                 />
 

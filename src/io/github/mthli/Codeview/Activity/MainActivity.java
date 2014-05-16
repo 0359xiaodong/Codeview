@@ -35,6 +35,13 @@ public class MainActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_view_main);
 
+        /*
+         * First we need t check the username and password,
+         * if no username and password,
+         * we use LoginActivity,
+         * else next
+         */
+
         ActionBar action_bar = getActionBar();
         action_bar.setDisplayShowTitleEnabled(false);
         action_bar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);

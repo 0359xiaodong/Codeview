@@ -30,6 +30,8 @@ public class CodeviewActivity extends Activity {
         web_view = (WebView) findViewById(R.id.code_view);
         WebSettings web_settings = web_view.getSettings();
         web_settings.setJavaScriptEnabled(true);
+        // web_settings.setUseWideViewPort(true);
+        // web_settings.setLoadWithOverviewMode(true);
         web_view.setVisibility(View.VISIBLE);
 
         String content = SyntaxSetting.setCodeAsHtml(getIntent().getStringExtra("path"));

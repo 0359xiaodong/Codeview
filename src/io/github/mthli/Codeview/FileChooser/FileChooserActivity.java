@@ -109,7 +109,7 @@ public class FileChooserActivity extends ListActivity {
                     0,
                     new FileListViewItem(
                             "..",
-                            relativePath(f.getParent()),
+                            relativePath(f.getParent()) + File.separator,
                             f.getParent(),
                             folder_date,
                             FileConstants.PARENT,

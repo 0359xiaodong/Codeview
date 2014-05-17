@@ -29,10 +29,11 @@ public class DBAction {
         helper.close();
     }
 
+    /* Bug in here */
     public boolean existRepo(String content) {
         Cursor cursor = database.query(
                 Repo.TABLE,
-                new String[] {Repo.ID},
+                new String[] {Repo.CONTENT},
                 Repo.CONTENT + "=?",
                 new String[] {content},
                 null,
@@ -40,10 +41,14 @@ public class DBAction {
                 null
         );
         if (cursor != null) {
-            return true;
-        } else {
-            return false;
+            boolean result = false;
+            if (cursor.moveToFirst()) {
+                result = true;
+            }
+            cursor.close();
+            return result;
         }
+        return false;
     }
 
     public void newRepo(Repo repo) {

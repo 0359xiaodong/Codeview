@@ -219,7 +219,7 @@ public class MainActivity
             Calendar now = Calendar.getInstance();
             String date = now.get(Calendar.YEAR)
                     + "-"
-                    + now.get(Calendar.MONTH)
+                    + (now.get(Calendar.MONTH) + 1)
                     + "-"
                     + now.get(Calendar.DATE);
 
@@ -248,12 +248,11 @@ public class MainActivity
                 /* 打开数据库 */
                 db_action.openDB(true);
                 /* 检查Repo是否重复（根据来源） */
-                boolean er = db_action.existRepo(uri);
+                boolean er = db_action.existRepo(content);
                 try {
                     try {
                         FileUtils.deleteDirectory(new File(folder_path));
                     } catch (IOException i) {
-                        db_action.closeDB(); //
                         pd_cloning.dismiss();
                         Toast.makeText(
                                 MainActivity.this,
@@ -265,12 +264,11 @@ public class MainActivity
                     /* 如果Repo在数据库中重复，则更新信息 */
                     if (er) {
                         db_action.updateRepo(repo);
-                        System.out.println("GaGa.");
                     /* 否则将新建的Repo加入到数据库中 */
                     } else {
                         db_action.newRepo(repo);
                     }
-                    db_action.closeDB();
+                    /* Need to refresh ListView */
                     pd_cloning.dismiss();
                     Toast.makeText(
                             MainActivity.this,
@@ -278,7 +276,6 @@ public class MainActivity
                             Toast.LENGTH_SHORT
                     ).show();
                 } catch (GitAPIException g) {
-                    db_action.closeDB(); //
                     pd_cloning.dismiss();
                     Toast.makeText(
                             MainActivity.this,
@@ -293,6 +290,7 @@ public class MainActivity
                         Toast.LENGTH_SHORT
                 ).show();
             }
+            db_action.closeDB();
         }
     };
 }

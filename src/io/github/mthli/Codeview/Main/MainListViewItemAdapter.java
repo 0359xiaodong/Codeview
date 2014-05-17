@@ -1,4 +1,4 @@
-package io.github.mthli.Codeview.Activity;
+package io.github.mthli.Codeview.Main;
 
 import android.app.Activity;
 import android.content.Context;

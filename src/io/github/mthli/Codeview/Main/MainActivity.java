@@ -1,10 +1,9 @@
-package io.github.mthli.Codeview.Activity;
+package io.github.mthli.Codeview.Main;
 
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,6 +17,7 @@ import android.widget.*;
 import io.github.mthli.Codeview.Database.DBAction;
 import io.github.mthli.Codeview.Database.Repo;
 import io.github.mthli.Codeview.FileChooser.FileChooserActivity;
+import io.github.mthli.Codeview.Other.AboutActivity;
 import io.github.mthli.Codeview.R;
 
 import org.apache.commons.io.FileUtils;
@@ -77,7 +77,7 @@ public class MainActivity
                 R.layout.list_view_item_main,
                 item
         );
-
+        /* 开启一个新线程用于填充ListView */
         HandlerThread thread = new HandlerThread("listThread");
         thread.start();
         Handler handler = new Handler(thread.getLooper());
@@ -87,7 +87,6 @@ public class MainActivity
         view.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
-        /* Also we need new method to reach the right path */
         view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(
@@ -96,6 +95,7 @@ public class MainActivity
                     int position,
                     long id
             ) {
+                /* 传递正确的数据给FileChooser */
                 DBAction db_action = new DBAction(MainActivity.this);
                 try {
                     db_action.openDB(false);
@@ -180,10 +180,11 @@ public class MainActivity
         }
     }
 
-    /* 开启一个新线程用于refresh ListView */
+    /* 开启一个新线程用于刷新ListView */
     Runnable listThread = new Runnable() {
         @Override
         public void run() {
+            item.clear();
             DBAction db_action = new DBAction(MainActivity.this);
             try {
                 db_action.openDB(false);
@@ -282,8 +283,7 @@ public class MainActivity
                     } else {
                         db_action.newRepo(repo);
                     }
-                    /* Need to refresh ListView */
-                    item.clear();
+                    /* 及时刷新ListView */
                     HandlerThread thread = new HandlerThread("listThread");
                     thread.start();
                     Handler handler = new Handler(thread.getLooper());

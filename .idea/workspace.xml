@@ -25,10 +25,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7554629-3731-42a7-953d-dbb0b5a918f9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Database/DBAction.java" afterPath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Database/DBAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Database/DBHelper.java" afterPath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Database/DBHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Activity/MainActivity.java" afterPath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Activity/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Database/Repo.java" afterPath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Database/Repo.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Other/HelpActivity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Activity/AboutActivity.java" afterPath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Other/AboutActivity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Activity/MainActivity.java" afterPath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Main/MainActivity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Activity/MainListViewItem.java" afterPath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Main/MainListViewItem.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Activity/MainListViewItemAdapter.java" afterPath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Main/MainListViewItemAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileChooserActivity.java" afterPath="$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileChooserActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Codeview.iws" />
@@ -96,119 +99,12 @@
       <content type="file-editors">
         <state>
           <leaf>
-            <file leaf-file-name="CloneActivity.java" pinned="false" current="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/../git.android/src/com/romanenco/gitt/CloneActivity.java">
+            <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/Main/MainActivity.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.27874017" vertical-offset="1983" max-vertical-offset="3045">
-                    <caret line="156" column="24" selection-start-line="156" selection-start-column="24" selection-end-line="156" selection-end-column="24" />
+                  <state vertical-scroll-proportion="-3.605784" vertical-offset="2864" max-vertical-offset="4545">
+                    <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
                     <folding />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="DAO.java" pinned="false" current="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/../git.android/src/com/romanenco/gitt/dao/DAO.java">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.0" vertical-offset="813" max-vertical-offset="2280">
-                    <caret line="81" column="39" selection-start-line="81" selection-start-column="39" selection-end-line="81" selection-end-column="39" />
-                    <folding>
-                      <element signature="e#1165#1166#0" expanded="false" />
-                      <element signature="e#1203#1204#0" expanded="false" />
-                      <element signature="e#1412#1413#0" expanded="false" />
-                      <element signature="e#1433#1434#0" expanded="false" />
-                      <element signature="e#3736#3737#0" expanded="false" />
-                      <element signature="e#3814#3815#0" expanded="false" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/../git.android/src/com/romanenco/gitt/MainActivity.java">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.0" vertical-offset="1610" max-vertical-offset="4665">
-                    <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                    <folding>
-                      <element signature="e#1905#2076#0" expanded="false" />
-                      <element signature="e#2071#2072#0" expanded="false" />
-                      <element signature="e#5782#5783#0" expanded="false" />
-                      <element signature="e#5809#5810#0" expanded="false" />
-                      <element signature="e#5857#5858#0" expanded="false" />
-                      <element signature="e#5888#5889#0" expanded="false" />
-                      <element signature="e#5938#5939#0" expanded="false" />
-                      <element signature="e#5977#5978#0" expanded="false" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="DAOHelper.java" pinned="false" current="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/../git.android/src/com/romanenco/gitt/dao/DAOHelper.java">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.0" vertical-offset="185" max-vertical-offset="855">
-                    <caret line="41" column="43" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="43" />
-                    <folding />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="Repo.java" pinned="false" current="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/../git.android/src/com/romanenco/gitt/dao/Repo.java">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.0" vertical-offset="1010" max-vertical-offset="1785">
-                    <caret line="93" column="8" selection-start-line="93" selection-start-column="8" selection-end-line="93" selection-end-column="8" />
-                    <folding>
-                      <element signature="e#2077#2078#0" expanded="false" />
-                      <element signature="e#2097#2098#0" expanded="false" />
-                      <element signature="e#2138#2139#0" expanded="false" />
-                      <element signature="e#2165#2166#0" expanded="false" />
-                      <element signature="e#2193#2194#0" expanded="false" />
-                      <element signature="e#2211#2212#0" expanded="false" />
-                      <element signature="e#2248#2249#0" expanded="false" />
-                      <element signature="e#2271#2272#0" expanded="false" />
-                      <element signature="e#2302#2303#0" expanded="false" />
-                      <element signature="e#2323#2324#0" expanded="false" />
-                      <element signature="e#2366#2367#0" expanded="false" />
-                      <element signature="e#2395#2396#0" expanded="false" />
-                      <element signature="e#2418#2419#0" expanded="false" />
-                      <element signature="e#2434#2435#0" expanded="false" />
-                      <element signature="e#2464#2465#0" expanded="false" />
-                      <element signature="e#2483#2484#0" expanded="false" />
-                      <element signature="e#2509#2510#0" expanded="false" />
-                      <element signature="e#2527#2528#0" expanded="false" />
-                      <element signature="e#2562#2563#0" expanded="false" />
-                      <element signature="e#2585#2586#0" expanded="false" />
-                      <element signature="e#2617#2618#0" expanded="false" />
-                      <element signature="e#2639#2640#0" expanded="false" />
-                      <element signature="e#2684#2685#0" expanded="false" />
-                      <element signature="e#2715#2716#0" expanded="false" />
-                      <element signature="e#2743#2744#0" expanded="false" />
-                      <element signature="e#2762#2763#0" expanded="false" />
-                      <element signature="e#2800#2801#0" expanded="false" />
-                      <element signature="e#2825#2826#0" expanded="false" />
-                      <element signature="e#2854#2855#0" expanded="false" />
-                      <element signature="e#2873#2874#0" expanded="false" />
-                      <element signature="e#2912#2913#0" expanded="false" />
-                      <element signature="e#2937#2938#0" expanded="false" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="GitHelper.java" pinned="false" current="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/../git.android/src/com/romanenco/gitt/git/GitHelper.java">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.0" vertical-offset="1590" max-vertical-offset="5235">
-                    <caret line="106" column="38" selection-start-line="106" selection-start-column="38" selection-end-line="106" selection-end-column="38" />
-                    <folding>
-                      <element signature="e#3810#3811#0" expanded="false" />
-                      <element signature="e#3870#3871#0" expanded="false" />
-                      <element signature="e#5660#5661#0" expanded="false" />
-                      <element signature="e#5713#5714#0" expanded="false" />
-                      <element signature="e#7862#7882#0" expanded="false" />
-                      <element signature="e#8565#8566#0" expanded="false" />
-                      <element signature="e#8594#8595#0" expanded="false" />
-                    </folding>
                   </state>
                 </provider>
               </entry>
@@ -224,56 +120,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/Activity/MainActivity.java">
+      <file leaf-file-name="FileListViewItem.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileListViewItem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2776" max-vertical-offset="4785">
-              <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
-              <folding>
-                <element signature="e#2068#2113#0" expanded="true" />
-                <element signature="e#2147#2192#0" expanded="true" />
-                <element signature="e#2885#3975#0" expanded="true" />
-                <element signature="e#3816#3855#0" expanded="true" />
-                <element signature="e#3964#3965#0" expanded="true" />
-                <element signature="e#4058#4059#0" expanded="true" />
-                <element signature="e#4085#4086#0" expanded="true" />
-                <element signature="e#4904#4939#0" expanded="true" />
-                <element signature="e#5208#5241#0" expanded="true" />
-                <element signature="e#5532#5560#0" expanded="true" />
-                <element signature="e#6648#7827#0" expanded="true" />
-                <element signature="e#7655#7694#0" expanded="true" />
-                <element signature="e#7820#7821#0" expanded="true" />
-                <element signature="e#7886#11814#0" expanded="true" />
-                <element signature="e#9353#9387#0" expanded="true" />
-                <element signature="e#9417#9451#0" expanded="true" />
-                <element signature="e#10143#10176#0" expanded="true" />
-                <element signature="e#11058#11094#0" expanded="true" />
-                <element signature="e#11372#11407#0" expanded="true" />
-                <element signature="e#11642#11681#0" expanded="true" />
-                <element signature="e#11807#11808#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DBAction.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/Database/DBAction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.33333334" vertical-offset="1035" max-vertical-offset="1935">
-              <caret line="59" column="46" selection-start-line="59" selection-start-column="46" selection-end-line="59" selection-end-column="46" />
-              <folding>
-                <element signature="e#2356#2362#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DBHelper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/Database/DBHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
-              <caret line="9" column="49" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="49" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="795">
+              <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileChooserActivity.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileChooserActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.4619125" vertical-offset="793" max-vertical-offset="2490">
+              <caret line="116" column="34" selection-start-line="116" selection-start-column="34" selection-end-line="116" selection-end-column="34" />
+              <folding>
+                <element signature="e#2616#2634#0" expanded="true" />
+                <element signature="e#2690#2708#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -320,7 +185,6 @@
         <option value="$PROJECT_DIR$/src/io/github/mthli/Codeview/Activity/LoginActivity.java" />
         <option value="$PROJECT_DIR$/src/io/github/mthli/Codeview/Activity/CloneActivity.java" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileChooserActivity.java" />
         <option value="$PROJECT_DIR$/src/io/github/mthli/Codeview/Datebase.java" />
         <option value="$PROJECT_DIR$/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/../git.android/src/com/romanenco/gitt/dao/DAO.java" />
@@ -328,6 +192,9 @@
         <option value="$PROJECT_DIR$/src/io/github/mthli/Codeview/Database/DBAction.java" />
         <option value="$PROJECT_DIR$/src/io/github/mthli/Codeview/Database/DBHelper.java" />
         <option value="$PROJECT_DIR$/src/io/github/mthli/Codeview/Activity/MainActivity.java" />
+        <option value="$PROJECT_DIR$/src/io/github/mthli/Codeview/Main/MainActivity.java" />
+        <option value="$PROJECT_DIR$/src/io/github/mthli/Codeview/Other/HelpActivity.java" />
+        <option value="$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileChooserActivity.java" />
       </list>
     </option>
   </component>
@@ -430,7 +297,7 @@
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Database" />
+              <option name="myItemId" value="Main" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -452,7 +319,29 @@
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Activity" />
+              <option name="myItemId" value="FileChooser" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Codeview" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Codeview" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Codeview" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Database" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -763,14 +652,14 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32824427" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27925116" sideWeight="0.50076103" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32724506" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.61796045" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.61491627" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32099697" sideWeight="0.49923897" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33637747" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11706948" sideWeight="0.49923897" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3348554" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24810892" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -803,36 +692,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/Activity/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1288" max-vertical-offset="1980">
-          <caret line="112" column="17" selection-start-line="112" selection-start-column="17" selection-end-line="112" selection-end-column="17" />
-          <folding>
-            <element signature="e#2068#2113#0" expanded="true" />
-            <element signature="e#2147#2192#0" expanded="true" />
-            <element signature="e#2885#3975#0" expanded="true" />
-            <element signature="e#3816#3855#0" expanded="true" />
-            <element signature="e#3964#3965#0" expanded="true" />
-            <element signature="e#4058#4059#0" expanded="true" />
-            <element signature="e#4085#4086#0" expanded="true" />
-            <element signature="e#4904#4939#0" expanded="true" />
-            <element signature="e#5208#5241#0" expanded="true" />
-            <element signature="e#5532#5560#0" expanded="true" />
-            <element signature="e#6648#7827#0" expanded="true" />
-            <element signature="e#7655#7694#0" expanded="true" />
-            <element signature="e#7820#7821#0" expanded="true" />
-            <element signature="e#7886#11814#0" expanded="true" />
-            <element signature="e#9353#9387#0" expanded="true" />
-            <element signature="e#9417#9451#0" expanded="true" />
-            <element signature="e#10143#10176#0" expanded="true" />
-            <element signature="e#11058#11094#0" expanded="true" />
-            <element signature="e#11372#11407#0" expanded="true" />
-            <element signature="e#11642#11681#0" expanded="true" />
-            <element signature="e#11807#11808#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="28" max-vertical-offset="810">
@@ -841,33 +700,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/Activity/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/Main/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1440" max-vertical-offset="1860">
           <caret line="96" column="45" selection-start-line="96" selection-start-column="45" selection-end-line="96" selection-end-column="45" />
-          <folding>
-            <element signature="e#2068#2113#0" expanded="true" />
-            <element signature="e#2147#2192#0" expanded="true" />
-            <element signature="e#2885#3975#0" expanded="true" />
-            <element signature="e#3816#3855#0" expanded="true" />
-            <element signature="e#3964#3965#0" expanded="true" />
-            <element signature="e#4058#4059#0" expanded="true" />
-            <element signature="e#4085#4086#0" expanded="true" />
-            <element signature="e#4904#4939#0" expanded="true" />
-            <element signature="e#5208#5241#0" expanded="true" />
-            <element signature="e#5532#5560#0" expanded="true" />
-            <element signature="e#6648#7827#0" expanded="true" />
-            <element signature="e#7655#7694#0" expanded="true" />
-            <element signature="e#7820#7821#0" expanded="true" />
-            <element signature="e#7886#11814#0" expanded="true" />
-            <element signature="e#9353#9387#0" expanded="true" />
-            <element signature="e#9417#9451#0" expanded="true" />
-            <element signature="e#10143#10176#0" expanded="true" />
-            <element signature="e#11058#11094#0" expanded="true" />
-            <element signature="e#11372#11407#0" expanded="true" />
-            <element signature="e#11642#11681#0" expanded="true" />
-            <element signature="e#11807#11808#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1056,24 +893,17 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/Activity/MainListViewItemAdapter.java">
+    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/Main/MainListViewItemAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.89915967" vertical-offset="665" max-vertical-offset="1440">
           <caret line="80" column="44" selection-start-line="80" selection-start-column="44" selection-end-line="80" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/Activity/MainListViewItem.java">
+    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/Main/MainListViewItem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.12155592" vertical-offset="0" max-vertical-offset="810">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/Activity/AboutActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.09400324" vertical-offset="208" max-vertical-offset="825">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1124,37 +954,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileListViewItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="163" max-vertical-offset="795">
-          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.047468353" vertical-offset="0" max-vertical-offset="632">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileListViewItemAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.6838236" vertical-offset="0" max-vertical-offset="1755">
-          <caret line="75" column="64" selection-start-line="75" selection-start-column="64" selection-end-line="75" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileChooserActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1693" max-vertical-offset="2310">
-          <caret line="103" column="21" selection-start-line="103" selection-start-column="21" selection-end-line="103" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../git.android/src/com/romanenco/gitt/GittApp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.30952382" vertical-offset="195" max-vertical-offset="1230">
@@ -1164,7 +963,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../git.android/src/com/romanenco/gitt/dao/Repo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="455" max-vertical-offset="1905">
+        <state vertical-scroll-proportion="0.41791046" vertical-offset="1010" max-vertical-offset="1785">
           <caret line="93" column="8" selection-start-line="93" selection-start-column="8" selection-end-line="93" selection-end-column="8" />
           <folding>
             <element signature="e#2077#2078#0" expanded="false" />
@@ -1221,7 +1020,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../git.android/src/com/romanenco/gitt/dao/DAOHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="185" max-vertical-offset="855">
+        <state vertical-scroll-proportion="0.64179105" vertical-offset="185" max-vertical-offset="855">
           <caret line="41" column="43" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="43" />
           <folding />
         </state>
@@ -1229,7 +1028,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../git.android/src/com/romanenco/gitt/dao/DAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="813" max-vertical-offset="2280">
+        <state vertical-scroll-proportion="0.5205479" vertical-offset="813" max-vertical-offset="2280">
           <caret line="81" column="39" selection-start-line="81" selection-start-column="39" selection-end-line="81" selection-end-column="39" />
           <folding>
             <element signature="e#1165#1166#0" expanded="false" />
@@ -1244,7 +1043,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../git.android/src/com/romanenco/gitt/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1610" max-vertical-offset="4665">
+        <state vertical-scroll-proportion="-2.402985" vertical-offset="1610" max-vertical-offset="4665">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#1905#2076#0" expanded="false" />
@@ -1280,6 +1079,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/Other/HelpActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.071428575" vertical-offset="0" max-vertical-offset="630">
+          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/Other/AboutActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23809524" vertical-offset="0" max-vertical-offset="825">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../git.android/src/com/romanenco/gitt/CloneActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.27874017" vertical-offset="1983" max-vertical-offset="3045">
@@ -1288,50 +1103,63 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.04761905" vertical-offset="0" max-vertical-offset="630">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/Database/DBHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+        <state vertical-scroll-proportion="0.21428572" vertical-offset="0" max-vertical-offset="630">
           <caret line="9" column="49" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/Activity/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/Database/DBAction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2776" max-vertical-offset="4785">
-          <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1035" max-vertical-offset="1935">
+          <caret line="76" column="24" selection-start-line="76" selection-start-column="24" selection-end-line="76" selection-end-column="24" />
           <folding>
-            <element signature="e#2068#2113#0" expanded="true" />
-            <element signature="e#2147#2192#0" expanded="true" />
-            <element signature="e#2885#3975#0" expanded="true" />
-            <element signature="e#3816#3855#0" expanded="true" />
-            <element signature="e#3964#3965#0" expanded="true" />
-            <element signature="e#4058#4059#0" expanded="true" />
-            <element signature="e#4085#4086#0" expanded="true" />
-            <element signature="e#4904#4939#0" expanded="true" />
-            <element signature="e#5208#5241#0" expanded="true" />
-            <element signature="e#5532#5560#0" expanded="true" />
-            <element signature="e#6648#7827#0" expanded="true" />
-            <element signature="e#7655#7694#0" expanded="true" />
-            <element signature="e#7820#7821#0" expanded="true" />
-            <element signature="e#7886#11814#0" expanded="true" />
-            <element signature="e#9353#9387#0" expanded="true" />
-            <element signature="e#9417#9451#0" expanded="true" />
-            <element signature="e#10143#10176#0" expanded="true" />
-            <element signature="e#11058#11094#0" expanded="true" />
-            <element signature="e#11372#11407#0" expanded="true" />
-            <element signature="e#11642#11681#0" expanded="true" />
-            <element signature="e#11807#11808#0" expanded="true" />
+            <element signature="e#2356#2362#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/Database/DBAction.java">
+    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileListViewItemAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.33333334" vertical-offset="1035" max-vertical-offset="1935">
-          <caret line="59" column="46" selection-start-line="59" selection-start-column="46" selection-end-line="59" selection-end-column="46" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1755">
+          <caret line="0" column="45" selection-start-line="0" selection-start-column="45" selection-end-line="0" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/Main/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.605784" vertical-offset="2864" max-vertical-offset="4545">
+          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileListViewItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="795">
+          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileChooserActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.4619125" vertical-offset="793" max-vertical-offset="2490">
+          <caret line="116" column="34" selection-start-line="116" selection-start-column="34" selection-end-line="116" selection-end-column="34" />
           <folding>
-            <element signature="e#2356#2362#0" expanded="true" />
+            <element signature="e#2616#2634#0" expanded="true" />
+            <element signature="e#2690#2708#0" expanded="true" />
           </folding>
         </state>
       </provider>

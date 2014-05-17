@@ -1,4 +1,4 @@
-package io.github.mthli.Codeview.Activity;
+package io.github.mthli.Codeview.Other;
 
 import android.app.Activity;
 import android.os.Bundle;

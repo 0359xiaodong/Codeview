@@ -22,7 +22,6 @@ public class FileChooserActivity extends ListActivity {
     private FileFilter file_filter;
     private File file_selected;
     private ArrayList<String> extensions;
-    /* Key, we need use intent to set folder_name and and folder_name*/
     private String folder_path;
     private String folder_name;
 
@@ -45,11 +44,12 @@ public class FileChooserActivity extends ListActivity {
             }
         }
         folder_path = getIntent().getStringExtra("folder_path");
+        folder_name = getIntent().getStringExtra("folder_name");
         current_folder = new File(folder_path);
-        listFill(current_folder);
+        listAll(current_folder);
     }
 
-    private void listFill(File f) {
+    private void listAll(File f) {
         File[] folders = null;
         if (file_filter != null) {
             folders = f.listFiles(file_filter);
@@ -59,7 +59,17 @@ public class FileChooserActivity extends ListActivity {
 
         ActionBar action_bar = getActionBar();
         action_bar.setTitle(f.getName());
-        action_bar.setSubtitle(f.getAbsolutePath());
+        String[] str = f.getAbsolutePath().split("/");
+        String sub_title = folder_name;
+        for (int i = 0; i < str.length; i++) {
+            if (str[i].equals(folder_name)) {
+                for (i = i + 1 ; i < str.length; i++) {
+                    sub_title = sub_title + File.separator + str[i];
+                }
+                break;
+            }
+        }
+        action_bar.setSubtitle(sub_title);
         getActionBar().setDisplayShowHomeEnabled(true);
 
         List<FileListViewItem> dirs = new ArrayList<FileListViewItem>();
@@ -68,6 +78,7 @@ public class FileChooserActivity extends ListActivity {
             for (File file : folders) {
                 if (file.isDirectory() && !file.isHidden()) {
                     dirs.add(
+                            /* Fix this */
                             new FileListViewItem(
                                     file.getName(),
                                     file.getPath(),
@@ -80,6 +91,7 @@ public class FileChooserActivity extends ListActivity {
                 } else {
                     if (!file.isHidden()) {
                         files.add(
+                                /* Fix this */
                                 new FileListViewItem(
                                         file.getName(),
                                         file.getPath(),
@@ -99,10 +111,10 @@ public class FileChooserActivity extends ListActivity {
         Collections.sort(dirs);
         Collections.sort(files);
         dirs.addAll(files);
-        folder_name = getIntent().getStringExtra("folder_name");
         if (!f.getName().equalsIgnoreCase(folder_name)) {
             dirs.add(
                     0,
+                    /* Fix this */
                     new FileListViewItem(
                             "..",
                             f.getParent(),
@@ -134,7 +146,7 @@ public class FileChooserActivity extends ListActivity {
         FileListViewItem item = adapter.getItem(position);
         if (item.isFolder() || item.isParent()) {
             current_folder = new File(item.getPath());
-            listFill(current_folder);
+            listAll(current_folder);
         } else {
             file_selected = new File(item.getPath());
             Intent intent = new Intent();

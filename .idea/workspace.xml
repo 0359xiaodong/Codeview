@@ -25,13 +25,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7554629-3731-42a7-953d-dbb0b5a918f9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Other/HelpActivity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Activity/AboutActivity.java" afterPath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Other/AboutActivity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Activity/MainActivity.java" afterPath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Main/MainActivity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Activity/MainListViewItem.java" afterPath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Main/MainListViewItem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Activity/MainListViewItemAdapter.java" afterPath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Main/MainListViewItemAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileChooserActivity.java" afterPath="$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileChooserActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileListViewItemAdapter.java" afterPath="$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileListViewItemAdapter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Codeview.iws" />
@@ -124,21 +119,31 @@
         <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileListViewItem.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="795">
-              <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+              <caret line="57" column="5" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FileChooserActivity.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="FileChooserActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileChooserActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.4619125" vertical-offset="793" max-vertical-offset="2490">
-              <caret line="116" column="34" selection-start-line="116" selection-start-column="34" selection-end-line="116" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1918" max-vertical-offset="2535">
+              <caret line="164" column="5" selection-start-line="152" selection-start-column="4" selection-end-line="164" selection-end-column="5" />
               <folding>
-                <element signature="e#2616#2634#0" expanded="true" />
-                <element signature="e#2690#2708#0" expanded="true" />
+                <element signature="e#2262#2280#0" expanded="true" />
+                <element signature="e#2336#2354#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileListViewItemAdapter.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileListViewItemAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.54761904" vertical-offset="1140" max-vertical-offset="1770">
+              <caret line="101" column="61" selection-start-line="101" selection-start-column="61" selection-end-line="101" selection-end-column="61" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -195,6 +200,8 @@
         <option value="$PROJECT_DIR$/src/io/github/mthli/Codeview/Main/MainActivity.java" />
         <option value="$PROJECT_DIR$/src/io/github/mthli/Codeview/Other/HelpActivity.java" />
         <option value="$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileChooserActivity.java" />
+        <option value="$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileListViewItem.java" />
+        <option value="$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileListViewItemAdapter.java" />
       </list>
     </option>
   </component>
@@ -1129,14 +1136,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileListViewItemAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1755">
-          <caret line="0" column="45" selection-start-line="0" selection-start-column="45" selection-end-line="0" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/Main/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.605784" vertical-offset="2864" max-vertical-offset="4545">
@@ -1145,22 +1144,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileChooserActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1918" max-vertical-offset="2535">
+          <caret line="164" column="5" selection-start-line="152" selection-start-column="4" selection-end-line="164" selection-end-column="5" />
+          <folding>
+            <element signature="e#2262#2280#0" expanded="true" />
+            <element signature="e#2336#2354#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileListViewItem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="795">
-          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+          <caret line="57" column="5" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileChooserActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileListViewItemAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.4619125" vertical-offset="793" max-vertical-offset="2490">
-          <caret line="116" column="34" selection-start-line="116" selection-start-column="34" selection-end-line="116" selection-end-column="34" />
-          <folding>
-            <element signature="e#2616#2634#0" expanded="true" />
-            <element signature="e#2690#2708#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.54761904" vertical-offset="1140" max-vertical-offset="1770">
+          <caret line="101" column="61" selection-start-line="101" selection-start-column="61" selection-end-line="101" selection-end-column="61" />
+          <folding />
         </state>
       </provider>
     </entry>

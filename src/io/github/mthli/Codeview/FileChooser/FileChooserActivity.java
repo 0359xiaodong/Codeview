@@ -59,17 +59,7 @@ public class FileChooserActivity extends ListActivity {
 
         ActionBar action_bar = getActionBar();
         action_bar.setTitle(f.getName());
-        String[] str = f.getAbsolutePath().split("/");
-        String sub_title = folder_name;
-        for (int i = 0; i < str.length; i++) {
-            if (str[i].equals(folder_name)) {
-                for (i = i + 1 ; i < str.length; i++) {
-                    sub_title = sub_title + File.separator + str[i];
-                }
-                break;
-            }
-        }
-        action_bar.setSubtitle(sub_title);
+        action_bar.setSubtitle(relativePath(f.getAbsolutePath()));
         getActionBar().setDisplayShowHomeEnabled(true);
 
         List<FileListViewItem> dirs = new ArrayList<FileListViewItem>();
@@ -81,8 +71,8 @@ public class FileChooserActivity extends ListActivity {
                             /* Fix this */
                             new FileListViewItem(
                                     file.getName(),
-                                    file.getPath(),
-                                    "date",
+                                    file.getPath(), //
+                                    "date", //
                                     FileConstants.FOLDER,
                                     true,
                                     false
@@ -94,8 +84,8 @@ public class FileChooserActivity extends ListActivity {
                                 /* Fix this */
                                 new FileListViewItem(
                                         file.getName(),
-                                        file.getPath(),
-                                        "date",
+                                        file.getPath(), //
+                                        "date", //
                                         file.getPath(),
                                         false,
                                         false
@@ -114,7 +104,6 @@ public class FileChooserActivity extends ListActivity {
         if (!f.getName().equalsIgnoreCase(folder_name)) {
             dirs.add(
                     0,
-                    /* Fix this */
                     new FileListViewItem(
                             "..",
                             f.getParent(),
@@ -159,5 +148,19 @@ public class FileChooserActivity extends ListActivity {
             finish();
             ;
         }
+    }
+
+    private String relativePath(String path) {
+        String[] str = path.split("/");
+        String start = folder_name;
+        for (int i = 0; i < str.length; i++) {
+            if (str[i].equals(folder_name)) {
+                for (i = i + 1 ; i < str.length; i++) {
+                    start = start + File.separator + str[i];
+                }
+                break;
+            }
+        }
+        return start;
     }
 }

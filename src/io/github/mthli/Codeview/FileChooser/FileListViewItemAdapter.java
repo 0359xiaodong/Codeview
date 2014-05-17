@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.*;
 import io.github.mthli.Codeview.R;
 
+import java.io.File;
 import java.util.List;
 
 public class FileListViewItemAdapter extends ArrayAdapter<FileListViewItem> {

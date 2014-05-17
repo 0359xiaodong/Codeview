@@ -126,6 +126,7 @@ public class FileChooserActivity extends ListActivity {
         adapter.notifyDataSetChanged();
     }
 
+    /* Need to change */
     @Override
     protected void onListItemClick(
             ListView l,

@@ -2,6 +2,7 @@ package io.github.mthli.Codeview.FileChooser;
 
 public class FileListViewItem implements Comparable<FileListViewItem> {
     private String title;
+    private String content; //
     private String path;
     private String date;
     private String data;
@@ -10,6 +11,7 @@ public class FileListViewItem implements Comparable<FileListViewItem> {
 
     public FileListViewItem(
             String title,
+            String content,
             String path,
             String date,
             String data,
@@ -17,6 +19,7 @@ public class FileListViewItem implements Comparable<FileListViewItem> {
             boolean parent
     ) {
         this.title = title;
+        this.content = content;
         this.path = path;
         this.date = date;
         this.data = data;
@@ -26,6 +29,10 @@ public class FileListViewItem implements Comparable<FileListViewItem> {
 
     public String getTitle() {
         return title;
+    }
+
+    public String getContent() {
+        return content;
     }
 
     public String getPath() {

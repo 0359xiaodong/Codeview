@@ -39,6 +39,10 @@
     <string name="clone_pd">Cloning...</string>
     <string name="clone_successful">Clone successful.</string>
 
+    <!-- FIleChooser -->
+    <string name="fc_folder_amount">Amount:</string>
+    <string name="fc_file_size">Size:</string>
+
     <!-- Log interface -->
     <string name="label_log">Log</string>
 

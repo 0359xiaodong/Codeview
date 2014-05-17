@@ -103,7 +103,7 @@ public class FileListViewItemAdapter extends ArrayAdapter<FileListViewItem> {
                 }
             }
             holder.item_title.setText(an_item.getTitle());
-            holder.item_content.setText(an_item.getPath());
+            holder.item_content.setText(an_item.getContent());
             holder.item_date.setText(an_item.getDate());
             holder.item_mark.setOnClickListener(new View.OnClickListener() {
                 @Override

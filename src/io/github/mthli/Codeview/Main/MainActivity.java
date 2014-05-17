@@ -103,6 +103,7 @@ public class MainActivity
                     Intent intent = new Intent(MainActivity.this, FileChooserActivity.class);
                     intent.putExtra("folder_name", repos.get(position).getTitle());
                     intent.putExtra("folder_path", repos.get(position).getPath());
+                    intent.putExtra("folder_date", repos.get(position).getDate());
                     startActivityForResult(intent, FILE_CHOOSER);
                 } catch (SQLException s) {
                     Toast.makeText(

@@ -24,6 +24,7 @@ public class FileChooserActivity extends ListActivity {
     private ArrayList<String> extensions;
     private String folder_path;
     private String folder_name;
+    private String folder_date;
 
     @Override
     public void onCreate(Bundle saved_instance_state) {
@@ -45,6 +46,7 @@ public class FileChooserActivity extends ListActivity {
         }
         folder_path = getIntent().getStringExtra("folder_path");
         folder_name = getIntent().getStringExtra("folder_name");
+        folder_date = getIntent().getStringExtra("folder_date");
         current_folder = new File(folder_path);
         listAll(current_folder);
     }
@@ -68,11 +70,11 @@ public class FileChooserActivity extends ListActivity {
             for (File file : folders) {
                 if (file.isDirectory() && !file.isHidden()) {
                     dirs.add(
-                            /* Fix this */
                             new FileListViewItem(
                                     file.getName(),
-                                    file.getPath(), //
-                                    "date", //
+                                    getString(R.string.fc_folder_amount) + file.listFiles().length,
+                                    file.getPath(),
+                                    folder_date,
                                     FileConstants.FOLDER,
                                     true,
                                     false
@@ -81,11 +83,11 @@ public class FileChooserActivity extends ListActivity {
                 } else {
                     if (!file.isHidden()) {
                         files.add(
-                                /* Fix this */
                                 new FileListViewItem(
                                         file.getName(),
-                                        file.getPath(), //
-                                        "date", //
+                                        getString(R.string.fc_file_size) + file.length() + "bit",
+                                        file.getPath(),
+                                        folder_date,
                                         file.getPath(),
                                         false,
                                         false
@@ -106,8 +108,9 @@ public class FileChooserActivity extends ListActivity {
                     0,
                     new FileListViewItem(
                             "..",
+                            relativePath(f.getParent()),
                             f.getParent(),
-                            "date",
+                            folder_date,
                             FileConstants.PARENT,
                             false,
                             true

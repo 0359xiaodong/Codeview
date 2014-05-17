@@ -3,7 +3,7 @@ package io.github.mthli.Codeview.WebView;
 import java.io.*;
 
 public class SyntaxSetting {
-    public static final String base_url = "file:///asset/google-code-prettify/";
+    public static final String base_url = "file:///android_asset/google-code-prettify/";
 
     public static String setCodeAsHtml(String path) {
         StringBuilder builder = new StringBuilder();

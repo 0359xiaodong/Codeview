@@ -71,27 +71,18 @@ public class MainActivity
                 this
         );
 
-        /*
-         * We need to use new method to add list,
-         * this method just show demo
-         */
         item = new ArrayList<MainListViewItem>();
         adapter = new MainListViewItemAdapter(
                 this,
                 R.layout.list_view_item_main,
                 item
         );
-        for (int i = 0; i < 10; i++) {
-            item.add(
-                    new MainListViewItem(
-                            getResources().getDrawable(R.drawable.ic_filetype_folder),
-                            "Title " + i,
-                            "Content " + i,
-                            "date",
-                            new ImageButton(this) //
-                    )
-            );
-        }
+
+        HandlerThread thread = new HandlerThread("listThread");
+        thread.start();
+        Handler handler = new Handler(thread.getLooper());
+        handler.post(listThread);
+
         view = (ListView) findViewById(R.id.list_view_main);
         view.setAdapter(adapter);
         adapter.notifyDataSetChanged();
@@ -113,25 +104,6 @@ public class MainActivity
             }
         });
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     @Override
     public boolean onNavigationItemSelected(int i, long j) {
@@ -197,6 +169,37 @@ public class MainActivity
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    /* 开启一个新线程用于refresh ListView */
+    Runnable listThread = new Runnable() {
+        @Override
+        public void run() {
+            DBAction db_action = new DBAction(MainActivity.this);
+            try {
+                db_action.openDB(false);
+                List<Repo> repos = db_action.listRepos();
+                for (int i = 0; i < repos.size(); i++) {
+                    item.add(
+                            new MainListViewItem(
+                                    getResources().getDrawable(R.drawable.ic_filetype_folder),
+                                    repos.get(i).getTitle(),
+                                    repos.get(i).getContent(),
+                                    repos.get(i).getDate(),
+                                    /* And Need to set status */
+                                    new ImageButton(MainActivity.this)
+                            )
+                    );
+                }
+            } catch (SQLException s) {
+                Toast.makeText(
+                        MainActivity.this,
+                        getString(R.string.database_error_open),
+                        Toast.LENGTH_SHORT
+                ).show();
+            }
+            db_action.closeDB();
+        }
+    };
 
     /* 开启一个新线程用于git clone */
     Runnable cloneThread = new Runnable() {
@@ -269,6 +272,11 @@ public class MainActivity
                         db_action.newRepo(repo);
                     }
                     /* Need to refresh ListView */
+                    item.clear();
+                    HandlerThread thread = new HandlerThread("listThread");
+                    thread.start();
+                    Handler handler = new Handler(thread.getLooper());
+                    handler.post(listThread);
                     pd_cloning.dismiss();
                     Toast.makeText(
                             MainActivity.this,

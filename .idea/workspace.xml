@@ -25,7 +25,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7554629-3731-42a7-953d-dbb0b5a918f9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Database/DBAction.java" afterPath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Database/DBAction.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Activity/MainActivity.java" afterPath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Activity/MainActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -99,17 +98,56 @@
                 <provider selected="true" editor-type-id="text-editor">
                   <state vertical-scroll-proportion="0.0" vertical-offset="1983" max-vertical-offset="3045">
                     <caret line="156" column="24" selection-start-line="156" selection-start-column="24" selection-end-line="156" selection-end-column="24" />
-                    <folding />
+                    <folding>
+                      <element signature="e#2342#2456#0" expanded="false" />
+                      <element signature="e#2449#2450#0" expanded="false" />
+                      <element signature="e#2517#2632#0" expanded="false" />
+                      <element signature="e#2625#2626#0" expanded="false" />
+                      <element signature="e#5569#5690#0" expanded="false" />
+                      <element signature="e#5683#5684#0" expanded="false" />
+                      <element signature="e#5758#5882#0" expanded="false" />
+                      <element signature="e#5875#5876#0" expanded="false" />
+                      <element signature="e#5951#6076#0" expanded="false" />
+                      <element signature="e#6069#6070#0" expanded="false" />
+                      <element signature="e#6143#6266#0" expanded="false" />
+                      <element signature="e#6259#6260#0" expanded="false" />
+                    </folding>
                   </state>
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="DAO.java" pinned="false" current="false" current-in-tab="true">
+            <file leaf-file-name="DAO.java" pinned="false" current="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/../git.android/src/com/romanenco/gitt/dao/DAO.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.40334857" vertical-offset="785" max-vertical-offset="2280">
-                    <caret line="74" column="27" selection-start-line="74" selection-start-column="27" selection-end-line="74" selection-end-column="27" />
-                    <folding />
+                  <state vertical-scroll-proportion="0.0" vertical-offset="813" max-vertical-offset="2280">
+                    <caret line="81" column="39" selection-start-line="81" selection-start-column="39" selection-end-line="81" selection-end-column="39" />
+                    <folding>
+                      <element signature="e#1165#1166#0" expanded="false" />
+                      <element signature="e#1203#1204#0" expanded="false" />
+                      <element signature="e#1412#1413#0" expanded="false" />
+                      <element signature="e#1433#1434#0" expanded="false" />
+                      <element signature="e#3736#3737#0" expanded="false" />
+                      <element signature="e#3814#3815#0" expanded="false" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/../git.android/src/com/romanenco/gitt/MainActivity.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state vertical-scroll-proportion="0.0" vertical-offset="1610" max-vertical-offset="4665">
+                    <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                    <folding>
+                      <element signature="e#1905#2076#0" expanded="false" />
+                      <element signature="e#2071#2072#0" expanded="false" />
+                      <element signature="e#5782#5783#0" expanded="false" />
+                      <element signature="e#5809#5810#0" expanded="false" />
+                      <element signature="e#5857#5858#0" expanded="false" />
+                      <element signature="e#5888#5889#0" expanded="false" />
+                      <element signature="e#5938#5939#0" expanded="false" />
+                      <element signature="e#5977#5978#0" expanded="false" />
+                    </folding>
                   </state>
                 </provider>
               </entry>
@@ -119,12 +157,7 @@
                 <provider selected="true" editor-type-id="text-editor">
                   <state vertical-scroll-proportion="0.0" vertical-offset="185" max-vertical-offset="855">
                     <caret line="41" column="43" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="43" />
-                    <folding>
-                      <element signature="e#1126#1127#0" expanded="true" />
-                      <element signature="e#1186#1187#0" expanded="true" />
-                      <element signature="e#1241#1242#0" expanded="true" />
-                      <element signature="e#1275#1276#0" expanded="true" />
-                    </folding>
+                    <folding />
                   </state>
                 </provider>
               </entry>
@@ -190,6 +223,18 @@
                 </provider>
               </entry>
             </file>
+            <file leaf-file-name="DBAction.java" pinned="false" current="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/Database/DBAction.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state vertical-scroll-proportion="0.30092594" vertical-offset="1110" max-vertical-offset="1890">
+                    <caret line="91" column="34" selection-start-line="91" selection-start-column="34" selection-end-line="91" selection-end-column="34" />
+                    <folding>
+                      <element signature="e#2309#2315#0" expanded="true" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
           </leaf>
         </state>
       </content>
@@ -204,44 +249,40 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/Activity/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5609756" vertical-offset="3525" max-vertical-offset="4350">
-              <caret line="270" column="50" selection-start-line="270" selection-start-column="50" selection-end-line="270" selection-end-column="50" />
+            <state vertical-scroll-proportion="0.30952382" vertical-offset="1380" max-vertical-offset="4620">
+              <caret line="105" column="5" selection-start-line="105" selection-start-column="5" selection-end-line="105" selection-end-column="5" />
               <folding>
-                <element signature="e#6517#10143#0" expanded="true" />
-                <element signature="e#9387#9423#0" expanded="true" />
-                <element signature="e#9701#9736#0" expanded="true" />
-                <element signature="e#9971#10010#0" expanded="true" />
-                <element signature="e#10136#10137#0" expanded="true" />
+                <element signature="e#2068#2113#0" expanded="true" />
+                <element signature="e#2147#2192#0" expanded="true" />
+                <element signature="e#2885#3491#0" expanded="true" />
+                <element signature="e#3480#3481#0" expanded="true" />
+                <element signature="e#3574#3575#0" expanded="true" />
+                <element signature="e#3601#3602#0" expanded="true" />
+                <element signature="e#4420#4455#0" expanded="true" />
+                <element signature="e#4724#4757#0" expanded="true" />
+                <element signature="e#5048#5076#0" expanded="true" />
+                <element signature="e#6164#7343#0" expanded="true" />
+                <element signature="e#7171#7210#0" expanded="true" />
+                <element signature="e#7336#7337#0" expanded="true" />
+                <element signature="e#7402#11291#0" expanded="true" />
+                <element signature="e#8830#8864#0" expanded="true" />
+                <element signature="e#8894#8928#0" expanded="true" />
+                <element signature="e#9620#9653#0" expanded="true" />
+                <element signature="e#10535#10571#0" expanded="true" />
+                <element signature="e#10849#10884#0" expanded="true" />
+                <element signature="e#11119#11158#0" expanded="true" />
+                <element signature="e#11284#11285#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DBAction.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/Database/DBAction.java">
+      <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="450" max-vertical-offset="1950">
-              <caret line="50" column="21" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
-              <folding>
-                <element signature="e#404#405#0" expanded="true" />
-                <element signature="e#450#451#0" expanded="true" />
-                <element signature="e#694#695#0" expanded="true" />
-                <element signature="e#724#725#0" expanded="true" />
-                <element signature="e#2309#2315#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DBHelper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/Database/DBHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
-              <caret line="21" column="43" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
-              <folding>
-                <element signature="e#576#577#0" expanded="true" />
-                <element signature="e#619#620#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="990">
+              <caret line="46" column="26" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -313,8 +354,8 @@
     <option name="skipTests" value="true" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="683" />
-    <option name="height" value="768" />
+    <option name="width" value="1366" />
+    <option name="height" value="770" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -716,7 +757,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="683" height="768" extended-state="0" />
+    <frame x="0" y="0" width="1366" height="770" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -731,14 +772,14 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32824427" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27925116" sideWeight="0.50076103" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32724506" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6244275" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2526636" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32250756" sideWeight="0.49923897" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33740458" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32137287" sideWeight="0.49923897" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33637747" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24810892" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -776,11 +817,26 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1288" max-vertical-offset="1980">
           <caret line="112" column="17" selection-start-line="112" selection-start-column="17" selection-end-line="112" selection-end-column="17" />
           <folding>
-            <element signature="e#6517#10143#0" expanded="true" />
-            <element signature="e#9387#9423#0" expanded="true" />
-            <element signature="e#9701#9736#0" expanded="true" />
-            <element signature="e#9971#10010#0" expanded="true" />
-            <element signature="e#10136#10137#0" expanded="true" />
+            <element signature="e#2068#2113#0" expanded="true" />
+            <element signature="e#2147#2192#0" expanded="true" />
+            <element signature="e#2885#3491#0" expanded="true" />
+            <element signature="e#3480#3481#0" expanded="true" />
+            <element signature="e#3574#3575#0" expanded="true" />
+            <element signature="e#3601#3602#0" expanded="true" />
+            <element signature="e#4420#4455#0" expanded="true" />
+            <element signature="e#4724#4757#0" expanded="true" />
+            <element signature="e#5048#5076#0" expanded="true" />
+            <element signature="e#6164#7343#0" expanded="true" />
+            <element signature="e#7171#7210#0" expanded="true" />
+            <element signature="e#7336#7337#0" expanded="true" />
+            <element signature="e#7402#11291#0" expanded="true" />
+            <element signature="e#8830#8864#0" expanded="true" />
+            <element signature="e#8894#8928#0" expanded="true" />
+            <element signature="e#9620#9653#0" expanded="true" />
+            <element signature="e#10535#10571#0" expanded="true" />
+            <element signature="e#10849#10884#0" expanded="true" />
+            <element signature="e#11119#11158#0" expanded="true" />
+            <element signature="e#11284#11285#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -798,11 +854,26 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1440" max-vertical-offset="1860">
           <caret line="96" column="45" selection-start-line="96" selection-start-column="45" selection-end-line="96" selection-end-column="45" />
           <folding>
-            <element signature="e#6517#10143#0" expanded="true" />
-            <element signature="e#9387#9423#0" expanded="true" />
-            <element signature="e#9701#9736#0" expanded="true" />
-            <element signature="e#9971#10010#0" expanded="true" />
-            <element signature="e#10136#10137#0" expanded="true" />
+            <element signature="e#2068#2113#0" expanded="true" />
+            <element signature="e#2147#2192#0" expanded="true" />
+            <element signature="e#2885#3491#0" expanded="true" />
+            <element signature="e#3480#3481#0" expanded="true" />
+            <element signature="e#3574#3575#0" expanded="true" />
+            <element signature="e#3601#3602#0" expanded="true" />
+            <element signature="e#4420#4455#0" expanded="true" />
+            <element signature="e#4724#4757#0" expanded="true" />
+            <element signature="e#5048#5076#0" expanded="true" />
+            <element signature="e#6164#7343#0" expanded="true" />
+            <element signature="e#7171#7210#0" expanded="true" />
+            <element signature="e#7336#7337#0" expanded="true" />
+            <element signature="e#7402#11291#0" expanded="true" />
+            <element signature="e#8830#8864#0" expanded="true" />
+            <element signature="e#8894#8928#0" expanded="true" />
+            <element signature="e#9620#9653#0" expanded="true" />
+            <element signature="e#10535#10571#0" expanded="true" />
+            <element signature="e#10849#10884#0" expanded="true" />
+            <element signature="e#11119#11158#0" expanded="true" />
+            <element signature="e#11284#11285#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1013,13 +1084,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../git.android/src/com/romanenco/gitt/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.9626865" vertical-offset="3995" max-vertical-offset="4665">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/list_view_about.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37037036" vertical-offset="0" max-vertical-offset="567">
@@ -1099,14 +1163,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.30952382" vertical-offset="195" max-vertical-offset="1230">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="990">
-          <caret line="46" column="26" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1200,7 +1256,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1983" max-vertical-offset="3045">
           <caret line="156" column="24" selection-start-line="156" selection-start-column="24" selection-end-line="156" selection-end-column="24" />
-          <folding />
+          <folding>
+            <element signature="e#2342#2456#0" expanded="false" />
+            <element signature="e#2449#2450#0" expanded="false" />
+            <element signature="e#2517#2632#0" expanded="false" />
+            <element signature="e#2625#2626#0" expanded="false" />
+            <element signature="e#5569#5690#0" expanded="false" />
+            <element signature="e#5683#5684#0" expanded="false" />
+            <element signature="e#5758#5882#0" expanded="false" />
+            <element signature="e#5875#5876#0" expanded="false" />
+            <element signature="e#5951#6076#0" expanded="false" />
+            <element signature="e#6069#6070#0" expanded="false" />
+            <element signature="e#6143#6266#0" expanded="false" />
+            <element signature="e#6259#6260#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1208,18 +1277,45 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="185" max-vertical-offset="855">
           <caret line="41" column="43" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../git.android/src/com/romanenco/gitt/dao/DAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="813" max-vertical-offset="2280">
+          <caret line="81" column="39" selection-start-line="81" selection-start-column="39" selection-end-line="81" selection-end-column="39" />
           <folding>
-            <element signature="e#1126#1127#0" expanded="true" />
-            <element signature="e#1186#1187#0" expanded="true" />
-            <element signature="e#1241#1242#0" expanded="true" />
-            <element signature="e#1275#1276#0" expanded="true" />
+            <element signature="e#1165#1166#0" expanded="false" />
+            <element signature="e#1203#1204#0" expanded="false" />
+            <element signature="e#1412#1413#0" expanded="false" />
+            <element signature="e#1433#1434#0" expanded="false" />
+            <element signature="e#3736#3737#0" expanded="false" />
+            <element signature="e#3814#3815#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../git.android/src/com/romanenco/gitt/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1610" max-vertical-offset="4665">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#1905#2076#0" expanded="false" />
+            <element signature="e#2071#2072#0" expanded="false" />
+            <element signature="e#5782#5783#0" expanded="false" />
+            <element signature="e#5809#5810#0" expanded="false" />
+            <element signature="e#5857#5858#0" expanded="false" />
+            <element signature="e#5888#5889#0" expanded="false" />
+            <element signature="e#5938#5939#0" expanded="false" />
+            <element signature="e#5977#5978#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/Database/DBHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
+        <state vertical-scroll-proportion="0.5121951" vertical-offset="0" max-vertical-offset="615">
           <caret line="21" column="43" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
           <folding>
             <element signature="e#576#577#0" expanded="true" />
@@ -1228,38 +1324,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="990">
+          <caret line="46" column="26" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/Database/DBAction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="450" max-vertical-offset="1950">
-          <caret line="50" column="21" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.30092594" vertical-offset="1110" max-vertical-offset="1890">
+          <caret line="91" column="34" selection-start-line="91" selection-start-column="34" selection-end-line="91" selection-end-column="34" />
           <folding>
-            <element signature="e#404#405#0" expanded="true" />
-            <element signature="e#450#451#0" expanded="true" />
-            <element signature="e#694#695#0" expanded="true" />
-            <element signature="e#724#725#0" expanded="true" />
             <element signature="e#2309#2315#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../git.android/src/com/romanenco/gitt/dao/DAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40334857" vertical-offset="785" max-vertical-offset="2280">
-          <caret line="74" column="27" selection-start-line="74" selection-start-column="27" selection-end-line="74" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/Activity/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5609756" vertical-offset="3525" max-vertical-offset="4350">
-          <caret line="270" column="50" selection-start-line="270" selection-start-column="50" selection-end-line="270" selection-end-column="50" />
+        <state vertical-scroll-proportion="0.30952382" vertical-offset="1380" max-vertical-offset="4620">
+          <caret line="105" column="5" selection-start-line="105" selection-start-column="5" selection-end-line="105" selection-end-column="5" />
           <folding>
-            <element signature="e#6517#10143#0" expanded="true" />
-            <element signature="e#9387#9423#0" expanded="true" />
-            <element signature="e#9701#9736#0" expanded="true" />
-            <element signature="e#9971#10010#0" expanded="true" />
-            <element signature="e#10136#10137#0" expanded="true" />
+            <element signature="e#2068#2113#0" expanded="true" />
+            <element signature="e#2147#2192#0" expanded="true" />
+            <element signature="e#2885#3491#0" expanded="true" />
+            <element signature="e#3480#3481#0" expanded="true" />
+            <element signature="e#3574#3575#0" expanded="true" />
+            <element signature="e#3601#3602#0" expanded="true" />
+            <element signature="e#4420#4455#0" expanded="true" />
+            <element signature="e#4724#4757#0" expanded="true" />
+            <element signature="e#5048#5076#0" expanded="true" />
+            <element signature="e#6164#7343#0" expanded="true" />
+            <element signature="e#7171#7210#0" expanded="true" />
+            <element signature="e#7336#7337#0" expanded="true" />
+            <element signature="e#7402#11291#0" expanded="true" />
+            <element signature="e#8830#8864#0" expanded="true" />
+            <element signature="e#8894#8928#0" expanded="true" />
+            <element signature="e#9620#9653#0" expanded="true" />
+            <element signature="e#10535#10571#0" expanded="true" />
+            <element signature="e#10849#10884#0" expanded="true" />
+            <element signature="e#11119#11158#0" expanded="true" />
+            <element signature="e#11284#11285#0" expanded="true" />
           </folding>
         </state>
       </provider>

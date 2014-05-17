@@ -3,7 +3,7 @@ package io.github.mthli.Codeview.WebView;
 import java.io.*;
 
 public class SyntaxSetting {
-    public static final String base_url = "file:///android_asset/google-code-prettify/";
+    public static final String base_url = "file:///asset/google-code-prettify/";
 
     public static String setCodeAsHtml(String path) {
         StringBuilder builder = new StringBuilder();
@@ -11,13 +11,13 @@ public class SyntaxSetting {
         builder.append("<html>\n");
         builder.append("<head>\n");
         builder.append("<meta charset=\"utf-8\">\n");
-        builder.append("<script src=\"file:///android_asset/google-code-prettify/run_prettify.js\"></script>\n");
+        builder.append("<link rel=\"stylesheet\" href=\"github.css\" type=\"text/css\"></link>\n");
+        builder.append("<script src=\"run_prettify.js\" type=\"text/javascript\"></script>\n");
         builder.append("</head>\n");
-        builder.append("<body>\n");
-        builder.append("<pre class=\"prettyprint\">\n");
-        /* Need to change */
+        builder.append("<body onload=\"prettyPrint()\">\n");
+        builder.append("<pre class=\"prettyprint\">");
         builder.append(getFileContent(path));
-        builder.append("</pre>\n");
+        builder.append("</pre>");
         builder.append("</body>\n");
         builder.append("</html>");
         return builder.toString();

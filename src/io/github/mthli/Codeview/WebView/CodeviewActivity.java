@@ -24,7 +24,7 @@ public class CodeviewActivity extends Activity {
         for (int i = 1; i < str.length - 1; i++) {
             sub_title = sub_title + File.separator + str[i];
         }
-        action_bar.setSubtitle(sub_title);
+        action_bar.setSubtitle(sub_title + File.separator);
         getActionBar().setDisplayShowHomeEnabled(true);
 
         web_view = (WebView) findViewById(R.id.code_view);
@@ -36,7 +36,7 @@ public class CodeviewActivity extends Activity {
         web_view.loadDataWithBaseURL(
                 SyntaxSetting.base_url,
                 content,
-                null,
+                "text/html",
                 null,
                 null
         );

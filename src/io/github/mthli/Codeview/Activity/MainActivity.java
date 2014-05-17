@@ -96,11 +96,21 @@ public class MainActivity
                     int position,
                     long id
             ) {
-                String temp = "/data/data/io.github.mthli.Codeview/";
-                Intent intent = new Intent(MainActivity.this, FileChooserActivity.class);
-                intent.putExtra("folder_name", "DSNA");
-                intent.putExtra("folder_path", temp);
-                startActivityForResult(intent, FILE_CHOOSER);
+                DBAction db_action = new DBAction(MainActivity.this);
+                try {
+                    db_action.openDB(false);
+                    List<Repo> repos = db_action.listRepos();
+                    Intent intent = new Intent(MainActivity.this, FileChooserActivity.class);
+                    intent.putExtra("folder_name", repos.get(position).getTitle());
+                    intent.putExtra("folder_path", repos.get(position).getPath());
+                    startActivityForResult(intent, FILE_CHOOSER);
+                } catch (SQLException s) {
+                    Toast.makeText(
+                            MainActivity.this,
+                            getString(R.string.database_error_open),
+                            Toast.LENGTH_SHORT
+                    ).show();
+                }
             }
         });
     }
@@ -232,6 +242,7 @@ public class MainActivity
             repo.setContent(content);
             repo.setDate(date);
             repo.setState(Repo.State.Unmark);
+            repo.setPath(folder_path);
 
             /* git clone的初始化设置 */
             CloneCommand clone = Git.cloneRepository();

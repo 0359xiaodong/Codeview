@@ -57,6 +57,7 @@ public class DBAction {
         values.put(Repo.CONTENT, repo.getContent());
         values.put(Repo.DATE, repo.getDate());
         values.put(Repo.STATE, repo.getState().name());
+        values.put(Repo.PATH, repo.getPath());
         database.insert(Repo.TABLE, null, values);
     }
 
@@ -89,7 +90,8 @@ public class DBAction {
                         Repo.TITLE,
                         Repo.CONTENT,
                         Repo.DATE,
-                        Repo.STATE
+                        Repo.STATE,
+                        Repo.PATH
                 },
                 null,
                 null,
@@ -119,6 +121,7 @@ public class DBAction {
         repo.setContent(cursor.getString(2));
         repo.setDate(cursor.getString(3));
         repo.setState(Repo.State.valueOf(cursor.getString(4)));
+        repo.setPath(cursor.getString(5));
         return repo;
     }
 }

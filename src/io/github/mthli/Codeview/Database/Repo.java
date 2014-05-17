@@ -7,6 +7,7 @@ public class Repo {
     public static final String CONTENT = "CONTENT";
     public static final String DATE = "DATE";
     public static final String STATE = "STATE";
+    public static final String PATH = "PATH";
 
     public enum State {
         Mark,
@@ -20,7 +21,8 @@ public class Repo {
             + " TITLE text,"
             + " CONTENT text,"
             + " DATE text,"
-            + " STATE integer"
+            + " STATE integer,"
+            + " PATH text"
             + ")";
 
     private int id;
@@ -28,6 +30,7 @@ public class Repo {
     private String content;
     private String date;
     private State state;
+    private String path;
 
     public int getId() {
         return id;
@@ -67,5 +70,13 @@ public class Repo {
 
     public void setState(State state) {
         this.state = state;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 }

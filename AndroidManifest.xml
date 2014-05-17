@@ -38,6 +38,11 @@
                 />
 
         <activity
+                android:name=".WebView.CodeviewActivity"
+                android:parentActivityName=".Main.MainActivity"
+                />
+
+        <activity
                 android:name=".Other.AboutActivity"
                 android:label="@string/label_about"
                 android:parentActivityName=".Main.MainActivity"

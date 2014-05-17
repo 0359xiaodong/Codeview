@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import io.github.mthli.Codeview.R;
+import io.github.mthli.Codeview.WebView.CodeviewActivity;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -142,15 +143,13 @@ public class FileChooserActivity extends ListActivity {
             listAll(current_folder);
         } else {
             file_selected = new File(item.getPath());
-            Intent intent = new Intent();
-            intent.putExtra(
-                    FileConstants.SELECTED,
-                    file_selected.getAbsoluteFile()
-            );
-            setResult(Activity.RESULT_OK, intent);
-            Log.i("FILE CHOOSER", "result ok");
-            finish();
-            ;
+            String title = file_selected.getName();
+            String sub_title = relativePath(file_selected.getAbsolutePath());
+            Intent intent = new Intent(FileChooserActivity.this, CodeviewActivity.class);
+            intent.putExtra("title", title);
+            intent.putExtra("sub_title", sub_title);
+            intent.putExtra("path", file_selected.getAbsolutePath());
+            startActivity(intent);
         }
     }
 

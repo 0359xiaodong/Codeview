@@ -7,6 +7,8 @@ public interface FileConstants {
     String CS = ".cs";
     String CSS = ".css";
 
+    String H = ".h";
+
     String JAVA = ".java";
     String JS = ".js";
 

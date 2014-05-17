@@ -72,7 +72,7 @@ public class FileChooserActivity extends ListActivity {
                     dirs.add(
                             new FileListViewItem(
                                     file.getName(),
-                                    getString(R.string.fc_folder_amount) + file.listFiles().length,
+                                    file.listFiles().length + " items",
                                     file.getPath(),
                                     folder_date,
                                     FileConstants.FOLDER,
@@ -85,7 +85,7 @@ public class FileChooserActivity extends ListActivity {
                         files.add(
                                 new FileListViewItem(
                                         file.getName(),
-                                        getString(R.string.fc_file_size) + file.length() + "bit",
+                                        file.length() + " bits",
                                         file.getPath(),
                                         folder_date,
                                         file.getPath(),

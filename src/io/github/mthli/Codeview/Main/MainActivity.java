@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -44,16 +43,14 @@ public class MainActivity
 
     private String uri;
 
-    private Handler clone_handle;
-    private Handler list_handle;
-
+    private Handler clone_handler;
 
     final int FILE_CHOOSER = 1;
     final int CM_COMMIT = 0;
     final int CM_UPDATE = 1;
     final int CM_DELETE = 2;
 
-    @Override
+    @Override /* OK */
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_view_main);
@@ -80,22 +77,31 @@ public class MainActivity
                 R.layout.list_view_item_main,
                 item
         );
-
-        /* ********************************************************** */
-        /* 开启一个新线程用于填充ListView */
-        final HandlerThread thread = new HandlerThread("listThread");
-        thread.start();
-        list_handle = new Handler(thread.getLooper()) {
-            @Override
-            public void handleMessage(Message msg) {
-                if (msg.what == 1) {
-                    thread.getLooper().quit();
-                    adapter.notifyDataSetChanged();
-                }
+        
+        DBAction db_action = new DBAction(MainActivity.this);
+        try {
+            db_action.openDB(false);
+            List<Repo> repos = db_action.listRepos();
+            for (int i = 0; i < repos.size(); i++) {
+                item.add(
+                        new MainListViewItem(
+                                getResources().getDrawable(R.drawable.ic_filetype_folder),
+                                repos.get(i).getTitle(),
+                                repos.get(i).getContent(),
+                                repos.get(i).getDate(),
+                                    /* And Need to set status */
+                                new ImageButton(MainActivity.this)
+                        )
+                );
             }
-        };
-        list_handle.post(listThread);
-        /* ********************************************************** */
+        } catch (SQLException s) {
+            Toast.makeText(
+                    MainActivity.this,
+                    getString(R.string.database_error_open),
+                    Toast.LENGTH_SHORT
+            ).show();
+        }
+        db_action.closeDB();
 
         view = (ListView) findViewById(R.id.list_view_main);
         view.setAdapter(adapter);
@@ -140,12 +146,11 @@ public class MainActivity
         });
     }
 
-    @Override
+    @Override /* Fix */
     public boolean onContextItemSelected(MenuItem menu_item) {
-        /* Notice, maybe error */
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menu_item.getMenuInfo();
         System.out.println(info.position);
-        DBAction db_action = new DBAction(MainActivity.this);
+        final DBAction db_action = new DBAction(MainActivity.this);
         try {
             db_action.openDB(true);
         } catch (SQLException s) {
@@ -157,7 +162,7 @@ public class MainActivity
             db_action.closeDB();
             return false;
         }
-        List<Repo> repos = db_action.listRepos();
+        final List<Repo> repos = db_action.listRepos();
         switch (menu_item.getItemId()) {
             case CM_COMMIT:
                 /* Do something */
@@ -167,45 +172,52 @@ public class MainActivity
                 pd_cloning.setMessage(getString(R.string.clone_pd));
                 pd_cloning.setCancelable(false);
                 pd_cloning.show();
-                /* 开启一个新的线程用于clone */ /* Msg */
+                /* 开启一个新的线程用于clone */ /* Need to finish it, can do */
                 uri = repos.get(info.position).getContent();
-
-                /* ****************************************************************** */
-                final HandlerThread update_thread = new HandlerThread("cloneThread");
-                update_thread.start();
-                Handler handle = new Handler(update_thread.getLooper()) {
+                final HandlerThread clone_thread = new HandlerThread("cloneThread");
+                clone_thread.start();
+                clone_handler = new Handler(clone_thread.getLooper()) {
                     @Override
                     public void handleMessage(Message msg) {
                         if (msg.what == 1) {
-                            update_thread.getLooper().quit();
+                            clone_thread.getLooper().quit();
+                            item.clear();
+                            DBAction db_action = new DBAction(MainActivity.this);
+                            try {
+                                db_action.openDB(false);
+                                List<Repo> repos = db_action.listRepos();
+                                for (int i = 0; i < repos.size(); i++) {
+                                    item.add(
+                                            new MainListViewItem(
+                                                    getResources().getDrawable(R.drawable.ic_filetype_folder),
+                                                    repos.get(i).getTitle(),
+                                                    repos.get(i).getContent(),
+                                                    repos.get(i).getDate(),
+                                                    /* And Need to set status */
+                                                    new ImageButton(MainActivity.this)
+                                            )
+                                    );
+                                }
+                            } catch (SQLException s) {
+                                Toast.makeText(
+                                        MainActivity.this,
+                                        getString(R.string.database_error_open),
+                                        Toast.LENGTH_SHORT
+                                ).show();
+                            }
+                            db_action.closeDB();
                             adapter.notifyDataSetChanged();
                         }
                     }
                 };
-                handle.post(cloneThread);
-                /* ****************************************************************** */
-
+                clone_handler.post(cloneThread);
                 break;
-            case CM_DELETE: /* Msg */
+            case CM_DELETE:
                 String path = repos.get(info.position).getPath();
                 FileUtils.deleteQuietly(new File(path));
                 db_action.deleteRepo(repos.get(info.position));
-
-                /* ****************************************************************** */
-                final HandlerThread delete_thread = new HandlerThread("listThread");
-                delete_thread.start();
-                Handler handler = new Handler(delete_thread.getLooper()) {
-                    @Override
-                    public void handleMessage(Message msg) {
-                        if (msg.what == 1) {
-                            delete_thread.quit();
-                            adapter.notifyDataSetChanged();
-                        }
-                    }
-                };
-                handler.post(listThread);
-                /* ****************************************************************** */
-
+                item.remove(info.position);
+                adapter.notifyDataSetChanged();
                 break;
             default:
                 break;
@@ -214,14 +226,12 @@ public class MainActivity
         return super.onContextItemSelected(menu_item);
     }
 
-
-
-    @Override
+    @Override /* OK */
     public boolean onNavigationItemSelected(int i, long j) {
         return true;
     }
 
-    @Override
+    @Override /* OK */
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
@@ -258,34 +268,45 @@ public class MainActivity
                         pd_cloning.setMessage(getString(R.string.clone_pd));
                         pd_cloning.setCancelable(false);
                         pd_cloning.show();
-                        /* 开启一个新的线程用于clone */
+                        /* 开启一个新的线程用于clone */ /* Need to finish it */
                         uri = text;
-                        /*
-                        HandlerThread clone_thread = new HandlerThread("cloneThread");
-                        clone_thread.start();
-                        Handler clone_handle = new Handler(clone_thread.getLooper());
-                        clone_handle.post(cloneThread);
-
-                        HandlerThread refresh_thread = new HandlerThread("listThread");
-                        refresh_thread.start();
-                        Handler refresh_handle = new Handler(refresh_thread.getLooper());
-                        refresh_handle.post(listThread); */
-
-                        /* ***************************************************************** */
                         final HandlerThread clone_thread = new HandlerThread("cloneThread");
                         clone_thread.start();
-                        clone_handle = new Handler(clone_thread.getLooper()) {
+                        clone_handler = new Handler(clone_thread.getLooper()) {
                             @Override
                             public void handleMessage(Message msg) {
                                 if (msg.what == 1) {
-                                    clone_thread.quit();
+                                    clone_thread.getLooper().quit();
+                                    item.clear();
+                                    DBAction db_action = new DBAction(MainActivity.this);
+                                    try {
+                                        db_action.openDB(false);
+                                        List<Repo> repos = db_action.listRepos();
+                                        for (int i = 0; i < repos.size(); i++) {
+                                            item.add(
+                                                    new MainListViewItem(
+                                                            getResources().getDrawable(R.drawable.ic_filetype_folder),
+                                                            repos.get(i).getTitle(),
+                                                            repos.get(i).getContent(),
+                                                            repos.get(i).getDate(),
+                                                            /* And Need to set status */
+                                                            new ImageButton(MainActivity.this)
+                                                    )
+                                            );
+                                        }
+                                    } catch (SQLException s) {
+                                        Toast.makeText(
+                                                MainActivity.this,
+                                                getString(R.string.database_error_open),
+                                                Toast.LENGTH_SHORT
+                                        ).show();
+                                    }
+                                    db_action.closeDB();
                                     adapter.notifyDataSetChanged();
                                 }
                             }
                         };
-                        clone_handle.post(cloneThread);
-                        /* ***************************************************************** */
-
+                        clone_handler.post(cloneThread);
                     }
                 }
                 return true;
@@ -295,7 +316,7 @@ public class MainActivity
         return super.onCreateOptionsMenu(menu);
     }
 
-    @Override
+    @Override /* OK */
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_about:
@@ -306,39 +327,6 @@ public class MainActivity
                 return super.onOptionsItemSelected(item);
         }
     }
-
-    /* 开启一个新线程用于刷新ListView */
-    Runnable listThread = new Runnable() {
-        @Override
-        public void run() {
-            item.clear();
-            DBAction db_action = new DBAction(MainActivity.this);
-            try {
-                db_action.openDB(false);
-                List<Repo> repos = db_action.listRepos();
-                for (int i = 0; i < repos.size(); i++) {
-                    item.add(
-                            new MainListViewItem(
-                                    getResources().getDrawable(R.drawable.ic_filetype_folder),
-                                    repos.get(i).getTitle(),
-                                    repos.get(i).getContent(),
-                                    repos.get(i).getDate(),
-                                    /* And Need to set status */
-                                    new ImageButton(MainActivity.this)
-                            )
-                    );
-                }
-            } catch (SQLException s) {
-                Toast.makeText(
-                        MainActivity.this,
-                        getString(R.string.database_error_open),
-                        Toast.LENGTH_SHORT
-                ).show();
-            }
-            db_action.closeDB();
-            list_handle.sendEmptyMessage(1); //
-        }
-    };
 
     /* 开启一个新线程用于git clone */
     Runnable cloneThread = new Runnable() {
@@ -411,21 +399,6 @@ public class MainActivity
                     } else {
                         db_action.newRepo(repo);
                     }
-                    
-                    /* 及时刷新ListView */
-                    /* ********************************************************** */
-                    final HandlerThread thread = new HandlerThread("listThread");
-                    thread.start();
-                    list_handle = new Handler(thread.getLooper()) {
-                        @Override
-                        public void handleMessage(Message msg) {
-                            if (msg.what == 1) {
-                                thread.quit();
-                            }
-                        }
-                    };
-                    list_handle.post(listThread);
-                    /* ********************************************************** */
 
                     pd_cloning.dismiss();
                     Toast.makeText(
@@ -449,7 +422,8 @@ public class MainActivity
                 ).show();
             }
             db_action.closeDB();
-            clone_handle.sendEmptyMessage(1); //
+
+            clone_handler.sendEmptyMessage(1);
         }
     };
 }

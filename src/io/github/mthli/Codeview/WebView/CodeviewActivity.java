@@ -22,12 +22,7 @@ public class CodeviewActivity extends Activity {
 
         ActionBar action_bar = getActionBar();
         action_bar.setTitle(getIntent().getStringExtra("title"));
-        String str[] = getIntent().getStringExtra("sub_title").split("/");
-        String sub_title = str[0];
-        for (int i = 1; i < str.length - 1; i++) {
-            sub_title = sub_title + File.separator + str[i];
-        }
-        action_bar.setSubtitle(sub_title + File.separator);
+        action_bar.setSubtitle(getIntent().getStringExtra("sub_title"));
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         web_view = (WebView) findViewById(R.id.code_view);

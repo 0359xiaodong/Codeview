@@ -2,7 +2,7 @@ package io.github.mthli.Codeview.FileChooser;
 
 public class FileListViewItem implements Comparable<FileListViewItem> {
     private String title;
-    private String content; //
+    private String content;
     private String path;
     private String date;
     private String data;

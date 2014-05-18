@@ -2,6 +2,7 @@ package io.github.mthli.Codeview.Other;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import io.github.mthli.Codeview.R;
@@ -46,5 +47,16 @@ public class AboutActivity extends Activity {
         );
         ListView list_view = (ListView) findViewById(R.id.list_view_about);
         list_view.setAdapter(simple_adapter);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

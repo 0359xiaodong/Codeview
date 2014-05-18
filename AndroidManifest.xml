@@ -51,7 +51,6 @@
         <activity
                 android:name=".Other.AboutActivity"
                 android:label="@string/label_about"
-                android:parentActivityName=".Main.MainActivity"
                 />
 
     </application>

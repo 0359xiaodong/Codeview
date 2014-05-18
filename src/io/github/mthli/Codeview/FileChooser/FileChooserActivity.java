@@ -102,7 +102,7 @@ public class FileChooserActivity extends ListActivity {
 
         ActionBar action_bar = getActionBar();
         action_bar.setTitle(f.getName());
-        action_bar.setSubtitle(relativePath(f.getAbsolutePath()) + File.separator);
+        action_bar.setSubtitle(relativePath(f.getAbsolutePath()));
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         List<FileListViewItem> dirs = new ArrayList<FileListViewItem>();

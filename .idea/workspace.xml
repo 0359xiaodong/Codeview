@@ -23,52 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7554629-3731-42a7-953d-dbb0b5a918f9" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/github.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/lang-apollo.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/lang-basic.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/lang-clj.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/lang-css.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/lang-dart.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/lang-erlang.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/lang-go.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/lang-hs.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/lang-lisp.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/lang-llvm.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/lang-lua.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/lang-matlab.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/lang-ml.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/lang-mumps.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/lang-n.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/lang-pascal.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/lang-proto.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/lang-r.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/lang-rd.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/lang-scala.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/lang-sql.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/lang-tcl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/lang-tex.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/lang-vb.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/lang-vhdl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/lang-wiki.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/lang-xq.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/lang-yaml.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/prettify.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/prettify.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/google-code-prettify/run_prettify.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/ic_filetype_h.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/ic_filetype_haskell.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/ic_filetype_html.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/ic_filetype_perl.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/ic_filetype_rtf.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/ic_filetype_sh.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/ic_filetype_sql.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/ic_filetype_tex.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/ic_filetype_xml.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/ic_filetype_zip.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/github/mthli/Codeview/WebView/CodeviewActivity.java" afterPath="$PROJECT_DIR$/src/io/github/mthli/Codeview/WebView/CodeviewActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/github/mthli/Codeview/WebView/SyntaxSetting.java" afterPath="$PROJECT_DIR$/src/io/github/mthli/Codeview/WebView/SyntaxSetting.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/code_view.xml" afterPath="$PROJECT_DIR$/res/layout/code_view.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileChooserActivity.java" afterPath="$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileChooserActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Codeview.iws" />
@@ -140,28 +97,28 @@
       <file leaf-file-name="CodeviewActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/WebView/CodeviewActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="780">
-              <caret line="40" column="20" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="20" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="990">
+              <caret line="58" column="5" selection-start-line="49" selection-start-column="4" selection-end-line="58" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SyntaxSetting.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/WebView/SyntaxSetting.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4391892" vertical-offset="0" max-vertical-offset="900">
-              <caret line="13" column="73" selection-start-line="13" selection-start-column="73" selection-end-line="13" selection-end-column="73" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FileChooserActivity.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="FileChooserActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileChooserActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="675" max-vertical-offset="2580">
-              <caret line="111" column="72" selection-start-line="111" selection-start-column="72" selection-end-line="111" selection-end-column="72" />
+            <state vertical-scroll-proportion="0.048622366" vertical-offset="0" max-vertical-offset="2580">
+              <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileListViewItem.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileListViewItem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="870">
+              <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -225,11 +182,11 @@
         <option value="$PROJECT_DIR$/res/layout/Main/list_view_item_main.xml" />
         <option value="$PROJECT_DIR$/res/layout/list_view_item_main.xml" />
         <option value="$PROJECT_DIR$/res/layout/codeview.xml" />
-        <option value="$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileChooserActivity.java" />
         <option value="$PROJECT_DIR$/res/layout/code_view.xml" />
+        <option value="$PROJECT_DIR$/src/io/github/mthli/Codeview/WebView/SyntaxSetting.java" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/io/github/mthli/Codeview/WebView/CodeviewActivity.java" />
-        <option value="$PROJECT_DIR$/src/io/github/mthli/Codeview/WebView/SyntaxSetting.java" />
+        <option value="$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileChooserActivity.java" />
       </list>
     </option>
   </component>
@@ -353,6 +310,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Main" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Codeview" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Codeview" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Codeview" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FileChooser" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -670,7 +649,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32824427" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27925116" sideWeight="0.50076103" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32608697" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28310502" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28310502" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32776934" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -888,6 +867,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.21428572" vertical-offset="0" max-vertical-offset="1020">
           <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
+          <folding>
+            <element signature="e#1618#1619#0" expanded="false" />
+            <element signature="e#1645#1646#0" expanded="false" />
+            <element signature="e#1685#1686#0" expanded="false" />
+            <element signature="e#1717#1718#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1028,17 +1013,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileListViewItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7815126" vertical-offset="0" max-vertical-offset="870">
-          <caret line="34" column="23" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileListViewItemAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5591572" vertical-offset="0" max-vertical-offset="2115">
           <caret line="23" column="45" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1049,25 +1028,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/Main/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2189" max-vertical-offset="4560">
-          <caret line="105" column="82" selection-start-line="105" selection-start-column="82" selection-end-line="105" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../git.android/src/com/romanenco/gitt/CodeViewActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5707763" vertical-offset="2055" max-vertical-offset="3225">
           <caret line="180" column="9" selection-start-line="180" selection-start-column="9" selection-end-line="180" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7094595" vertical-offset="45" max-vertical-offset="990">
-          <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1082,26 +1046,52 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileChooserActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/WebView/SyntaxSetting.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1387" max-vertical-offset="2580">
-          <caret line="111" column="72" selection-start-line="111" selection-start-column="72" selection-end-line="111" selection-end-column="72" />
+        <state vertical-scroll-proportion="0.30952382" vertical-offset="0" max-vertical-offset="900">
+          <caret line="13" column="73" selection-start-line="13" selection-start-column="73" selection-end-line="13" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="516" max-vertical-offset="960">
+          <caret line="47" column="56" selection-start-line="47" selection-start-column="56" selection-end-line="47" selection-end-column="56" />
+          <folding>
+            <element signature="e#1706#1727#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/Main/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33809525" vertical-offset="2322" max-vertical-offset="4560">
+          <caret line="181" column="5" selection-start-line="171" selection-start-column="4" selection-end-line="181" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/WebView/CodeviewActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="780">
-          <caret line="40" column="20" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="990">
+          <caret line="58" column="5" selection-start-line="49" selection-start-column="4" selection-end-line="58" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/WebView/SyntaxSetting.java">
+    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileListViewItem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4391892" vertical-offset="0" max-vertical-offset="900">
-          <caret line="13" column="73" selection-start-line="13" selection-start-column="73" selection-end-line="13" selection-end-column="73" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="870">
+          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/FileChooser/FileChooserActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.048622366" vertical-offset="0" max-vertical-offset="2580">
+          <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
           <folding />
         </state>
       </provider>

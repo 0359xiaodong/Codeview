@@ -1,11 +1,10 @@
 package io.github.mthli.Codeview.FileChooser;
 
 import android.app.ActionBar;
-import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import io.github.mthli.Codeview.R;
@@ -52,6 +51,47 @@ public class FileChooserActivity extends ListActivity {
         listAll(current_folder);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                if (!current_folder.getName().equalsIgnoreCase(folder_name)) {
+                    current_folder = new File(current_folder.getParent());
+                    listAll(current_folder);
+                } else {
+                    finish();
+                }
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    protected void onListItemClick(
+            ListView l,
+            View v,
+            int position,
+            long id
+    ) {
+        super.onListItemClick(l, v, position, id);
+
+        FileListViewItem item = adapter.getItem(position);
+        if (item.isFolder()) {
+            current_folder = new File(item.getPath());
+            listAll(current_folder);
+        } else {
+            file_selected = new File(item.getPath());
+            String title = file_selected.getName();
+            String sub_title = relativePath(file_selected.getAbsolutePath());
+            Intent intent = new Intent(FileChooserActivity.this, CodeviewActivity.class);
+            intent.putExtra("title", title);
+            intent.putExtra("sub_title", sub_title);
+            intent.putExtra("path", file_selected.getAbsolutePath());
+            startActivity(intent);
+        }
+    }
+
     private void listAll(File f) {
         File[] folders = null;
         if (file_filter != null) {
@@ -63,7 +103,7 @@ public class FileChooserActivity extends ListActivity {
         ActionBar action_bar = getActionBar();
         action_bar.setTitle(f.getName());
         action_bar.setSubtitle(relativePath(f.getAbsolutePath()) + File.separator);
-        getActionBar().setDisplayShowHomeEnabled(true);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
 
         List<FileListViewItem> dirs = new ArrayList<FileListViewItem>();
         List<FileListViewItem> files = new ArrayList<FileListViewItem>();
@@ -79,7 +119,7 @@ public class FileChooserActivity extends ListActivity {
                                     FileConstants.FOLDER,
                                     true,
                                     false
-                                    )
+                            )
                     );
                 } else {
                     if (!file.isHidden()) {
@@ -92,7 +132,7 @@ public class FileChooserActivity extends ListActivity {
                                         file.getPath(),
                                         false,
                                         false
-                                        )
+                                )
                         );
                     }
                 }
@@ -104,20 +144,6 @@ public class FileChooserActivity extends ListActivity {
         Collections.sort(dirs);
         Collections.sort(files);
         dirs.addAll(files);
-        if (!f.getName().equalsIgnoreCase(folder_name)) {
-            dirs.add(
-                    0,
-                    new FileListViewItem(
-                            "..",
-                            relativePath(f.getParent()) + File.separator,
-                            f.getParent(),
-                            folder_date,
-                            FileConstants.PARENT,
-                            false,
-                            true
-                    )
-            );
-        }
         adapter = new FileListViewItemAdapter(
                 FileChooserActivity.this,
                 R.layout.list_view_fc,
@@ -125,32 +151,6 @@ public class FileChooserActivity extends ListActivity {
         );
         this.setListAdapter(adapter);
         adapter.notifyDataSetChanged();
-    }
-
-    /* Need to change */
-    @Override
-    protected void onListItemClick(
-            ListView l,
-            View v,
-            int position,
-            long id
-    ) {
-        super.onListItemClick(l, v, position, id);
-
-        FileListViewItem item = adapter.getItem(position);
-        if (item.isFolder() || item.isParent()) {
-            current_folder = new File(item.getPath());
-            listAll(current_folder);
-        } else {
-            file_selected = new File(item.getPath());
-            String title = file_selected.getName();
-            String sub_title = relativePath(file_selected.getAbsolutePath());
-            Intent intent = new Intent(FileChooserActivity.this, CodeviewActivity.class);
-            intent.putExtra("title", title);
-            intent.putExtra("sub_title", sub_title);
-            intent.putExtra("path", file_selected.getAbsolutePath());
-            startActivity(intent);
-        }
     }
 
     private String relativePath(String path) {

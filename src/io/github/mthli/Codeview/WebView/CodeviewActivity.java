@@ -2,10 +2,13 @@ package io.github.mthli.Codeview.WebView;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import io.github.mthli.Codeview.Other.AboutActivity;
 import io.github.mthli.Codeview.R;
 
 import java.io.File;
@@ -25,7 +28,7 @@ public class CodeviewActivity extends Activity {
             sub_title = sub_title + File.separator + str[i];
         }
         action_bar.setSubtitle(sub_title + File.separator);
-        getActionBar().setDisplayShowHomeEnabled(true);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
 
         web_view = (WebView) findViewById(R.id.code_view);
         WebSettings web_settings = web_view.getSettings();
@@ -42,5 +45,16 @@ public class CodeviewActivity extends Activity {
                 null,
                 null
         );
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

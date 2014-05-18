@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.os.Message;
 import android.view.*;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
@@ -43,7 +44,8 @@ public class MainActivity
 
     private String uri;
 
-    private
+    private Handler clone_handle;
+    private Handler list_handle;
 
 
     final int FILE_CHOOSER = 1;
@@ -78,11 +80,22 @@ public class MainActivity
                 R.layout.list_view_item_main,
                 item
         );
+
+        /* ********************************************************** */
         /* 开启一个新线程用于填充ListView */
-        HandlerThread thread = new HandlerThread("listThread");
+        final HandlerThread thread = new HandlerThread("listThread");
         thread.start();
-        Handler handler = new Handler(thread.getLooper());
-        handler.post(listThread);
+        list_handle = new Handler(thread.getLooper()) {
+            @Override
+            public void handleMessage(Message msg) {
+                if (msg.what == 1) {
+                    thread.getLooper().quit();
+                    adapter.notifyDataSetChanged();
+                }
+            }
+        };
+        list_handle.post(listThread);
+        /* ********************************************************** */
 
         view = (ListView) findViewById(R.id.list_view_main);
         view.setAdapter(adapter);
@@ -154,22 +167,45 @@ public class MainActivity
                 pd_cloning.setMessage(getString(R.string.clone_pd));
                 pd_cloning.setCancelable(false);
                 pd_cloning.show();
-                /* 开启一个新的线程用于clone */
+                /* 开启一个新的线程用于clone */ /* Msg */
                 uri = repos.get(info.position).getContent();
-                HandlerThread update_thread = new HandlerThread("cloneThread");
+
+                /* ****************************************************************** */
+                final HandlerThread update_thread = new HandlerThread("cloneThread");
                 update_thread.start();
-                Handler handle = new Handler(update_thread.getLooper());
+                Handler handle = new Handler(update_thread.getLooper()) {
+                    @Override
+                    public void handleMessage(Message msg) {
+                        if (msg.what == 1) {
+                            update_thread.getLooper().quit();
+                            adapter.notifyDataSetChanged();
+                        }
+                    }
+                };
                 handle.post(cloneThread);
+                /* ****************************************************************** */
+
                 break;
-            case CM_DELETE:
+            case CM_DELETE: /* Msg */
                 String path = repos.get(info.position).getPath();
                 FileUtils.deleteQuietly(new File(path));
                 db_action.deleteRepo(repos.get(info.position));
-                HandlerThread delete_thread = new HandlerThread("listThread");
+
+                /* ****************************************************************** */
+                final HandlerThread delete_thread = new HandlerThread("listThread");
                 delete_thread.start();
-                Handler handler = new Handler(delete_thread.getLooper());
+                Handler handler = new Handler(delete_thread.getLooper()) {
+                    @Override
+                    public void handleMessage(Message msg) {
+                        if (msg.what == 1) {
+                            delete_thread.quit();
+                            adapter.notifyDataSetChanged();
+                        }
+                    }
+                };
                 handler.post(listThread);
-                adapter.notifyDataSetChanged();
+                /* ****************************************************************** */
+
                 break;
             default:
                 break;
@@ -224,12 +260,32 @@ public class MainActivity
                         pd_cloning.show();
                         /* 开启一个新的线程用于clone */
                         uri = text;
+                        /*
                         HandlerThread clone_thread = new HandlerThread("cloneThread");
                         clone_thread.start();
                         Handler clone_handle = new Handler(clone_thread.getLooper());
                         clone_handle.post(cloneThread);
 
-                        adapter.notifyDataSetChanged();
+                        HandlerThread refresh_thread = new HandlerThread("listThread");
+                        refresh_thread.start();
+                        Handler refresh_handle = new Handler(refresh_thread.getLooper());
+                        refresh_handle.post(listThread); */
+
+                        /* ***************************************************************** */
+                        final HandlerThread clone_thread = new HandlerThread("cloneThread");
+                        clone_thread.start();
+                        clone_handle = new Handler(clone_thread.getLooper()) {
+                            @Override
+                            public void handleMessage(Message msg) {
+                                if (msg.what == 1) {
+                                    clone_thread.quit();
+                                    adapter.notifyDataSetChanged();
+                                }
+                            }
+                        };
+                        clone_handle.post(cloneThread);
+                        /* ***************************************************************** */
+
                     }
                 }
                 return true;
@@ -280,6 +336,7 @@ public class MainActivity
                 ).show();
             }
             db_action.closeDB();
+            list_handle.sendEmptyMessage(1); //
         }
     };
 
@@ -354,11 +411,22 @@ public class MainActivity
                     } else {
                         db_action.newRepo(repo);
                     }
+                    
                     /* 及时刷新ListView */
-                    HandlerThread thread = new HandlerThread("listThread");
+                    /* ********************************************************** */
+                    final HandlerThread thread = new HandlerThread("listThread");
                     thread.start();
-                    Handler handler = new Handler(thread.getLooper());
-                    handler.post(listThread);
+                    list_handle = new Handler(thread.getLooper()) {
+                        @Override
+                        public void handleMessage(Message msg) {
+                            if (msg.what == 1) {
+                                thread.quit();
+                            }
+                        }
+                    };
+                    list_handle.post(listThread);
+                    /* ********************************************************** */
+
                     pd_cloning.dismiss();
                     Toast.makeText(
                             MainActivity.this,
@@ -381,6 +449,7 @@ public class MainActivity
                 ).show();
             }
             db_action.closeDB();
+            clone_handle.sendEmptyMessage(1); //
         }
     };
 }

@@ -24,7 +24,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f7554629-3731-42a7-953d-dbb0b5a918f9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Main/MainActivity.java" afterPath="$PROJECT_DIR$/src/io/github/mthli/Codeview/Main/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Codeview.iws" />
@@ -96,31 +95,33 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/Main/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.42857143" vertical-offset="1470" max-vertical-offset="5535">
-              <caret line="127" column="0" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.78365386" vertical-offset="3064" max-vertical-offset="5655">
+              <caret line="237" column="56" selection-start-line="237" selection-start-column="56" selection-end-line="237" selection-end-column="56" />
               <folding>
-                <element signature="e#2069#2114#0" expanded="true" />
-                <element signature="e#2148#2193#0" expanded="true" />
-                <element signature="e#3913#3952#0" expanded="true" />
-                <element signature="e#4372#4406#0" expanded="true" />
-                <element signature="e#4451#4485#0" expanded="true" />
-                <element signature="e#4530#4564#0" expanded="true" />
-                <element signature="e#5100#5139#0" expanded="true" />
-                <element signature="e#5582#5610#0" expanded="true" />
-                <element signature="e#6793#6794#0" expanded="true" />
-                <element signature="e#6820#6821#0" expanded="true" />
-                <element signature="e#7639#7674#0" expanded="true" />
-                <element signature="e#7943#7976#0" expanded="true" />
-                <element signature="e#8267#8295#0" expanded="true" />
-                <element signature="e#9433#10638#0" expanded="true" />
-                <element signature="e#10466#10505#0" expanded="true" />
-                <element signature="e#10631#10632#0" expanded="true" />
-                <element signature="e#12164#12198#0" expanded="true" />
-                <element signature="e#12228#12262#0" expanded="true" />
-                <element signature="e#12954#12987#0" expanded="true" />
-                <element signature="e#13823#13859#0" expanded="true" />
-                <element signature="e#14137#14172#0" expanded="true" />
-                <element signature="e#14407#14446#0" expanded="true" />
+                <element signature="e#2116#2161#0" expanded="true" />
+                <element signature="e#2195#2240#0" expanded="true" />
+                <element signature="e#3960#3999#0" expanded="true" />
+                <element signature="e#4419#4453#0" expanded="true" />
+                <element signature="e#4498#4532#0" expanded="true" />
+                <element signature="e#4577#4611#0" expanded="true" />
+                <element signature="e#5147#5186#0" expanded="true" />
+                <element signature="e#5629#5657#0" expanded="true" />
+                <element signature="e#6840#6841#0" expanded="true" />
+                <element signature="e#6867#6868#0" expanded="true" />
+                <element signature="e#7303#7304#0" expanded="true" />
+                <element signature="e#7346#7347#0" expanded="true" />
+                <element signature="e#7686#7721#0" expanded="true" />
+                <element signature="e#7990#8023#0" expanded="true" />
+                <element signature="e#8672#8700#0" expanded="true" />
+                <element signature="e#9868#11073#0" expanded="true" />
+                <element signature="e#10901#10940#0" expanded="true" />
+                <element signature="e#11066#11067#0" expanded="true" />
+                <element signature="e#12599#12633#0" expanded="true" />
+                <element signature="e#12663#12697#0" expanded="true" />
+                <element signature="e#13389#13422#0" expanded="true" />
+                <element signature="e#14258#14294#0" expanded="true" />
+                <element signature="e#14572#14607#0" expanded="true" />
+                <element signature="e#14842#14881#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -715,14 +716,14 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32824427" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27925116" sideWeight="0.50076103" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.325723" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.54642314" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4520548" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32776934" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20392749" sideWeight="0.49923897" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.325723" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.325723" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1153,31 +1154,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/io/github/mthli/Codeview/Main/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42857143" vertical-offset="1470" max-vertical-offset="5535">
-          <caret line="127" column="0" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.78365386" vertical-offset="3064" max-vertical-offset="5655">
+          <caret line="237" column="56" selection-start-line="237" selection-start-column="56" selection-end-line="237" selection-end-column="56" />
           <folding>
-            <element signature="e#2069#2114#0" expanded="true" />
-            <element signature="e#2148#2193#0" expanded="true" />
-            <element signature="e#3913#3952#0" expanded="true" />
-            <element signature="e#4372#4406#0" expanded="true" />
-            <element signature="e#4451#4485#0" expanded="true" />
-            <element signature="e#4530#4564#0" expanded="true" />
-            <element signature="e#5100#5139#0" expanded="true" />
-            <element signature="e#5582#5610#0" expanded="true" />
-            <element signature="e#6793#6794#0" expanded="true" />
-            <element signature="e#6820#6821#0" expanded="true" />
-            <element signature="e#7639#7674#0" expanded="true" />
-            <element signature="e#7943#7976#0" expanded="true" />
-            <element signature="e#8267#8295#0" expanded="true" />
-            <element signature="e#9433#10638#0" expanded="true" />
-            <element signature="e#10466#10505#0" expanded="true" />
-            <element signature="e#10631#10632#0" expanded="true" />
-            <element signature="e#12164#12198#0" expanded="true" />
-            <element signature="e#12228#12262#0" expanded="true" />
-            <element signature="e#12954#12987#0" expanded="true" />
-            <element signature="e#13823#13859#0" expanded="true" />
-            <element signature="e#14137#14172#0" expanded="true" />
-            <element signature="e#14407#14446#0" expanded="true" />
+            <element signature="e#2116#2161#0" expanded="true" />
+            <element signature="e#2195#2240#0" expanded="true" />
+            <element signature="e#3960#3999#0" expanded="true" />
+            <element signature="e#4419#4453#0" expanded="true" />
+            <element signature="e#4498#4532#0" expanded="true" />
+            <element signature="e#4577#4611#0" expanded="true" />
+            <element signature="e#5147#5186#0" expanded="true" />
+            <element signature="e#5629#5657#0" expanded="true" />
+            <element signature="e#6840#6841#0" expanded="true" />
+            <element signature="e#6867#6868#0" expanded="true" />
+            <element signature="e#7303#7304#0" expanded="true" />
+            <element signature="e#7346#7347#0" expanded="true" />
+            <element signature="e#7686#7721#0" expanded="true" />
+            <element signature="e#7990#8023#0" expanded="true" />
+            <element signature="e#8672#8700#0" expanded="true" />
+            <element signature="e#9868#11073#0" expanded="true" />
+            <element signature="e#10901#10940#0" expanded="true" />
+            <element signature="e#11066#11067#0" expanded="true" />
+            <element signature="e#12599#12633#0" expanded="true" />
+            <element signature="e#12663#12697#0" expanded="true" />
+            <element signature="e#13389#13422#0" expanded="true" />
+            <element signature="e#14258#14294#0" expanded="true" />
+            <element signature="e#14572#14607#0" expanded="true" />
+            <element signature="e#14842#14881#0" expanded="true" />
           </folding>
         </state>
       </provider>

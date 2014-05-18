@@ -3,12 +3,14 @@ package io.github.mthli.Codeview.Main;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.view.*;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
 
 import io.github.mthli.Codeview.Database.DBAction;
@@ -41,7 +43,6 @@ public class MainActivity
 
     private String uri;
 
-    private SQLiteDatabase database;
     private
 
 
@@ -211,6 +212,11 @@ public class MainActivity
                                 Toast.LENGTH_SHORT
                         ).show();
                     } else {
+                        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                        if (imm.isActive()) {
+                            imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, InputMethodManager.HIDE_NOT_ALWAYS);
+                        }
+                        search_view.clearFocus();
                         /* 创建一个ProgressDialog用于提示 */
                         pd_cloning = new ProgressDialog(MainActivity.this);
                         pd_cloning.setMessage(getString(R.string.clone_pd));
@@ -218,10 +224,11 @@ public class MainActivity
                         pd_cloning.show();
                         /* 开启一个新的线程用于clone */
                         uri = text;
-                        HandlerThread thread = new HandlerThread("cloneThread");
-                        thread.start();
-                        Handler handle = new Handler(thread.getLooper());
-                        handle.post(cloneThread);
+                        HandlerThread clone_thread = new HandlerThread("cloneThread");
+                        clone_thread.start();
+                        Handler clone_handle = new Handler(clone_thread.getLooper());
+                        clone_handle.post(cloneThread);
+
                         adapter.notifyDataSetChanged();
                     }
                 }
@@ -229,7 +236,6 @@ public class MainActivity
             }
         };
         search_view.setOnQueryTextListener(sv_listener);
-
         return super.onCreateOptionsMenu(menu);
     }
 

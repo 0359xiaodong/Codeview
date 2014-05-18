@@ -8,10 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
+import android.view.*;
 import android.widget.*;
 
 import io.github.mthli.Codeview.Database.DBAction;
@@ -49,6 +46,9 @@ public class MainActivity
 
 
     final int FILE_CHOOSER = 1;
+    final int CM_COMMIT = 0;
+    final int CM_UPDATE = 1;
+    final int CM_DELETE = 2;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -112,9 +112,72 @@ public class MainActivity
                             Toast.LENGTH_SHORT
                     ).show();
                 }
+                db_action.closeDB();
+            }
+        });
+
+        view.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
+            @Override
+            public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+                menu.add(0, CM_COMMIT, 0, getString(R.string.cm_main_commit));
+                menu.add(0, CM_UPDATE, 0, getString(R.string.cm_main_update));
+                menu.add(0, CM_DELETE, 0, getString(R.string.cm_main_delete));
             }
         });
     }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem menu_item) {
+        /* Notice, maybe error */
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menu_item.getMenuInfo();
+        System.out.println(info.position);
+        DBAction db_action = new DBAction(MainActivity.this);
+        try {
+            db_action.openDB(true);
+        } catch (SQLException s) {
+            Toast.makeText(
+                    MainActivity.this,
+                    getString(R.string.database_error_open),
+                    Toast.LENGTH_SHORT
+            ).show();
+            db_action.closeDB();
+            return false;
+        }
+        List<Repo> repos = db_action.listRepos();
+        switch (menu_item.getItemId()) {
+            case CM_COMMIT:
+                /* Do something */
+                break;
+            case CM_UPDATE:
+                pd_cloning = new ProgressDialog(MainActivity.this);
+                pd_cloning.setMessage(getString(R.string.clone_pd));
+                pd_cloning.setCancelable(false);
+                pd_cloning.show();
+                /* 开启一个新的线程用于clone */
+                uri = repos.get(info.position).getContent();
+                HandlerThread update_thread = new HandlerThread("cloneThread");
+                update_thread.start();
+                Handler handle = new Handler(update_thread.getLooper());
+                handle.post(cloneThread);
+                break;
+            case CM_DELETE:
+                String path = repos.get(info.position).getPath();
+                FileUtils.deleteQuietly(new File(path));
+                db_action.deleteRepo(repos.get(info.position));
+                HandlerThread delete_thread = new HandlerThread("listThread");
+                delete_thread.start();
+                Handler handler = new Handler(delete_thread.getLooper());
+                handler.post(listThread);
+                adapter.notifyDataSetChanged();
+                break;
+            default:
+                break;
+        }
+        db_action.closeDB();
+        return super.onContextItemSelected(menu_item);
+    }
+
+
 
     @Override
     public boolean onNavigationItemSelected(int i, long j) {
@@ -159,6 +222,7 @@ public class MainActivity
                         thread.start();
                         Handler handle = new Handler(thread.getLooper());
                         handle.post(cloneThread);
+                        adapter.notifyDataSetChanged();
                     }
                 }
                 return true;

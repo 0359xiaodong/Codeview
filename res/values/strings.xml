@@ -32,6 +32,9 @@
     <string name="sp_main_content">sp_main_content</string>
     <string name="sp_main_date">sp_main_date</string>
     <string name="sp_main_mark">sp_main_mark</string>
+    <string name="cm_main_commit">Commit</string>
+    <string name="cm_main_update">Update</string>
+    <string name="cm_main_delete">Delete</string>
 
     <!-- Clone -->
     <string name="clone_username">codeview</string>

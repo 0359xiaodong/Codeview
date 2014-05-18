@@ -3,7 +3,7 @@ package io.github.mthli.Codeview.WebView;
 import java.io.*;
 
 public class SyntaxSetting {
-    public static final String base_url = "file:///android_asset/google-code-prettify/";
+    public static final String base_url = "file:///android_asset/highlight/";
 
     public static String setCodeAsHtml(String path) {
         StringBuilder builder = new StringBuilder();
@@ -11,13 +11,14 @@ public class SyntaxSetting {
         builder.append("<html>\n");
         builder.append("<head>\n");
         builder.append("<meta charset=\"utf-8\">\n");
-        builder.append("<link rel=\"stylesheet\" href=\"github.css\" type=\"text/css\"></link>\n");
-        builder.append("<script src=\"run_prettify.js\" type=\"text/javascript\"></script>\n");
+        builder.append("<link rel=\"stylesheet\" href=\"styles/github.css\"></link>\n");
+        builder.append("<script src=\"highlight.pack.js\"></script>\n");
+        builder.append("<script>hljs.initHighlightingOnLoad();</script>");
         builder.append("</head>\n");
-        builder.append("<body onload=\"prettyPrint()\">\n");
-        builder.append("<pre class=\"prettyprint\">");
-        builder.append(getFileContent(path));
-        builder.append("</pre>");
+        builder.append("<body>\n");
+        builder.append("<pre style=\"word-wrap:break-word\"><code>");
+        builder.append(getFileContent(path).replaceAll("<", "&lt;"));
+        builder.append("</code></pre>");
         builder.append("</body>\n");
         builder.append("</html>");
         return builder.toString();

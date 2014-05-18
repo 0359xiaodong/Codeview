@@ -44,6 +44,7 @@ public class MainActivity
     private String uri;
 
     private Handler clone_handler;
+    private Handler list_handler;
 
     final int FILE_CHOOSER = 1;
     final int CM_COMMIT = 0;
@@ -77,31 +78,20 @@ public class MainActivity
                 R.layout.list_view_item_main,
                 item
         );
-        
-        DBAction db_action = new DBAction(MainActivity.this);
-        try {
-            db_action.openDB(false);
-            List<Repo> repos = db_action.listRepos();
-            for (int i = 0; i < repos.size(); i++) {
-                item.add(
-                        new MainListViewItem(
-                                getResources().getDrawable(R.drawable.ic_filetype_folder),
-                                repos.get(i).getTitle(),
-                                repos.get(i).getContent(),
-                                repos.get(i).getDate(),
-                                    /* And Need to set status */
-                                new ImageButton(MainActivity.this)
-                        )
-                );
+
+        /* ********************************************************** */
+        HandlerThread list_thread = new HandlerThread("listThread_0");
+        list_thread.start();
+        list_handler = new Handler(list_thread.getLooper()) {
+            @Override
+            public void handleMessage(Message msg) {
+                if (msg.what == 1) {
+                    view.invalidate();
+                }
             }
-        } catch (SQLException s) {
-            Toast.makeText(
-                    MainActivity.this,
-                    getString(R.string.database_error_open),
-                    Toast.LENGTH_SHORT
-            ).show();
-        }
-        db_action.closeDB();
+        };
+        list_handler.post(listThread);
+        /* ********************************************************** */
 
         view = (ListView) findViewById(R.id.list_view_main);
         view.setAdapter(adapter);
@@ -172,45 +162,24 @@ public class MainActivity
                 pd_cloning.setMessage(getString(R.string.clone_pd));
                 pd_cloning.setCancelable(false);
                 pd_cloning.show();
-                /* 开启一个新的线程用于clone */ /* Need to finish it, can do */
+                /* 开启一个新的线程用于clone */
                 uri = repos.get(info.position).getContent();
-                final HandlerThread clone_thread = new HandlerThread("cloneThread");
+
+                /* ******************************************************************* */
+                HandlerThread clone_thread = new HandlerThread("cloneThread_0");
                 clone_thread.start();
                 clone_handler = new Handler(clone_thread.getLooper()) {
                     @Override
                     public void handleMessage(Message msg) {
                         if (msg.what == 1) {
-                            clone_thread.getLooper().quit();
-                            item.clear();
-                            DBAction db_action = new DBAction(MainActivity.this);
-                            try {
-                                db_action.openDB(false);
-                                List<Repo> repos = db_action.listRepos();
-                                for (int i = 0; i < repos.size(); i++) {
-                                    item.add(
-                                            new MainListViewItem(
-                                                    getResources().getDrawable(R.drawable.ic_filetype_folder),
-                                                    repos.get(i).getTitle(),
-                                                    repos.get(i).getContent(),
-                                                    repos.get(i).getDate(),
-                                                    /* And Need to set status */
-                                                    new ImageButton(MainActivity.this)
-                                            )
-                                    );
-                                }
-                            } catch (SQLException s) {
-                                Toast.makeText(
-                                        MainActivity.this,
-                                        getString(R.string.database_error_open),
-                                        Toast.LENGTH_SHORT
-                                ).show();
-                            }
-                            db_action.closeDB();
-                            adapter.notifyDataSetChanged();
+                            view.postInvalidate();
                         }
                     }
                 };
                 clone_handler.post(cloneThread);
+                /* ******************************************************************* */
+
+                adapter.notifyDataSetChanged();
                 break;
             case CM_DELETE:
                 String path = repos.get(info.position).getPath();
@@ -262,51 +231,40 @@ public class MainActivity
                         if (imm.isActive()) {
                             imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, InputMethodManager.HIDE_NOT_ALWAYS);
                         }
-                        search_view.clearFocus();
+                        // search_view.clearFocus();
                         /* 创建一个ProgressDialog用于提示 */
                         pd_cloning = new ProgressDialog(MainActivity.this);
                         pd_cloning.setMessage(getString(R.string.clone_pd));
                         pd_cloning.setCancelable(false);
                         pd_cloning.show();
-                        /* 开启一个新的线程用于clone */ /* Need to finish it */
+                        /* 开启一个新的线程用于clone */
                         uri = text;
-                        final HandlerThread clone_thread = new HandlerThread("cloneThread");
+
+                        /* ************************************************************ */
+                        HandlerThread clone_thread = new HandlerThread("cloneThread_1");
                         clone_thread.start();
                         clone_handler = new Handler(clone_thread.getLooper()) {
                             @Override
                             public void handleMessage(Message msg) {
                                 if (msg.what == 1) {
-                                    clone_thread.getLooper().quit();
-                                    item.clear();
-                                    DBAction db_action = new DBAction(MainActivity.this);
-                                    try {
-                                        db_action.openDB(false);
-                                        List<Repo> repos = db_action.listRepos();
-                                        for (int i = 0; i < repos.size(); i++) {
-                                            item.add(
-                                                    new MainListViewItem(
-                                                            getResources().getDrawable(R.drawable.ic_filetype_folder),
-                                                            repos.get(i).getTitle(),
-                                                            repos.get(i).getContent(),
-                                                            repos.get(i).getDate(),
-                                                            /* And Need to set status */
-                                                            new ImageButton(MainActivity.this)
-                                                    )
-                                            );
+                                    HandlerThread list_thread = new HandlerThread("listThread_1");
+                                    list_thread.start();
+                                    list_handler = new Handler(list_thread.getLooper()) {
+                                        @Override
+                                        public void handleMessage(Message msg) {
+                                            if (msg.what == 1) {
+                                                view.postInvalidate();
+                                            }
                                         }
-                                    } catch (SQLException s) {
-                                        Toast.makeText(
-                                                MainActivity.this,
-                                                getString(R.string.database_error_open),
-                                                Toast.LENGTH_SHORT
-                                        ).show();
-                                    }
-                                    db_action.closeDB();
-                                    adapter.notifyDataSetChanged();
-                                }
+                                    };
+                                    list_handler.post(listThread);
+                                };
                             }
                         };
                         clone_handler.post(cloneThread);
+                        /* ************************************************************ */
+
+                        adapter.notifyDataSetChanged();
                     }
                 }
                 return true;
@@ -327,6 +285,38 @@ public class MainActivity
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    Runnable listThread = new Runnable() {
+        @Override
+        public void run() {
+            item.clear();
+            DBAction db_action = new DBAction(MainActivity.this);
+            try {
+                db_action.openDB(false);
+                List<Repo> repos = db_action.listRepos();
+                for (int i = 0; i < repos.size(); i++) {
+                    item.add(
+                            new MainListViewItem(
+                                    getResources().getDrawable(R.drawable.ic_filetype_folder),
+                                    repos.get(i).getTitle(),
+                                    repos.get(i).getContent(),
+                                    repos.get(i).getDate(),
+                                    /* And Need to set status */
+                                    new ImageButton(MainActivity.this)
+                            )
+                    );
+                }
+            } catch (SQLException s) {
+                Toast.makeText(
+                        MainActivity.this,
+                        getString(R.string.database_error_open),
+                        Toast.LENGTH_SHORT
+                ).show();
+            }
+            db_action.closeDB();
+            list_handler.sendEmptyMessage(1);
+        }
+    };
 
     /* 开启一个新线程用于git clone */
     Runnable cloneThread = new Runnable() {

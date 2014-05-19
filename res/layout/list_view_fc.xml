@@ -66,12 +66,16 @@
                     android:id="@+id/list_view_item_fc_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:ellipsize="start"
                     android:textSize="20sp"
                     />
             <TextView
                     android:id="@+id/list_view_item_fc_content"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:ellipsize="start"
                     android:textSize="12sp"
                     />
         </LinearLayout>

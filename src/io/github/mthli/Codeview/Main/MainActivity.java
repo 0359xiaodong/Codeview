@@ -23,6 +23,7 @@ import org.apache.commons.io.FileUtils;
 import org.eclipse.jgit.api.CloneCommand;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.api.errors.JGitInternalException;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 
 import java.io.File;
@@ -43,15 +44,12 @@ public class MainActivity
 
     private String uri;
 
-    private Handler clone_handler;
-    private Handler list_handler;
-
     final int FILE_CHOOSER = 1;
     final int CM_COMMIT = 0;
     final int CM_UPDATE = 1;
     final int CM_DELETE = 2;
 
-    @Override /* OK */
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_view_main);
@@ -82,14 +80,7 @@ public class MainActivity
         /* ********************************************************** */
         HandlerThread list_thread = new HandlerThread("listThread_0");
         list_thread.start();
-        list_handler = new Handler(list_thread.getLooper()) {
-            @Override
-            public void handleMessage(Message msg) {
-                if (msg.what == 1) {
-                    view.invalidate();
-                }
-            }
-        };
+        Handler list_handler = new Handler(list_thread.getLooper());
         list_handler.post(listThread);
         /* ********************************************************** */
 
@@ -136,7 +127,7 @@ public class MainActivity
         });
     }
 
-    @Override /* Fix */
+    @Override
     public boolean onContextItemSelected(MenuItem menu_item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menu_item.getMenuInfo();
         System.out.println(info.position);
@@ -168,14 +159,7 @@ public class MainActivity
                 /* ******************************************************************* */
                 HandlerThread clone_thread = new HandlerThread("cloneThread_0");
                 clone_thread.start();
-                clone_handler = new Handler(clone_thread.getLooper()) {
-                    @Override
-                    public void handleMessage(Message msg) {
-                        if (msg.what == 1) {
-                            view.postInvalidate();
-                        }
-                    }
-                };
+                Handler clone_handler = new Handler(clone_thread.getLooper());
                 clone_handler.post(cloneThread);
                 /* ******************************************************************* */
 
@@ -195,12 +179,12 @@ public class MainActivity
         return super.onContextItemSelected(menu_item);
     }
 
-    @Override /* OK */
+    @Override
     public boolean onNavigationItemSelected(int i, long j) {
         return true;
     }
 
-    @Override /* OK */
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
@@ -231,7 +215,6 @@ public class MainActivity
                         if (imm.isActive()) {
                             imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, InputMethodManager.HIDE_NOT_ALWAYS);
                         }
-                        // search_view.clearFocus();
                         /* 创建一个ProgressDialog用于提示 */
                         pd_cloning = new ProgressDialog(MainActivity.this);
                         pd_cloning.setMessage(getString(R.string.clone_pd));
@@ -243,24 +226,7 @@ public class MainActivity
                         /* ************************************************************ */
                         HandlerThread clone_thread = new HandlerThread("cloneThread_1");
                         clone_thread.start();
-                        clone_handler = new Handler(clone_thread.getLooper()) {
-                            @Override
-                            public void handleMessage(Message msg) {
-                                if (msg.what == 1) {
-                                    HandlerThread list_thread = new HandlerThread("listThread_1");
-                                    list_thread.start();
-                                    list_handler = new Handler(list_thread.getLooper()) {
-                                        @Override
-                                        public void handleMessage(Message msg) {
-                                            if (msg.what == 1) {
-                                                view.postInvalidate();
-                                            }
-                                        }
-                                    };
-                                    list_handler.post(listThread);
-                                };
-                            }
-                        };
+                        Handler clone_handler = new Handler(clone_thread.getLooper());
                         clone_handler.post(cloneThread);
                         /* ************************************************************ */
 
@@ -314,7 +280,6 @@ public class MainActivity
                 ).show();
             }
             db_action.closeDB();
-            list_handler.sendEmptyMessage(1);
         }
     };
 
@@ -364,6 +329,7 @@ public class MainActivity
             clone.setCredentialsProvider(access);
 
             /* 开始git clone */
+            boolean isSuccessful = true;
             DBAction db_action = new DBAction(MainActivity.this);
             try {
                 /* 打开数据库 */
@@ -382,7 +348,26 @@ public class MainActivity
                         ).show();
                     }
                     clone.call();
-                    /* 如果Repo在数据库中重复，则更新信息 */
+                    /* Lots of catch to do */
+                } catch (GitAPIException g) {
+                    pd_cloning.dismiss();
+                    Toast.makeText(
+                            MainActivity.this,
+                            getString(R.string.git_error_clone),
+                            Toast.LENGTH_SHORT
+                    ).show();
+                    isSuccessful = false;
+                } catch (JGitInternalException j) {
+                    pd_cloning.dismiss();
+                    Toast.makeText(
+                            MainActivity.this,
+                            getString(R.string.git_error_clone),
+                            Toast.LENGTH_SHORT
+                    ).show();
+                    isSuccessful = false;
+                }
+                /* 如果Repo在数据库中重复，则更新信息 */
+                if (isSuccessful == true) {
                     if (er) {
                         db_action.updateRepo(repo);
                     /* 否则将新建的Repo加入到数据库中 */
@@ -390,17 +375,15 @@ public class MainActivity
                         db_action.newRepo(repo);
                     }
 
+                    HandlerThread list_thread = new HandlerThread("listThread_1");
+                    list_thread.start();
+                    Handler list_handler = new Handler(list_thread.getLooper());
+                    list_handler.post(listThread);
+
                     pd_cloning.dismiss();
                     Toast.makeText(
                             MainActivity.this,
                             getString(R.string.clone_successful),
-                            Toast.LENGTH_SHORT
-                    ).show();
-                } catch (GitAPIException g) {
-                    pd_cloning.dismiss();
-                    Toast.makeText(
-                            MainActivity.this,
-                            getString(R.string.git_error_clone),
                             Toast.LENGTH_SHORT
                     ).show();
                 }
@@ -412,8 +395,6 @@ public class MainActivity
                 ).show();
             }
             db_action.closeDB();
-
-            clone_handler.sendEmptyMessage(1);
         }
     };
 }

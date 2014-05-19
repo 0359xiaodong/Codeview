@@ -76,11 +76,7 @@ public class MainActivity
                 item
         );
 
-        /* 开启一个新的线程用于刷新ListView */
-        HandlerThread list_thread = new HandlerThread("listThread_0");
-        list_thread.start();
-        Handler list_handler = new Handler(list_thread.getLooper());
-        list_handler.post(listThread);
+        refreshList();
 
         view = (ListView) findViewById(R.id.list_view_main);
         view.setAdapter(adapter);
@@ -118,7 +114,8 @@ public class MainActivity
         view.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
             @Override
             public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-                menu.add(0, CM_COMMIT, 0, getString(R.string.cm_main_commit));
+                /* Next time add commit */
+                /* menu.add(0, CM_COMMIT, 0, getString(R.string.cm_main_commit)); */
                 menu.add(0, CM_UPDATE, 0, getString(R.string.cm_main_update));
                 menu.add(0, CM_DELETE, 0, getString(R.string.cm_main_delete));
             }
@@ -142,9 +139,10 @@ public class MainActivity
         }
         final List<Repo> repos = db_action.listRepos();
         switch (menu_item.getItemId()) {
+            /*
             case CM_COMMIT:
-                /* Do something */
                 break;
+            */
             case CM_UPDATE:
                 pd_cloning = new ProgressDialog(MainActivity.this);
                 pd_cloning.setMessage(getString(R.string.clone_pd));
@@ -157,6 +155,7 @@ public class MainActivity
                 Handler clone_handler = new Handler(clone_thread.getLooper());
                 clone_handler.post(cloneThread);
 
+                refreshList();
                 adapter.notifyDataSetChanged();
                 break;
             case CM_DELETE:
@@ -165,6 +164,7 @@ public class MainActivity
                 db_action.deleteRepo(repos.get(info.position));
                 item.remove(info.position);
 
+                refreshList();
                 adapter.notifyDataSetChanged();
                 break;
             default:
@@ -212,7 +212,7 @@ public class MainActivity
                         if (imm.isActive()) {
                             imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, InputMethodManager.HIDE_NOT_ALWAYS);
                         }
-
+                        search_view.clearFocus();
                         /* 创建一个ProgressDialog用于提示 */
                         pd_cloning = new ProgressDialog(MainActivity.this);
                         pd_cloning.setMessage(getString(R.string.clone_pd));
@@ -225,6 +225,7 @@ public class MainActivity
                         Handler clone_handler = new Handler(clone_thread.getLooper());
                         clone_handler.post(cloneThread);
 
+                        refreshList();
                         adapter.notifyDataSetChanged();
                     }
                 }
@@ -247,36 +248,33 @@ public class MainActivity
         }
     }
 
-    Runnable listThread = new Runnable() {
-        @Override
-        public void run() {
-            item.clear();
-            DBAction db_action = new DBAction(MainActivity.this);
-            try {
-                db_action.openDB(false);
-                List<Repo> repos = db_action.listRepos();
-                for (int i = 0; i < repos.size(); i++) {
-                    item.add(
-                            new MainListViewItem(
-                                    getResources().getDrawable(R.drawable.ic_filetype_folder),
-                                    repos.get(i).getTitle(),
-                                    repos.get(i).getContent(),
-                                    repos.get(i).getDate(),
+    public void refreshList() {
+        item.clear();
+        DBAction db_action = new DBAction(MainActivity.this);
+        try {
+            db_action.openDB(false);
+            List<Repo> repos = db_action.listRepos();
+            for (int i = 0; i < repos.size(); i++) {
+                item.add(
+                        new MainListViewItem(
+                                getResources().getDrawable(R.drawable.ic_filetype_folder),
+                                repos.get(i).getTitle(),
+                                repos.get(i).getContent(),
+                                repos.get(i).getDate(),
                                     /* And Need to set status */
-                                    new ImageButton(MainActivity.this)
-                            )
-                    );
-                }
-            } catch (SQLException s) {
-                Toast.makeText(
-                        MainActivity.this,
-                        getString(R.string.database_error_open),
-                        Toast.LENGTH_SHORT
-                ).show();
+                                new ImageButton(MainActivity.this)
+                        )
+                );
             }
-            db_action.closeDB();
+        } catch (SQLException s) {
+            Toast.makeText(
+                    MainActivity.this,
+                    getString(R.string.database_error_open),
+                    Toast.LENGTH_SHORT
+            ).show();
         }
-    };
+        db_action.closeDB();
+    }
 
     /* 开启一个新线程用于git clone */
     Runnable cloneThread = new Runnable() {
@@ -368,12 +366,8 @@ public class MainActivity
                     } else {
                         db_action.newRepo(repo);
                     }
-                    
-                    /* 及时刷新ListView */
-                    HandlerThread list_thread = new HandlerThread("listThread_1");
-                    list_thread.start();
-                    Handler list_handler = new Handler(list_thread.getLooper());
-                    list_handler.post(listThread);
+
+                    refreshList();
 
                     pd_cloning.dismiss();
                     Toast.makeText(

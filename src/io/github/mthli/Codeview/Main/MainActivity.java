@@ -44,7 +44,7 @@ public class MainActivity
     private String uri;
 
     final int FILE_CHOOSER = 1;
-    final int CM_COMMIT = 0;
+    /* final int CM_COMMIT = 0; */
     final int CM_UPDATE = 1;
     final int CM_DELETE = 2;
 
@@ -212,7 +212,6 @@ public class MainActivity
                         if (imm.isActive()) {
                             imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, InputMethodManager.HIDE_NOT_ALWAYS);
                         }
-                        search_view.clearFocus();
                         /* 创建一个ProgressDialog用于提示 */
                         pd_cloning = new ProgressDialog(MainActivity.this);
                         pd_cloning.setMessage(getString(R.string.clone_pd));
@@ -248,6 +247,7 @@ public class MainActivity
         }
     }
 
+    /* Refresh ListView */
     public void refreshList() {
         item.clear();
         DBAction db_action = new DBAction(MainActivity.this);

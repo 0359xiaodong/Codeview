@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.os.Message;
 import android.view.*;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
@@ -77,12 +76,11 @@ public class MainActivity
                 item
         );
 
-        /* ********************************************************** */
+        /* 开启一个新的线程用于刷新ListView */
         HandlerThread list_thread = new HandlerThread("listThread_0");
         list_thread.start();
         Handler list_handler = new Handler(list_thread.getLooper());
         list_handler.post(listThread);
-        /* ********************************************************** */
 
         view = (ListView) findViewById(R.id.list_view_main);
         view.setAdapter(adapter);
@@ -130,7 +128,6 @@ public class MainActivity
     @Override
     public boolean onContextItemSelected(MenuItem menu_item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menu_item.getMenuInfo();
-        System.out.println(info.position);
         final DBAction db_action = new DBAction(MainActivity.this);
         try {
             db_action.openDB(true);
@@ -155,13 +152,10 @@ public class MainActivity
                 pd_cloning.show();
                 /* 开启一个新的线程用于clone */
                 uri = repos.get(info.position).getContent();
-
-                /* ******************************************************************* */
                 HandlerThread clone_thread = new HandlerThread("cloneThread_0");
                 clone_thread.start();
                 Handler clone_handler = new Handler(clone_thread.getLooper());
                 clone_handler.post(cloneThread);
-                /* ******************************************************************* */
 
                 adapter.notifyDataSetChanged();
                 break;
@@ -170,6 +164,7 @@ public class MainActivity
                 FileUtils.deleteQuietly(new File(path));
                 db_action.deleteRepo(repos.get(info.position));
                 item.remove(info.position);
+
                 adapter.notifyDataSetChanged();
                 break;
             default:
@@ -188,7 +183,9 @@ public class MainActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
+
         search_view = (SearchView) menu.findItem(R.id.menu_clone_or_search).getActionView();
+        search_view.setQueryHint(getString(R.string.menu_clone_or_search));
 
         SearchView.OnQueryTextListener sv_listener = new SearchView.OnQueryTextListener() {
             @Override
@@ -215,6 +212,7 @@ public class MainActivity
                         if (imm.isActive()) {
                             imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, InputMethodManager.HIDE_NOT_ALWAYS);
                         }
+
                         /* 创建一个ProgressDialog用于提示 */
                         pd_cloning = new ProgressDialog(MainActivity.this);
                         pd_cloning.setMessage(getString(R.string.clone_pd));
@@ -222,13 +220,10 @@ public class MainActivity
                         pd_cloning.show();
                         /* 开启一个新的线程用于clone */
                         uri = text;
-
-                        /* ************************************************************ */
                         HandlerThread clone_thread = new HandlerThread("cloneThread_1");
                         clone_thread.start();
                         Handler clone_handler = new Handler(clone_thread.getLooper());
                         clone_handler.post(cloneThread);
-                        /* ************************************************************ */
 
                         adapter.notifyDataSetChanged();
                     }
@@ -240,7 +235,7 @@ public class MainActivity
         return super.onCreateOptionsMenu(menu);
     }
 
-    @Override /* OK */
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_about:
@@ -348,7 +343,6 @@ public class MainActivity
                         ).show();
                     }
                     clone.call();
-                    /* Lots of catch to do */
                 } catch (GitAPIException g) {
                     pd_cloning.dismiss();
                     Toast.makeText(
@@ -374,7 +368,8 @@ public class MainActivity
                     } else {
                         db_action.newRepo(repo);
                     }
-
+                    
+                    /* 及时刷新ListView */
                     HandlerThread list_thread = new HandlerThread("listThread_1");
                     list_thread.start();
                     Handler list_handler = new Handler(list_thread.getLooper());

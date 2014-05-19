@@ -27,6 +27,10 @@ public class MainListViewItemAdapter extends ArrayAdapter<MainListViewItem> {
         this.items = items;
     }
 
+    public void refresh(List<MainListViewItem> items) {
+        this.items = items;
+    }
+
     private class Holder {
         ImageView item_image;
         TextView item_title;

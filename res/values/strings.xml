@@ -8,7 +8,7 @@
     <string name="action_bar_drop_down_mark">Mark</string>
 
     <!-- Menu -->
-    <string name="menu_clone_or_search">Clone Or Search</string>
+    <string name="menu_clone_or_search">Clone</string>
     <string name="menu_about">About</string>
 
     <!-- About interface -->
@@ -32,9 +32,9 @@
     <string name="sp_main_content">sp_main_content</string>
     <string name="sp_main_date">sp_main_date</string>
     <string name="sp_main_mark">sp_main_mark</string>
-    <string name="cm_main_commit">Commit</string>
-    <string name="cm_main_update">Update</string>
-    <string name="cm_main_delete">Delete</string>
+    <string name="cm_main_commit">Commit Log</string>
+    <string name="cm_main_update">Update Repo</string>
+    <string name="cm_main_delete">Delete Repo</string>
 
     <!-- Clone -->
     <string name="clone_username">codeview</string>

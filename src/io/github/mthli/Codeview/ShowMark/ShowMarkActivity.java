@@ -1,6 +1,7 @@
 package io.github.mthli.Codeview.ShowMark;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.MenuItem;
@@ -10,8 +11,11 @@ import android.widget.ListView;
 import android.widget.Toast;
 import io.github.mthli.Codeview.Database.MDBAction;
 import io.github.mthli.Codeview.Database.Mark;
+import io.github.mthli.Codeview.FileChooser.FileChooserActivity;
 import io.github.mthli.Codeview.R;
+import io.github.mthli.Codeview.WebView.CodeviewActivity;
 
+import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +49,33 @@ public class ShowMarkActivity extends Activity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                /* Do something */
+                MDBAction mdbAction = new MDBAction(ShowMarkActivity.this);
+                try {
+                    mdbAction.openDatabase(false);
+                    List<Mark> marks = mdbAction.listMarks();
+                    File file = new File(marks.get(position).getPath());
+                    if (file.isDirectory()) {
+                        Intent intent_filechooser = new Intent(ShowMarkActivity.this, FileChooserActivity.class);
+                        String str[] = marks.get(position).getContent().split("/");
+                        intent_filechooser.putExtra("folder_name", str[0]);
+                        intent_filechooser.putExtra("folder_path", marks.get(position).getPath());
+                        startActivity(intent_filechooser);
+                    } else if (file.isFile()) {
+                        /* Need do more */
+                        Intent intent_codeview = new Intent(ShowMarkActivity.this, CodeviewActivity.class);
+                        intent_codeview.putExtra("title", marks.get(position).getTitle());
+                        intent_codeview.putExtra("sub_title", marks.get(position).getContent());
+                        intent_codeview.putExtra("path", marks.get(position).getPath());
+                        startActivity(intent_codeview);
+                    }
+                } catch (SQLException s) {
+                    Toast.makeText(
+                            ShowMarkActivity.this,
+                            getString(R.string.database_error_open),
+                            Toast.LENGTH_SHORT
+                    ).show();
+                }
+                mdbAction.closeDatabase();
             }
         });
 
@@ -60,7 +90,31 @@ public class ShowMarkActivity extends Activity {
     @Override
     public boolean onContextItemSelected(MenuItem menuItem) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuItem.getMenuInfo();
-        /* Do something */
+        MDBAction mdbAction = new MDBAction(ShowMarkActivity.this);
+        switch (menuItem.getItemId()) {
+            case CM_UNMARK:
+                try {
+                    mdbAction.openDatabase(true);
+                } catch (SQLException s) {
+                    Toast.makeText(
+                            ShowMarkActivity.this,
+                            getString(R.string.database_error_open),
+                            Toast.LENGTH_SHORT
+                    ).show();
+                    mdbAction.closeDatabase();
+                    break;
+                }
+                List<Mark> marks = mdbAction.listMarks();
+                String path = marks.get(info.position).getPath();
+                mdbAction.unMark(path);
+                showMarkItems.remove(info.position);
+                mdbAction.closeDatabase();
+                refreshList();
+                showMarkAdapter.notifyDataSetChanged();
+                break;
+            default:
+                break;
+        }
         return super.onContextItemSelected(menuItem);
     }
 

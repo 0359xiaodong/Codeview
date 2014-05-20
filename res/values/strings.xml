@@ -7,6 +7,7 @@
     <string name="main_label">Codeview</string>
     <string name="main_item_icon">Icon</string>
     <string name="cm_mark">Mark</string>
+    <string name="cm_unmark">Unmark</string>
     <string name="cm_commit">Commit</string>
     <string name="cm_update">Update</string>
     <string name="cm_delete">Delete</string>
@@ -15,7 +16,10 @@
     <string name="fc_label">FileChooser</string>
     <string name="fc_item_icon">Icon</string>
 
-    <!-- About interface -->
+    <!-- About and Mark interface -->
+    <string name="mark_successful">Mark Successful.</string>
+    <string name="showmark_label">Mark</string>
+    <string name="showmark_item_icon">Icon</string>
     <string name="about_label">About</string>
     <string name="about_title_author">Author</string>
     <string name="about_title_thanks">Thanks</string>
@@ -32,6 +36,7 @@
     <string name="drop_down_repo">Repo</string>
     <string name="drop_down_mark">Mark</string>
     <string name="menu_search">Clone</string>
+    <string name="menu_showmark">Show Mark</string>
     <string name="menu_refresh">Refresh</string>
     <string name="menu_setting">Setting</string>
     <string name="menu_help">Help</string>

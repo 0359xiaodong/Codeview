@@ -31,6 +31,10 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".ShowMark.ShowMarkActivity"
+                  android:label="@string/showmark_label">
+        </activity>
+
         <activity android:name=".FileChooser.FileChooserActivity" />
 
         <activity android:name=".WebView.CodeviewActivity" />

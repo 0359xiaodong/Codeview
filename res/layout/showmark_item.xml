@@ -5,8 +5,8 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <ImageView android:id="@+id/main_item_icon"
-               android:contentDescription="@string/main_item_icon"
+    <ImageView android:id="@+id/showmark_item_icon"
+               android:contentDescription="@string/showmark_item_icon"
                android:layout_width="wrap_content"
                android:layout_height="match_parent"
                android:layout_gravity="center_horizontal"
@@ -18,7 +18,7 @@
                   android:layout_width="wrap_content"
                   android:layout_height="match_parent">
 
-        <TextView android:id="@+id/main_item_title"
+        <TextView android:id="@+id/showmark_item_title"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:paddingTop="10dp"
@@ -27,7 +27,7 @@
                   android:ellipsize="start">
         </TextView>
 
-        <TextView android:id="@+id/main_item_content"
+        <TextView android:id="@+id/showmark_item_content"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:paddingBottom="10dp"
@@ -37,4 +37,6 @@
         </TextView>
 
     </LinearLayout>
+
+
 </LinearLayout>

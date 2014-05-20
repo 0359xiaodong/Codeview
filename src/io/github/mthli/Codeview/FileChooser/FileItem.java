@@ -49,10 +49,9 @@ public class FileItem implements Comparable<FileItem> {
     }
 
     @Override
-    public int compareTo(FileItem item) {
-        /* Maybe use content */
-        if (this.title != null) {
-            return this.title.toLowerCase().compareTo(item.getTitle().toLowerCase());
+    public int compareTo(FileItem fileItem) {
+        if (this.content != null) {
+            return this.content.toLowerCase().compareTo(fileItem.getContent().toLowerCase());
         } else {
             throw new IllegalArgumentException();
         }

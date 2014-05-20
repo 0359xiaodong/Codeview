@@ -29,12 +29,12 @@ public class MDBAction {
         mdbHelper.close();
     }
 
-    public boolean checkMark(String content) {
+    public boolean checkMark(String path) {
         Cursor cursor = database.query(
                 Mark.TABLE,
-                new String[] {Mark.CONTENT},
-                Mark.CONTENT + "=?",
-                new String[] {content},
+                new String[] {Mark.PATH},
+                Mark.PATH + "=?",
+                new String[] {path},
                 null,
                 null,
                 null
@@ -54,6 +54,7 @@ public class MDBAction {
         ContentValues values = new ContentValues();
         values.put(Mark.TITLE, mark.getTitle());
         values.put(Mark.CONTENT, mark.getContent());
+        values.put(Mark.PATH, mark.getPath());
         database.insert(Mark.TABLE, null, values);
     }
 
@@ -62,11 +63,11 @@ public class MDBAction {
         /* Do nothing */
     }
 
-    public void unMark(Mark mark) {
+    public void unMark(String path) {
         database.delete(
                 Mark.TABLE,
-                Mark.CONTENT + "=?",
-                new String[] {mark.getContent()}
+                Mark.PATH + "=?",
+                new String[] {path}
         );
     }
 
@@ -76,13 +77,14 @@ public class MDBAction {
                 Mark.TABLE,
                 new String[]{
                         Mark.TITLE,
-                        Mark.CONTENT
+                        Mark.CONTENT,
+                        Mark.PATH
                 },
                 null,
                 null,
                 null,
                 null,
-                Mark.CONTENT
+                Mark.PATH
         );
         if(cursor == null) {
             return marks;
@@ -101,6 +103,7 @@ public class MDBAction {
         Mark mark = new Mark();
         mark.setTitle(cursor.getString(0));
         mark.setContent(cursor.getString(1));
+        mark.setPath(cursor.getString(2));
         return mark;
     }
 }

@@ -11,11 +11,14 @@ import android.os.HandlerThread;
 import android.view.*;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
+import io.github.mthli.Codeview.Database.MDBAction;
+import io.github.mthli.Codeview.Database.Mark;
 import io.github.mthli.Codeview.Database.RDBAction;
 import io.github.mthli.Codeview.Database.Repo;
 import io.github.mthli.Codeview.FileChooser.FileChooserActivity;
 import io.github.mthli.Codeview.Other.AboutActivity;
 import io.github.mthli.Codeview.R;
+import io.github.mthli.Codeview.ShowMark.ShowMarkActivity;
 import org.apache.commons.io.FileUtils;
 import org.eclipse.jgit.api.CloneCommand;
 import org.eclipse.jgit.api.Git;
@@ -29,7 +32,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends Activity implements ActionBar.OnNavigationListener {
+public class MainActivity extends Activity {
     private ListView listView;
     private SearchView searchView;
     private MainAdapter mainAdapter;
@@ -46,22 +49,6 @@ public class MainActivity extends Activity implements ActionBar.OnNavigationList
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-
-        ActionBar actionBar = getActionBar();
-        actionBar.setDisplayShowTitleEnabled(false);
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
-        actionBar.setListNavigationCallbacks(
-                new ArrayAdapter<String>(
-                        MainActivity.this,
-                        android.R.layout.simple_list_item_1,
-                        android.R.id.text1,
-                        new String[] {
-                                getString(R.string.drop_down_repo),
-                                getString(R.string.drop_down_mark)
-                        }
-                ),
-                this
-        );
 
         mainItems = new ArrayList<MainItem>();
         refreshList();
@@ -109,23 +96,23 @@ public class MainActivity extends Activity implements ActionBar.OnNavigationList
     }
 
     @Override
-    public boolean onNavigationItemSelected(int itemPosition, long itemId) {
-        return true;
-    }
-
-    @Override
     public boolean onContextItemSelected(MenuItem menuItem) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuItem.getMenuInfo();
         RDBAction rdbAction = new RDBAction(MainActivity.this);
+        MDBAction mdbAction = new MDBAction(MainActivity.this);
         switch (menuItem.getItemId()) {
             case CM_MARK:
-                /* Do something */
-                break;
-            case CM_COMMIT:
-                /* Do something */
-                break;
-            case CM_UPDATE:
-                /* Do something */
+                try {
+                    mdbAction.openDatabase(true);
+                } catch (SQLException s) {
+                    Toast.makeText(
+                            MainActivity.this,
+                            getString(R.string.database_error_open),
+                            Toast.LENGTH_SHORT
+                    ).show();
+                    mdbAction.closeDatabase();
+                    break;
+                }
                 try {
                     rdbAction.openDatabase(true);
                 } catch (SQLException s) {
@@ -138,7 +125,38 @@ public class MainActivity extends Activity implements ActionBar.OnNavigationList
                     break;
                 }
                 List<Repo> repos_0 = rdbAction.listRepos();
-                String content = repos_0.get(info.position).getContent();
+                Mark mark = new Mark();
+                mark.setTitle(mainItems.get(info.position).title);
+                mark.setContent(mainItems.get(info.position).content);
+                mark.setPath(repos_0.get(info.position).getPath());
+                if (!mdbAction.checkMark(repos_0.get(info.position).getPath())) {
+                    mdbAction.newMark(mark);
+                }
+                Toast.makeText(
+                        MainActivity.this,
+                        getString(R.string.mark_successful),
+                        Toast.LENGTH_SHORT
+                ).show();
+                rdbAction.closeDatabase();
+                mdbAction.closeDatabase();
+                break;
+            case CM_COMMIT:
+                /* Do something */
+                break;
+            case CM_UPDATE:
+                try {
+                    rdbAction.openDatabase(true);
+                } catch (SQLException s) {
+                    Toast.makeText(
+                            MainActivity.this,
+                            getString(R.string.database_error_open),
+                            Toast.LENGTH_SHORT
+                    ).show();
+                    rdbAction.closeDatabase();
+                    break;
+                }
+                List<Repo> repos_2 = rdbAction.listRepos();
+                String content = repos_2.get(info.position).getContent();
                 url = content;
                 /* 创建一个ProgressDialog用于提示 */
                 progressDialog = new ProgressDialog(MainActivity.this);
@@ -154,7 +172,17 @@ public class MainActivity extends Activity implements ActionBar.OnNavigationList
                 mainAdapter.notifyDataSetChanged();
                 break;
             case CM_DELETE:
-                /* Do something */
+                try {
+                    mdbAction.openDatabase(true);
+                } catch (SQLException s) {
+                    Toast.makeText(
+                            MainActivity.this,
+                            getString(R.string.database_error_open),
+                            Toast.LENGTH_SHORT
+                    ).show();
+                    mdbAction.closeDatabase();
+                    break;
+                }
                 try {
                     rdbAction.openDatabase(true);
                 } catch (SQLException s) {
@@ -166,11 +194,13 @@ public class MainActivity extends Activity implements ActionBar.OnNavigationList
                     rdbAction.closeDatabase();
                     break;
                 }
-                List<Repo> repos_1 = rdbAction.listRepos();
-                String path = repos_1.get(info.position).getPath();
+                List<Repo> repos_3 = rdbAction.listRepos();
+                String path = repos_3.get(info.position).getPath();
                 FileUtils.deleteQuietly(new File(path));
-                rdbAction.deleteRepo(repos_1.get(info.position));
+                mdbAction.unMark(path);
+                rdbAction.deleteRepo(repos_3.get(info.position));
                 mainItems.remove(info.position);
+                mdbAction.closeDatabase();
                 rdbAction.closeDatabase();
                 refreshList();
                 mainAdapter.notifyDataSetChanged();
@@ -242,23 +272,33 @@ public class MainActivity extends Activity implements ActionBar.OnNavigationList
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.main_menu_showmark:
+                Intent intent_mark = new Intent(this, ShowMarkActivity.class);
+                startActivity(intent_mark);
+                return true;
+            case R.id.main_menu_setting:
+                /* Do something */
+                break;
+            case R.id.main_menu_help:
+                /* Do somthing */
+                break;
             case R.id.main_menu_about:
                 Intent intent_about = new Intent(this, AboutActivity.class);
                 startActivity(intent_about);
                 return true;
-            /* Do something */
             default:
-                return super.onOptionsItemSelected(item);
+                break;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     /* Refresh ListView */
     public void refreshList() {
         mainItems.clear();
-        RDBAction RDBAction = new RDBAction(MainActivity.this);
+        RDBAction rdbAction = new RDBAction(MainActivity.this);
         try {
-            RDBAction.openDatabase(false);
-            List<Repo> repos = RDBAction.listRepos();
+            rdbAction.openDatabase(false);
+            List<Repo> repos = rdbAction.listRepos();
             for (int i = 0; i < repos.size(); i++) {
                 mainItems.add(
                         new MainItem(
@@ -275,7 +315,7 @@ public class MainActivity extends Activity implements ActionBar.OnNavigationList
                     Toast.LENGTH_SHORT
             ).show();
         }
-        RDBAction.closeDatabase();
+        rdbAction.closeDatabase();
     }
 
     /* 开启一个新线程用于git clone */
@@ -316,10 +356,10 @@ public class MainActivity extends Activity implements ActionBar.OnNavigationList
 
             /* 开始git clone */
             boolean isSuccessful = true;
-            RDBAction RDBAction = new RDBAction(MainActivity.this);
+            RDBAction rdbAction = new RDBAction(MainActivity.this);
             try {
                 /* 打开数据库 */
-                RDBAction.openDatabase(true);
+                rdbAction.openDatabase(true);
                 /* 检查Repo是否重复（根据来源） */
                 try {
                     try {
@@ -352,8 +392,8 @@ public class MainActivity extends Activity implements ActionBar.OnNavigationList
                 }
                 /* 如果Repo在数据库中重复，则更新信息 */
                 if (isSuccessful) {
-                    if (!RDBAction.checkRepo(content)) {
-                        RDBAction.newRepo(repo);
+                    if (!rdbAction.checkRepo(content)) {
+                        rdbAction.newRepo(repo);
                     }
                     refreshList();
                     progressDialog.dismiss();
@@ -370,7 +410,7 @@ public class MainActivity extends Activity implements ActionBar.OnNavigationList
                         Toast.LENGTH_SHORT
                 ).show();
             }
-            RDBAction.closeDatabase();
+            rdbAction.closeDatabase();
         }
     };
 }

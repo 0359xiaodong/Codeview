@@ -7,12 +7,19 @@ import android.os.Bundle;
 import android.view.*;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
+import io.github.mthli.Codeview.Database.MDBAction;
+import io.github.mthli.Codeview.Database.Mark;
+import io.github.mthli.Codeview.Database.RDBAction;
+import io.github.mthli.Codeview.Database.Repo;
 import io.github.mthli.Codeview.Other.AboutActivity;
 import io.github.mthli.Codeview.R;
+import io.github.mthli.Codeview.ShowMark.ShowMarkActivity;
 import io.github.mthli.Codeview.WebView.CodeviewActivity;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -52,7 +59,6 @@ public class FileChooserActivity extends ListActivity {
         current = new File(folder_path);
         listAll(current);
 
-        /* Do something */
         FileChooserActivity.this.getListView().setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
             @Override
             public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
@@ -79,6 +85,10 @@ public class FileChooserActivity extends ListActivity {
                     finish();
                 }
                 return true;
+            case R.id.fc_menu_showmark:
+                Intent intent_mark = new Intent(this, ShowMarkActivity.class);
+                startActivity(intent_mark);
+                return true;
             case R.id.fc_menu_setting:
                 /* Do something */
                 break;
@@ -94,18 +104,49 @@ public class FileChooserActivity extends ListActivity {
     @Override
     public boolean onContextItemSelected(MenuItem menuItem) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuItem.getMenuInfo();
-        /* Do somehing */
+        MDBAction mdbAction = new MDBAction(FileChooserActivity.this);
+        switch (menuItem.getItemId()) {
+            case CM_MARK:
+                try {
+                    mdbAction.openDatabase(true);
+                } catch (SQLException s) {
+                    Toast.makeText(
+                            FileChooserActivity.this,
+                            getString(R.string.database_error_open),
+                            Toast.LENGTH_SHORT
+                    ).show();
+                    mdbAction.closeDatabase();
+                    break;
+                }
+                Mark mark = new Mark();
+                mark.setTitle(fileAdapter.getItem(info.position).getTitle());
+                mark.setContent(relativePath(fileAdapter.getItem(info.position).getPath()));
+                mark.setPath(fileAdapter.getItem(info.position).getPath());
+                if (!mdbAction.checkMark(fileAdapter.getItem(info.position).getPath())) {
+                    mdbAction.newMark(mark);
+                }
+                Toast.makeText(
+                        FileChooserActivity.this,
+                        getString(R.string.mark_successful),
+                        Toast.LENGTH_SHORT
+                ).show();
+                mdbAction.closeDatabase();
+                break;
+            default:
+                break;
+        }
+
         return super.onContextItemSelected(menuItem);
     }
 
     @Override
     protected void onListItemClick(
-            ListView l,
-            View v,
+            ListView listView,
+            View view,
             int position,
             long id
     ) {
-        super.onListItemClick(l, v, position, id);
+        super.onListItemClick(listView, view, position, id);
 
         FileItem item = fileAdapter.getItem(position);
         if (item.isFolder()) {

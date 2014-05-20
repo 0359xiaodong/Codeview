@@ -7,6 +7,8 @@ public interface Constants {
     String CS = ".cs";
     String CSS = ".css";
 
+    String GIT = ".git";
+
     String H = ".h";
 
     String JAVA = ".java";

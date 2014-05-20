@@ -4,8 +4,7 @@
               android:orientation="horizontal"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:gravity="top"
-              android:descendantFocusability="blocksDescendants">
+              android:gravity="top">
 
     <ImageView android:id="@+id/fc_item_icon"
                android:contentDescription="@string/fc_item_icon"
@@ -24,14 +23,18 @@
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:paddingTop="10dp"
-                  android:textSize="20sp">
+                  android:textSize="20sp"
+                  android:singleLine="true"
+                  android:ellipsize="start">
         </TextView>
 
         <TextView android:id="@+id/fc_item_content"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:paddingBottom="10dp"
-                  android:textSize="12sp">
+                  android:textSize="12sp"
+                  android:singleLine="true"
+                  android:ellipsize="start">
         </TextView>
 
     </LinearLayout>

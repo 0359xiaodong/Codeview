@@ -51,8 +51,8 @@ public class CodeviewActivity extends Activity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
             case android.R.id.home:
                 finish();
                 return true;
@@ -68,6 +68,6 @@ public class CodeviewActivity extends Activity {
             default:
                 break;
         }
-        return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(menuItem);
     }
 }

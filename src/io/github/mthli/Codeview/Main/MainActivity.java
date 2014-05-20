@@ -1,6 +1,5 @@
 package io.github.mthli.Codeview.Main;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -16,8 +15,9 @@ import io.github.mthli.Codeview.Database.Mark;
 import io.github.mthli.Codeview.Database.RDBAction;
 import io.github.mthli.Codeview.Database.Repo;
 import io.github.mthli.Codeview.FileChooser.FileChooserActivity;
-import io.github.mthli.Codeview.Other.AboutActivity;
+import io.github.mthli.Codeview.About.AboutActivity;
 import io.github.mthli.Codeview.R;
+import io.github.mthli.Codeview.Setting.SettingActivity;
 import io.github.mthli.Codeview.ShowMark.ShowMarkActivity;
 import org.apache.commons.io.FileUtils;
 import org.eclipse.jgit.api.CloneCommand;
@@ -277,11 +277,9 @@ public class MainActivity extends Activity {
                 startActivity(intent_mark);
                 return true;
             case R.id.main_menu_setting:
-                /* Do something */
-                break;
-            case R.id.main_menu_help:
-                /* Do somthing */
-                break;
+                Intent intent_setting = new Intent(this, SettingActivity.class);
+                startActivity(intent_setting);
+                return true;
             case R.id.main_menu_about:
                 Intent intent_about = new Intent(this, AboutActivity.class);
                 startActivity(intent_about);

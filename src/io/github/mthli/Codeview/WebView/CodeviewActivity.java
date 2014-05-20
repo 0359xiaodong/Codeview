@@ -10,8 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import io.github.mthli.Codeview.Other.AboutActivity;
 import io.github.mthli.Codeview.R;
+import io.github.mthli.Codeview.Setting.SettingActivity;
 
 public class CodeviewActivity extends Activity {
     private WebView webView;
@@ -60,11 +60,9 @@ public class CodeviewActivity extends Activity {
                 /* Do something */
                 break;
             case R.id.webview_menu_setting:
-                /* Do something */
-                break;
-            case R.id.webview_menu_help:
-                /* Do something */
-                break;
+                Intent intent_setting = new Intent(this, SettingActivity.class);
+                startActivity(intent_setting);
+                return true;
             default:
                 break;
         }

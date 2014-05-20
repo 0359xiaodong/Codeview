@@ -11,9 +11,4 @@
           android:title="@string/menu_setting"
           android:showAsAction="collapseActionView">
     </item>
-
-    <item android:id="@+id/webview_menu_help"
-          android:title="@string/menu_help"
-          android:showAsAction="collapseActionView">
-    </item>
 </menu>

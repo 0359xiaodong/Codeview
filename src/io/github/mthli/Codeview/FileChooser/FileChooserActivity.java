@@ -10,10 +10,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 import io.github.mthli.Codeview.Database.MDBAction;
 import io.github.mthli.Codeview.Database.Mark;
-import io.github.mthli.Codeview.Database.RDBAction;
-import io.github.mthli.Codeview.Database.Repo;
-import io.github.mthli.Codeview.Other.AboutActivity;
 import io.github.mthli.Codeview.R;
+import io.github.mthli.Codeview.Setting.SettingActivity;
 import io.github.mthli.Codeview.ShowMark.ShowMarkActivity;
 import io.github.mthli.Codeview.WebView.CodeviewActivity;
 
@@ -90,11 +88,9 @@ public class FileChooserActivity extends ListActivity {
                 startActivity(intent_mark);
                 return true;
             case R.id.fc_menu_setting:
-                /* Do something */
-                break;
-            case R.id.fc_menu_help:
-                /* Do something */
-                break;
+                Intent intent_setting = new Intent(this, SettingActivity.class);
+                startActivity(intent_setting);
+                return true;
             default:
                 break;
         }

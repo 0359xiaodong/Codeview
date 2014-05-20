@@ -31,6 +31,75 @@
     <string name="about_content_version">1.0.0</string>
     <string name="about_content_homepage">https://github.com/mthli/Codeview</string>
     <string name="about_content_license">Mozilla Public License Version 2.0</string>
+    
+    <!-- Setting interface -->
+    <string name="setting_label">Setting</string>
+    <string name="setting_title_fontsize">Font Size</string>
+    <string name="setting_title_highlight">Hight Light</string>
+    <string name="setting_title_breakword">Break Word</string>
+    <string name="setting_content_fontsize">Set sourse code font size</string>
+    <string name="setting_content_highlight">Choose high light style</string>
+    <string name="setting_content_breakword">Break word setting</string>
+    <string-array name="setting_array_fontsize">
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+    </string-array>
+    <string-array name="setting_array_highlight">
+        <item>arta</item>
+        <item>ascetic</item>
+        <item>ascetic-dune.dark</item>
+        <item>ascetic-dune.light</item>
+        <item>atelier-forest.dark</item>
+        <item>atelier-forest.light</item>
+        <item>atelier-heath.dark</item>
+        <item>atelier-heath.light</item>
+        <item>atelier-lakeside.dark</item>
+        <item>atelier-lakeside.light</item>
+        <item>atelier-seaside.dark</item>
+        <item>atelier-seaside.light</item>
+        <item>brown_paper</item>
+        <item>brown_papersq</item>
+        <item>dark</item>
+        <item>default</item>
+        <item>docco</item>
+        <item>far</item>
+        <item>foundation</item>
+        <item>github</item>
+        <item>googlecode</item>
+        <item>idea</item>
+        <item>ir_black</item>
+        <item>magula</item>
+        <item>mono-blue</item>
+        <item>monokai</item>
+        <item>monokai_sublime</item>
+        <item>obsidian</item>
+        <item>paraiso.dark</item>
+        <item>paraiso.light</item>
+        <item>pojoaque</item>
+        <item>railscasts</item>
+        <item>rainbow</item>
+        <item>school_book</item>
+        <item>solarized_dark</item>
+        <item>solarized_light</item>
+        <item>sunburst</item>
+        <item>tomorrow</item>
+        <item>tomorrow-night-blue</item>
+        <item>tomorrow-night-bright</item>
+        <item>tomorrow-night</item>
+        <item>tomorrow-night-eighties</item>
+        <item>vs</item>
+        <item>xcode</item>
+        <item>zenburn</item>
+    </string-array>
+    <string-array name="setting_array_breakword">
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+    <string name="setting_ad_ok">OK</string>
+    <string name="setting_ad_cancle">Cancel</string>
 
     <!-- ActionBar -->
     <string name="drop_down_repo">Repo</string>

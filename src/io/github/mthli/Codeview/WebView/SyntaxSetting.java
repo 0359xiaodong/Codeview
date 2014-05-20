@@ -2,7 +2,6 @@ package io.github.mthli.Codeview.WebView;
 
 import java.io.*;
 
-/* We can make setting here */
 public class SyntaxSetting {
     public static final String baseUrl = "file:///android_asset/highlight/";
 
@@ -12,12 +11,12 @@ public class SyntaxSetting {
         builder.append("<html>\n");
         builder.append("<head>\n");
         builder.append("<meta charset=\"utf-8\">\n");
-        builder.append("<link rel=\"stylesheet\" href=\"styles/github.css\"></link>\n");
+        builder.append("<link rel=\"stylesheet\" href=\"styles/github.css\"></link>\n"); /* Setting for style */
         builder.append("<script src=\"highlight.pack.js\"></script>\n");
         builder.append("<script>hljs.initHighlightingOnLoad();</script>");
         builder.append("</head>\n");
         builder.append("<body>\n");
-        builder.append("<pre style=\"word-wrap:break-word\"><code>");
+        builder.append("<pre style=\"word-wrap:break-word\"><code>"); /* Setting for fontsize and break-work */
         builder.append(getFileContent(path).replaceAll("<", "&lt;"));
         builder.append("</code></pre>");
         builder.append("</body>\n");

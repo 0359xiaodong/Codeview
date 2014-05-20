@@ -39,7 +39,11 @@
 
         <activity android:name=".WebView.CodeviewActivity" />
 
-        <activity android:name=".Other.AboutActivity"
+        <activity android:name=".Setting.SettingActivity"
+                  android:label="@string/setting_label">
+        </activity>
+
+        <activity android:name=".About.AboutActivity"
                   android:label="@string/about_label">
         </activity>
 

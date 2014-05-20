@@ -3,8 +3,8 @@ package io.github.mthli.Codeview.Setting;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.DialogPreference;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,9 +18,13 @@ import java.util.List;
 import java.util.Map;
 
 public class SettingActivity extends Activity {
-    final int AD_FONTSIZE = 0;
-    final int AD_HIGHLIGHT = 1;
-    final int AD_BREAKWORD = 2;
+    final private int AD_FONTSIZE = 0;
+    final private int AD_HIGHLIGHT = 1;
+
+    private int fontsize;
+    private int fontsize_num;
+    private String highlight;
+    private int highlight_num;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,16 +35,14 @@ public class SettingActivity extends Activity {
         final ArrayList<String> title = new ArrayList<String>();
         title.add(getString(R.string.setting_title_fontsize));
         title.add(getString(R.string.setting_title_highlight));
-        title.add(getString(R.string.setting_title_breakword));
 
         ArrayList<String> content = new ArrayList<String>();
         content.add(getString(R.string.setting_content_fontsize));
         content.add(getString(R.string.setting_content_highlight));
-        content.add(getString(R.string.setting_content_breakword));
 
         List<Map<String, String>> lists = new ArrayList<Map<String, String>>();
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 2; i++) {
             Map<String, String> list = new HashMap<String, String>();
             list.put("title", title.get(i));
             list.put("content", content.get(i));
@@ -60,21 +62,26 @@ public class SettingActivity extends Activity {
         simpleAdapter.notifyDataSetChanged();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            SharedPreferences sharedPreferences = getSharedPreferences("Setting", MODE_PRIVATE);
+            final SharedPreferences.Editor editor = sharedPreferences.edit();
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (position == AD_FONTSIZE) {
-                    AlertDialog.Builder builder_fontsize = new AlertDialog.Builder(SettingActivity.this)
+                    fontsize_num = sharedPreferences.getInt("fontsize_num", 0);
+                    final AlertDialog.Builder builder_fontsize = new AlertDialog.Builder(SettingActivity.this)
                             .setSingleChoiceItems(
                                     R.array.setting_array_fontsize,
-                                    0,
+                                    fontsize_num,
                                     new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
-                                            /* Do something */
+                                            editor.putInt("fontsize_num", which);
+                                            editor.putInt("fontsize", which + 12);
+                                            editor.commit();
                                         }
                                     }
                             ).setNegativeButton(
-                                    getString(R.string.setting_ad_cancle),
+                                    getString(R.string.setting_ad_close),
                                     new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
@@ -83,19 +90,24 @@ public class SettingActivity extends Activity {
                                     }
                             );
                     builder_fontsize.show();
-                } else if (position == AD_HIGHLIGHT) {
+                } else {
+                    highlight_num = sharedPreferences.getInt("highlight_num", 0);
                     AlertDialog.Builder builder_highlight = new AlertDialog.Builder(SettingActivity.this)
                             .setSingleChoiceItems(
                                     R.array.setting_array_highlight,
-                                    19,
+                                    highlight_num,
                                     new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
-                                            /* Do something */
+                                            editor.putInt("highlight_num", which);
+                                            String str = getResources().getStringArray(R.array.setting_array_highlight)[which];
+                                            str = str + ".css";
+                                            editor.putString("highlight", str);
+                                            editor.commit();
                                         }
                                     }
                             ).setNegativeButton(
-                                    getString(R.string.setting_ad_cancle),
+                                    getString(R.string.setting_ad_close),
                                     new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
@@ -104,27 +116,6 @@ public class SettingActivity extends Activity {
                                     }
                             );
                     builder_highlight.show();
-                } else {
-                    AlertDialog.Builder builder_breakword = new AlertDialog.Builder(SettingActivity.this)
-                            .setSingleChoiceItems(
-                                    R.array.setting_array_breakword,
-                                    0,
-                                    new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            /* Do something */
-                                        }
-                                    }
-                            ).setNegativeButton(
-                                    getString(R.string.setting_ad_cancle),
-                                    new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            /* Do nothing */
-                                        }
-                                    }
-                            );
-                    builder_breakword.show();
                 }
             }
         });

@@ -35,7 +35,7 @@
     <!-- Setting interface -->
     <string name="setting_label">Setting</string>
     <string name="setting_title_fontsize">Font Size</string>
-    <string name="setting_title_highlight">Hight Light</string>
+    <string name="setting_title_highlight">High Light</string>
     <string name="setting_title_breakword">Break Word</string>
     <string name="setting_content_fontsize">Set sourse code font size</string>
     <string name="setting_content_highlight">Choose high light style</string>
@@ -48,6 +48,7 @@
         <item>16</item>
     </string-array>
     <string-array name="setting_array_highlight">
+        <item>default</item>
         <item>arta</item>
         <item>ascetic</item>
         <item>ascetic-dune.dark</item>
@@ -63,7 +64,6 @@
         <item>brown_paper</item>
         <item>brown_papersq</item>
         <item>dark</item>
-        <item>default</item>
         <item>docco</item>
         <item>far</item>
         <item>foundation</item>
@@ -100,6 +100,7 @@
     </string-array>
     <string name="setting_ad_ok">OK</string>
     <string name="setting_ad_cancle">Cancel</string>
+    <string name="setting_ad_close">Close</string>
 
     <!-- ActionBar -->
     <string name="drop_down_repo">Repo</string>

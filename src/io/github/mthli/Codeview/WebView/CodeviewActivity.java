@@ -3,6 +3,7 @@ package io.github.mthli.Codeview.WebView;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -32,8 +33,11 @@ public class CodeviewActivity extends Activity {
         webSettings.setLoadWithOverviewMode(true);
         webView.setVisibility(View.VISIBLE);
 
+        SharedPreferences sharedPreferences = getSharedPreferences("Setting", MODE_PRIVATE);
+        int fontsize = sharedPreferences.getInt("fontsize", 12);
+        String highlight = sharedPreferences.getString("highlight", "default.css");
         /* Maybe use thread would better */
-        String content = SyntaxSetting.setCodeAsHtml(getIntent().getStringExtra("path"));
+        String content = SyntaxSetting.setCodeAsHtml(fontsize, highlight, getIntent().getStringExtra("path"));
         webView.loadDataWithBaseURL(
                 SyntaxSetting.baseUrl,
                 content,

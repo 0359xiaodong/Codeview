@@ -2,23 +2,31 @@ package io.github.mthli.Codeview.WebView;
 
 import java.io.*;
 
+/* We can make setting here */
 public class SyntaxSetting {
     public static final String baseUrl = "file:///android_asset/highlight/";
 
-    public static String setCodeAsHtml(String path) {
+    public static String setCodeAsHtml(int fontsize, String highlight, String path) {
         StringBuilder builder = new StringBuilder();
         builder.append("<!DOCTYPE html>\n");
         builder.append("<html>\n");
         builder.append("<head>\n");
         builder.append("<meta charset=\"utf-8\">\n");
-        builder.append("<link rel=\"stylesheet\" href=\"styles/github.css\"></link>\n"); /* Setting for style */
+        // builder.append("<link rel=\"stylesheet\" href=\"styles/github.css\"></link>\n");
+        builder.append("<link rel=\"stylesheet\" href=\"styles/");
+        builder.append(highlight); //
+        builder.append("\"></link>\n");
         builder.append("<script src=\"highlight.pack.js\"></script>\n");
         builder.append("<script>hljs.initHighlightingOnLoad();</script>");
         builder.append("</head>\n");
         builder.append("<body>\n");
-        builder.append("<pre style=\"word-wrap:break-word\"><code>"); /* Setting for fontsize and break-work */
+        builder.append("<pre style=\"word-wrap:break-word");
+        builder.append("; font-size:");
+        builder.append(fontsize); //
+        builder.append("px\"><code>");
+
         builder.append(getFileContent(path).replaceAll("<", "&lt;"));
-        builder.append("</code></pre>");
+        builder.append("</code></pre>\n");
         builder.append("</body>\n");
         builder.append("</html>");
         return builder.toString();

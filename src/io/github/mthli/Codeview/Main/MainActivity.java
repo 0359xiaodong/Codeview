@@ -11,13 +11,11 @@ import android.os.HandlerThread;
 import android.view.*;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
-
 import io.github.mthli.Codeview.Database.DBAction;
 import io.github.mthli.Codeview.Database.Repo;
 import io.github.mthli.Codeview.FileChooser.FileChooserActivity;
 import io.github.mthli.Codeview.Other.AboutActivity;
 import io.github.mthli.Codeview.R;
-
 import org.apache.commons.io.FileUtils;
 import org.eclipse.jgit.api.CloneCommand;
 import org.eclipse.jgit.api.Git;
@@ -28,78 +26,67 @@ import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
-public class MainActivity
-        extends Activity
-        implements ActionBar.OnNavigationListener {
+public class MainActivity extends Activity implements ActionBar.OnNavigationListener {
+    private ListView listView;
+    private SearchView searchView;
+    private MainAdapter mainAdapter;
+    private List<MainItem> mainItems;
+    private ProgressDialog progressDialog;
+    private String url;
 
-    private ListView view;
-    private SearchView search_view;
-    private MainListViewItemAdapter adapter;
-    private List<MainListViewItem> item;
-
-    private ProgressDialog pd_cloning;
-
-    private String uri;
-
-    final int FILE_CHOOSER = 1;
-    /* final int CM_COMMIT = 0; */
-    final int CM_UPDATE = 1;
-    final int CM_DELETE = 2;
+    final private int CM_MARK = 0;
+    final private int CM_COMMIT = 1;
+    final private int CM_UPDATE = 2;
+    final private int CM_DELETE = 3;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_view_main);
+        setContentView(R.layout.main);
 
-        ActionBar action_bar = getActionBar();
-        action_bar.setDisplayShowTitleEnabled(false);
-        action_bar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
-        action_bar.setListNavigationCallbacks(
+        ActionBar actionBar = getActionBar();
+        actionBar.setDisplayShowTitleEnabled(false);
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+        actionBar.setListNavigationCallbacks(
                 new ArrayAdapter<String>(
                         MainActivity.this,
                         android.R.layout.simple_list_item_1,
                         android.R.id.text1,
                         new String[] {
-                                getString(R.string.action_bar_drop_down_repo),
-                                getString(R.string.action_bar_drop_down_mark)
+                                getString(R.string.drop_down_repo),
+                                getString(R.string.drop_down_mark)
                         }
                 ),
                 this
         );
 
-        item = new ArrayList<MainListViewItem>();
-        adapter = new MainListViewItemAdapter(
-                this,
-                R.layout.list_view_item_main,
-                item
-        );
-
+        mainItems = new ArrayList<MainItem>();
         refreshList();
+        mainAdapter = new MainAdapter(
+                this,
+                R.layout.main_item,
+                mainItems
+        );
+        listView = (ListView) findViewById(R.id.main);
+        listView.setAdapter(mainAdapter);
+        mainAdapter.notifyDataSetChanged();
 
-        view = (ListView) findViewById(R.id.list_view_main);
-        view.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
-
-        view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(
-                    AdapterView<?> parent,
-                    View view,
-                    int position,
-                    long id
-            ) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 /* 传递正确的数据给FileChooser */
-                DBAction db_action = new DBAction(MainActivity.this);
+                DBAction dbAction = new DBAction(MainActivity.this);
                 try {
-                    db_action.openDB(false);
-                    List<Repo> repos = db_action.listRepos();
+                    dbAction.openDatabase(false);
+                    List<Repo> repos = dbAction.listRepos();
                     Intent intent = new Intent(MainActivity.this, FileChooserActivity.class);
                     intent.putExtra("folder_name", repos.get(position).getTitle());
                     intent.putExtra("folder_path", repos.get(position).getPath());
-                    intent.putExtra("folder_date", repos.get(position).getDate());
-                    startActivityForResult(intent, FILE_CHOOSER);
+                    startActivity(intent);
                 } catch (SQLException s) {
                     Toast.makeText(
                             MainActivity.this,
@@ -107,71 +94,19 @@ public class MainActivity
                             Toast.LENGTH_SHORT
                     ).show();
                 }
-                db_action.closeDB();
+                dbAction.closeDatabase();
             }
         });
 
-        view.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
+        listView.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
             @Override
             public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-                /* Next time add commit */
-                /* menu.add(0, CM_COMMIT, 0, getString(R.string.cm_main_commit)); */
-                menu.add(0, CM_UPDATE, 0, getString(R.string.cm_main_update));
-                menu.add(0, CM_DELETE, 0, getString(R.string.cm_main_delete));
+                menu.add(0, CM_MARK, 0, getString(R.string.cm_mark));
+                menu.add(0, CM_COMMIT, 0, getString(R.string.cm_commit));
+                menu.add(0, CM_UPDATE, 0, getString(R.string.cm_update));
+                menu.add(0, CM_DELETE, 0, getString(R.string.cm_delete));
             }
         });
-    }
-
-    @Override
-    public boolean onContextItemSelected(MenuItem menu_item) {
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menu_item.getMenuInfo();
-        final DBAction db_action = new DBAction(MainActivity.this);
-        try {
-            db_action.openDB(true);
-        } catch (SQLException s) {
-            Toast.makeText(
-                    MainActivity.this,
-                    getString(R.string.database_error_open),
-                    Toast.LENGTH_SHORT
-            ).show();
-            db_action.closeDB();
-            return false;
-        }
-        final List<Repo> repos = db_action.listRepos();
-        switch (menu_item.getItemId()) {
-            /*
-            case CM_COMMIT:
-                break;
-            */
-            case CM_UPDATE:
-                pd_cloning = new ProgressDialog(MainActivity.this);
-                pd_cloning.setMessage(getString(R.string.clone_pd));
-                pd_cloning.setCancelable(false);
-                pd_cloning.show();
-                /* 开启一个新的线程用于clone */
-                uri = repos.get(info.position).getContent();
-                HandlerThread clone_thread = new HandlerThread("cloneThread_0");
-                clone_thread.start();
-                Handler clone_handler = new Handler(clone_thread.getLooper());
-                clone_handler.post(cloneThread);
-
-                refreshList();
-                adapter.notifyDataSetChanged();
-                break;
-            case CM_DELETE:
-                String path = repos.get(info.position).getPath();
-                FileUtils.deleteQuietly(new File(path));
-                db_action.deleteRepo(repos.get(info.position));
-                item.remove(info.position);
-
-                refreshList();
-                adapter.notifyDataSetChanged();
-                break;
-            default:
-                break;
-        }
-        db_action.closeDB();
-        return super.onContextItemSelected(menu_item);
     }
 
     @Override
@@ -180,68 +115,139 @@ public class MainActivity
     }
 
     @Override
+    public boolean onContextItemSelected(MenuItem menuItem) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuItem.getMenuInfo();
+        DBAction dbAction = new DBAction(MainActivity.this);
+        switch (menuItem.getItemId()) {
+            case CM_MARK:
+                /* Do something */
+                break;
+            case CM_COMMIT:
+                /* Do something */
+                break;
+            case CM_UPDATE:
+                /* Do something */
+                try {
+                    dbAction.openDatabase(true);
+                } catch (SQLException s) {
+                    Toast.makeText(
+                            MainActivity.this,
+                            getString(R.string.database_error_open),
+                            Toast.LENGTH_SHORT
+                    ).show();
+                    dbAction.closeDatabase();
+                    break;
+                }
+                List<Repo> repos_0 = dbAction.listRepos();
+                String content = repos_0.get(info.position).getContent();
+                url = content;
+                /* 创建一个ProgressDialog用于提示 */
+                progressDialog = new ProgressDialog(MainActivity.this);
+                progressDialog.setMessage(getString(R.string.clone_pd_update));
+                progressDialog.setCancelable(false);
+                progressDialog.show();
+                HandlerThread cloneThread_0 = new HandlerThread("cloneThread_0");
+                cloneThread_0.start();
+                Handler cloneHandler = new Handler(cloneThread_0.getLooper());
+                cloneHandler.post(cloneThread);
+                dbAction.closeDatabase();
+                refreshList();
+                mainAdapter.notifyDataSetChanged();
+                break;
+            case CM_DELETE:
+                /* Do something */
+                try {
+                    dbAction.openDatabase(true);
+                } catch (SQLException s) {
+                    Toast.makeText(
+                            MainActivity.this,
+                            getString(R.string.database_error_open),
+                            Toast.LENGTH_SHORT
+                    ).show();
+                    dbAction.closeDatabase();
+                    break;
+                }
+                List<Repo> repos_1 = dbAction.listRepos();
+                String path = repos_1.get(info.position).getPath();
+                FileUtils.deleteQuietly(new File(path));
+                dbAction.deleteRepo(repos_1.get(info.position));
+                mainItems.remove(info.position);
+                dbAction.closeDatabase();
+                refreshList();
+                mainAdapter.notifyDataSetChanged();
+                break;
+            default:
+                break;
+        }
+        return super.onContextItemSelected(menuItem);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_main, menu);
+        inflater.inflate(R.menu.main_menu, menu);
 
-        search_view = (SearchView) menu.findItem(R.id.menu_clone_or_search).getActionView();
-        search_view.setQueryHint(getString(R.string.menu_clone_or_search));
+        searchView = (SearchView) menu.findItem(R.id.main_menu_search).getActionView();
+        searchView.setQueryHint(getString(R.string.menu_search));
 
-        SearchView.OnQueryTextListener sv_listener = new SearchView.OnQueryTextListener() {
+        SearchView.OnQueryTextListener svListener = new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextChange(String text) {
                 return true;
             }
+
             @Override
             public boolean onQueryTextSubmit(String text) {
                 if (text.length() != 0) {
                     if ((!text.startsWith("https://")) && (!text.startsWith("http://"))) {
                         Toast.makeText(
                                 MainActivity.this,
-                                getString(R.string.uri_error_https),
+                                getString(R.string.url_error_https),
                                 Toast.LENGTH_SHORT
                         ).show();
                     } else if ((!text.endsWith(".git"))) {
                         Toast.makeText(
                                 MainActivity.this,
-                                getString(R.string.uri_error_git),
+                                getString(R.string.url_error_git),
                                 Toast.LENGTH_SHORT
                         ).show();
                     } else {
+                        /* Do something */
                         InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                         if (imm.isActive()) {
                             imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, InputMethodManager.HIDE_NOT_ALWAYS);
                         }
                         /* 创建一个ProgressDialog用于提示 */
-                        pd_cloning = new ProgressDialog(MainActivity.this);
-                        pd_cloning.setMessage(getString(R.string.clone_pd));
-                        pd_cloning.setCancelable(false);
-                        pd_cloning.show();
+                        progressDialog = new ProgressDialog(MainActivity.this);
+                        progressDialog.setMessage(getString(R.string.clone_pd_new));
+                        progressDialog.setCancelable(false);
+                        progressDialog.show();
                         /* 开启一个新的线程用于clone */
-                        uri = text;
-                        HandlerThread clone_thread = new HandlerThread("cloneThread_1");
-                        clone_thread.start();
-                        Handler clone_handler = new Handler(clone_thread.getLooper());
-                        clone_handler.post(cloneThread);
-
+                        url = text;
+                        HandlerThread cloneThread_1 = new HandlerThread("cloneThread_1");
+                        cloneThread_1.start();
+                        Handler cloneHandler = new Handler(cloneThread_1.getLooper());
+                        cloneHandler.post(cloneThread);
+                        /* refresh */
                         refreshList();
-                        adapter.notifyDataSetChanged();
+                        mainAdapter.notifyDataSetChanged();
                     }
                 }
                 return true;
             }
         };
-        search_view.setOnQueryTextListener(sv_listener);
+        searchView.setOnQueryTextListener(svListener);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menu_about:
+            case R.id.main_menu_about:
                 Intent intent_about = new Intent(this, AboutActivity.class);
                 startActivity(intent_about);
                 return true;
+            /* Do something */
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -249,20 +255,17 @@ public class MainActivity
 
     /* Refresh ListView */
     public void refreshList() {
-        item.clear();
-        DBAction db_action = new DBAction(MainActivity.this);
+        mainItems.clear();
+        DBAction dbAction = new DBAction(MainActivity.this);
         try {
-            db_action.openDB(false);
-            List<Repo> repos = db_action.listRepos();
+            dbAction.openDatabase(false);
+            List<Repo> repos = dbAction.listRepos();
             for (int i = 0; i < repos.size(); i++) {
-                item.add(
-                        new MainListViewItem(
+                mainItems.add(
+                        new MainItem(
                                 getResources().getDrawable(R.drawable.ic_filetype_folder),
                                 repos.get(i).getTitle(),
-                                repos.get(i).getContent(),
-                                repos.get(i).getDate(),
-                                    /* And Need to set status */
-                                new ImageButton(MainActivity.this)
+                                repos.get(i).getContent()
                         )
                 );
             }
@@ -273,7 +276,7 @@ public class MainActivity
                     Toast.LENGTH_SHORT
             ).show();
         }
-        db_action.closeDB();
+        dbAction.closeDatabase();
     }
 
     /* 开启一个新线程用于git clone */
@@ -281,38 +284,29 @@ public class MainActivity
         @Override
         public void run() {
             /* 从输入的uri中截取需要的信息 */
-            String str[] = uri.split("/");
+            String str[] = url.split("/");
             /* 获取Repo的名称（设置为ListViewItem的标题） */
             String title = str[str.length - 1].substring(
                     0,
                     str[str.length - 1].lastIndexOf(".")
             );
             /* 获取Repo的讯息（从哪里来） */
-            String content = uri;
+            String content = url;
             /* 设置存放Repo的路径 */
             String folder_path = MainActivity.this.getFilesDir()
                     + File.separator
                     + title;
-            /* 获取clone Repo时的时间 */
-            Calendar now = Calendar.getInstance();
-            String date = now.get(Calendar.YEAR)
-                    + "-"
-                    + (now.get(Calendar.MONTH) + 1)
-                    + "-"
-                    + now.get(Calendar.DATE);
 
             /* 设置数据库需要的数据 */
             Repo repo = new Repo();
             repo.setTitle(title);
             repo.setContent(content);
-            repo.setDate(date);
-            repo.setState(Repo.State.Unmark);
             repo.setPath(folder_path);
 
             /* git clone的初始化设置 */
             CloneCommand clone = Git.cloneRepository();
             clone.setTimeout(30);
-            clone.setURI(uri);
+            clone.setURI(url);
             clone.setDirectory(new File(folder_path));
             UsernamePasswordCredentialsProvider access =
                     new UsernamePasswordCredentialsProvider(
@@ -323,17 +317,16 @@ public class MainActivity
 
             /* 开始git clone */
             boolean isSuccessful = true;
-            DBAction db_action = new DBAction(MainActivity.this);
+            DBAction dbAction = new DBAction(MainActivity.this);
             try {
                 /* 打开数据库 */
-                db_action.openDB(true);
+                dbAction.openDatabase(true);
                 /* 检查Repo是否重复（根据来源） */
-                boolean er = db_action.existRepo(content);
                 try {
                     try {
                         FileUtils.deleteDirectory(new File(folder_path));
                     } catch (IOException i) {
-                        pd_cloning.dismiss();
+                        progressDialog.dismiss();
                         Toast.makeText(
                                 MainActivity.this,
                                 getString(R.string.unknown_error),
@@ -342,7 +335,7 @@ public class MainActivity
                     }
                     clone.call();
                 } catch (GitAPIException g) {
-                    pd_cloning.dismiss();
+                    progressDialog.dismiss();
                     Toast.makeText(
                             MainActivity.this,
                             getString(R.string.git_error_clone),
@@ -350,7 +343,7 @@ public class MainActivity
                     ).show();
                     isSuccessful = false;
                 } catch (JGitInternalException j) {
-                    pd_cloning.dismiss();
+                    progressDialog.dismiss();
                     Toast.makeText(
                             MainActivity.this,
                             getString(R.string.git_error_clone),
@@ -359,17 +352,12 @@ public class MainActivity
                     isSuccessful = false;
                 }
                 /* 如果Repo在数据库中重复，则更新信息 */
-                if (isSuccessful == true) {
-                    if (er) {
-                        db_action.updateRepo(repo);
-                    /* 否则将新建的Repo加入到数据库中 */
-                    } else {
-                        db_action.newRepo(repo);
+                if (isSuccessful) {
+                    if (!dbAction.checkRepo(content)) {
+                        dbAction.newRepo(repo);
                     }
-
                     refreshList();
-
-                    pd_cloning.dismiss();
+                    progressDialog.dismiss();
                     Toast.makeText(
                             MainActivity.this,
                             getString(R.string.clone_successful),
@@ -383,7 +371,7 @@ public class MainActivity
                         Toast.LENGTH_SHORT
                 ).show();
             }
-            db_action.closeDB();
+            dbAction.closeDatabase();
         }
     };
 }

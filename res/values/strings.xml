@@ -3,65 +3,52 @@
     <!-- App -->
     <string name="app_name">Codeview</string>
 
-    <!-- DropDown -->
-    <string name="action_bar_drop_down_repo">Repo</string>
-    <string name="action_bar_drop_down_mark">Mark</string>
+    <!-- Main interface -->
+    <string name="main_label">Codeview</string>
+    <string name="main_item_icon">Icon</string>
+    <string name="cm_mark">Mark</string>
+    <string name="cm_commit">Commit</string>
+    <string name="cm_update">Update</string>
+    <string name="cm_delete">Delete</string>
 
-    <!-- Menu -->
-    <string name="menu_clone_or_search">Clone</string>
-    <string name="menu_about">About</string>
+    <!-- FIleChooser -->
+    <string name="fc_label">FileChooser</string>
+    <string name="fc_item_icon">Icon</string>
 
     <!-- About interface -->
-    <string name="label_about">About</string>
-    <string name="about_title_designer">Designer</string>
-    <string name="about_content_designer">ChansZen &lt;chanszen@gmail.com&gt;</string>
-    <string name="about_title_coder">Coder</string>
-    <string name="about_content_coder">MatthewLee &lt;matthewlee0725@gmail.com&gt;</string>
+    <string name="about_label">About</string>
+    <string name="about_title_author">Author</string>
+    <string name="about_title_thanks">Thanks</string>
     <string name="about_title_version">Version</string>
-    <string name="about_content_version">1.0.0</string>
     <string name="about_title_homepage">Homepage</string>
-    <string name="about_content_homepage">https://github.com/mthli/Codeview</string>
     <string name="about_title_license">License</string>
-    <string name="about_content_license">Apache License, Version 2.0</string>
+    <string name="about_content_author">MatthewLee &lt;matthewlee0725@gmail.com&gt;</string>
+    <string name="about_content_thanks">ChansZen &lt;chanszen@gmail.com&gt;</string>
+    <string name="about_content_version">1.0.0</string>
+    <string name="about_content_homepage">https://github.com/mthli/Codeview</string>
+    <string name="about_content_license">Mozilla Public License Version 2.0</string>
 
-    <!-- Main interface -->
-    <string name="list_view_item_main_relative_image">Folder icon</string>
-    <string name="list_view_item_main_relative_mark">Mark</string>
-    <string name="sp_main">sp_main</string>
-    <string name="sp_main_title">sp_main_title</string>
-    <string name="sp_main_content">sp_main_content</string>
-    <string name="sp_main_date">sp_main_date</string>
-    <string name="sp_main_mark">sp_main_mark</string>
-    <string name="cm_main_commit">Commit</string>
-    <string name="cm_main_update">Update</string>
-    <string name="cm_main_delete">Delete</string>
+    <!-- ActionBar -->
+    <string name="drop_down_repo">Repo</string>
+    <string name="drop_down_mark">Mark</string>
+    <string name="menu_search">Clone</string>
+    <string name="menu_refresh">Refresh</string>
+    <string name="menu_setting">Setting</string>
+    <string name="menu_help">Help</string>
+    <string name="menu_about">About</string>
 
     <!-- Clone -->
     <string name="clone_username">codeview</string>
     <string name="clone_password">311922</string>
-    <string name="clone_pd">Cloning...</string>
-    <string name="clone_successful">Clone successful.</string>
-
-    <!-- FIleChooser -->
-    <string name="fc_folder_amount">Amount:</string>
-    <string name="fc_file_size">Size:</string>
-
-    <!-- Log interface -->
-    <string name="label_log">Log</string>
+    <string name="clone_successful">Clone Successful</string>
+    <string name="clone_pd_new">Cloning...</string>
+    <string name="clone_pd_update">Update...</string>
 
     <!-- Error -->
-    <string name="unknown_error">Unknown error.</string>
-    <string name="database_error_open">Open database failed.</string>
-    <string name="git_error_clone">Clone failed.</string>
-    <string name="git_error_connect">Can\'t connect</string>
-    <string name="git_error_not_git">Not a git repo</string>
-    <string name="git_error_not_git_guess">Not a git repo. Try with .git at the url end.</string>
-    <string name="git_error_auth">Authorization failed</string>
-    <string name="git_error_generic">Failed. Check stack trace</string>
-    <string name="git_error_head">Not in branch\nCheckout master first</string>
-    <string name="uri_error_title">Error</string>
-    <string name="uri_error_https">Miss \"https://\" or \"http://\" at URI</string>
-    <string name="uri_error_git">Miss \".git\" at URI</string>
-    <string name="uri_button">OK</string>
+    <string name="url_error_https">Miss \"https://\" or \"http://\" At URL.</string>
+    <string name="url_error_git">Miss \".git\" At URL.</string>
+    <string name="git_error_clone">Clone Failed.</string>
+    <string name="database_error_open">Database Open Failed.</string>
+    <string name="unknown_error">Unknown Error.</string>
 
 </resources>

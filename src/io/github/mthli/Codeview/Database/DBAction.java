@@ -10,27 +10,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DBAction {
-    private DBHelper helper;
+    private DBHelper dbHelper;
     private SQLiteDatabase database;
 
     public DBAction(Context context) {
-        helper = new DBHelper(context);
+        dbHelper = new DBHelper(context);
     }
 
-    public void openDB(boolean rw) throws SQLException {
+    public void openDatabase(boolean rw) throws SQLException {
         if (rw) {
-            database = helper.getWritableDatabase();
+            database = dbHelper.getWritableDatabase();
         } else {
-            database = helper.getReadableDatabase();
+            database = dbHelper.getReadableDatabase();
         }
     }
 
-    public void closeDB() {
-        helper.close();
+    public void closeDatabase() {
+        dbHelper.close();
     }
 
-    /* Bug in here */
-    public boolean existRepo(String content) {
+    public boolean checkRepo(String content) {
         Cursor cursor = database.query(
                 Repo.TABLE,
                 new String[] {Repo.CONTENT},
@@ -55,22 +54,13 @@ public class DBAction {
         ContentValues values = new ContentValues();
         values.put(Repo.TITLE, repo.getTitle());
         values.put(Repo.CONTENT, repo.getContent());
-        values.put(Repo.DATE, repo.getDate());
-        values.put(Repo.STATE, repo.getState().name());
         values.put(Repo.PATH, repo.getPath());
         database.insert(Repo.TABLE, null, values);
     }
 
     public void updateRepo(Repo repo) {
-        ContentValues values = new ContentValues();
-        values.put(Repo.DATE, repo.getDate());
-        values.put(Repo.STATE, repo.getState().name());
-        database.update(
-                Repo.TABLE,
-                values,
-                Repo.CONTENT + "=?",
-                new String[] {repo.getContent()}
-        );
+        // ContentValues values = new ContentValues();
+        /* Do nothing */
     }
 
     public void deleteRepo(Repo repo) {
@@ -82,15 +72,12 @@ public class DBAction {
     }
 
     public List<Repo> listRepos() {
-        List<Repo> result = new ArrayList<Repo>();
+        List<Repo> repos = new ArrayList<Repo>();
         Cursor cursor = database.query(
                 Repo.TABLE,
                 new String[]{
-                        Repo.ID,
                         Repo.TITLE,
                         Repo.CONTENT,
-                        Repo.DATE,
-                        Repo.STATE,
                         Repo.PATH
                 },
                 null,
@@ -99,29 +86,24 @@ public class DBAction {
                 null,
                 Repo.CONTENT
         );
-
         if(cursor == null) {
-            return result;
+            return repos;
         }
-
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            Repo repo = readAsRepo(cursor);
-            result.add(repo);
+            Repo repo = readRepo(cursor);
+            repos.add(repo);
             cursor.moveToNext();
         }
         cursor.close();
-        return result;
+        return repos;
     }
 
-    private Repo readAsRepo(Cursor cursor) {
+    private Repo readRepo(Cursor cursor) {
         Repo repo = new Repo();
-        repo.setId(cursor.getInt(0));
-        repo.setTitle(cursor.getString(1));
-        repo.setContent(cursor.getString(2));
-        repo.setDate(cursor.getString(3));
-        repo.setState(Repo.State.valueOf(cursor.getString(4)));
-        repo.setPath(cursor.getString(5));
+        repo.setTitle(cursor.getString(0));
+        repo.setContent(cursor.getString(1));
+        repo.setPath(cursor.getString(2));
         return repo;
     }
 }

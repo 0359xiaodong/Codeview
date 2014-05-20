@@ -2,8 +2,9 @@ package io.github.mthli.Codeview.WebView;
 
 import java.io.*;
 
+/* We can make setting here */
 public class SyntaxSetting {
-    public static final String base_url = "file:///android_asset/highlight/";
+    public static final String baseUrl = "file:///android_asset/highlight/";
 
     public static String setCodeAsHtml(String path) {
         StringBuilder builder = new StringBuilder();

@@ -4,6 +4,8 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebSettings;
@@ -11,30 +13,29 @@ import android.webkit.WebView;
 import io.github.mthli.Codeview.Other.AboutActivity;
 import io.github.mthli.Codeview.R;
 
-import java.io.File;
-
 public class CodeviewActivity extends Activity {
-    private WebView web_view;
+    private WebView webView;
 
-    public void onCreate(Bundle saved_instance_state) {
-        super.onCreate(saved_instance_state);
-        setContentView(R.layout.code_view);
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.codeview);
 
-        ActionBar action_bar = getActionBar();
-        action_bar.setTitle(getIntent().getStringExtra("title"));
-        action_bar.setSubtitle(getIntent().getStringExtra("sub_title"));
+        ActionBar actionBar = getActionBar();
+        actionBar.setTitle(getIntent().getStringExtra("title"));
+        actionBar.setSubtitle(getIntent().getStringExtra("sub_title"));
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
-        web_view = (WebView) findViewById(R.id.code_view);
-        WebSettings web_settings = web_view.getSettings();
-        web_settings.setJavaScriptEnabled(true);
-        web_settings.setLoadWithOverviewMode(true);
-        web_view.setVisibility(View.VISIBLE);
+        webView = (WebView) findViewById(R.id.codeview);
+        WebSettings webSettings = webView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setLoadWithOverviewMode(true);
+        webView.setVisibility(View.VISIBLE);
 
+        /* Maybe use thread would better */
         String content = SyntaxSetting.setCodeAsHtml(getIntent().getStringExtra("path"));
-        /* Maybe we should use new thread to loal this url */
-        web_view.loadDataWithBaseURL(
-                SyntaxSetting.base_url,
+        webView.loadDataWithBaseURL(
+                SyntaxSetting.baseUrl,
                 content,
                 null,
                 null,
@@ -43,13 +44,30 @@ public class CodeviewActivity extends Activity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.webview_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 return true;
+            case R.id.webview_menu_refresh:
+                /* Do something */
+                break;
+            case R.id.webview_menu_setting:
+                /* Do something */
+                break;
+            case R.id.webview_menu_help:
+                /* Do something */
+                break;
             default:
-                return super.onOptionsItemSelected(item);
+                break;
         }
+        return super.onOptionsItemSelected(item);
     }
 }

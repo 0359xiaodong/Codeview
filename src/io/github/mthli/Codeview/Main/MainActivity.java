@@ -11,7 +11,7 @@ import android.os.HandlerThread;
 import android.view.*;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
-import io.github.mthli.Codeview.Database.DBAction;
+import io.github.mthli.Codeview.Database.RDBAction;
 import io.github.mthli.Codeview.Database.Repo;
 import io.github.mthli.Codeview.FileChooser.FileChooserActivity;
 import io.github.mthli.Codeview.Other.AboutActivity;
@@ -27,7 +27,6 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 public class MainActivity extends Activity implements ActionBar.OnNavigationListener {
@@ -79,10 +78,10 @@ public class MainActivity extends Activity implements ActionBar.OnNavigationList
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 /* 传递正确的数据给FileChooser */
-                DBAction dbAction = new DBAction(MainActivity.this);
+                RDBAction rdbAction = new RDBAction(MainActivity.this);
                 try {
-                    dbAction.openDatabase(false);
-                    List<Repo> repos = dbAction.listRepos();
+                    rdbAction.openDatabase(false);
+                    List<Repo> repos = rdbAction.listRepos();
                     Intent intent = new Intent(MainActivity.this, FileChooserActivity.class);
                     intent.putExtra("folder_name", repos.get(position).getTitle());
                     intent.putExtra("folder_path", repos.get(position).getPath());
@@ -94,7 +93,7 @@ public class MainActivity extends Activity implements ActionBar.OnNavigationList
                             Toast.LENGTH_SHORT
                     ).show();
                 }
-                dbAction.closeDatabase();
+                rdbAction.closeDatabase();
             }
         });
 
@@ -110,14 +109,14 @@ public class MainActivity extends Activity implements ActionBar.OnNavigationList
     }
 
     @Override
-    public boolean onNavigationItemSelected(int i, long j) {
+    public boolean onNavigationItemSelected(int itemPosition, long itemId) {
         return true;
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem menuItem) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuItem.getMenuInfo();
-        DBAction dbAction = new DBAction(MainActivity.this);
+        RDBAction rdbAction = new RDBAction(MainActivity.this);
         switch (menuItem.getItemId()) {
             case CM_MARK:
                 /* Do something */
@@ -128,17 +127,17 @@ public class MainActivity extends Activity implements ActionBar.OnNavigationList
             case CM_UPDATE:
                 /* Do something */
                 try {
-                    dbAction.openDatabase(true);
+                    rdbAction.openDatabase(true);
                 } catch (SQLException s) {
                     Toast.makeText(
                             MainActivity.this,
                             getString(R.string.database_error_open),
                             Toast.LENGTH_SHORT
                     ).show();
-                    dbAction.closeDatabase();
+                    rdbAction.closeDatabase();
                     break;
                 }
-                List<Repo> repos_0 = dbAction.listRepos();
+                List<Repo> repos_0 = rdbAction.listRepos();
                 String content = repos_0.get(info.position).getContent();
                 url = content;
                 /* 创建一个ProgressDialog用于提示 */
@@ -150,29 +149,29 @@ public class MainActivity extends Activity implements ActionBar.OnNavigationList
                 cloneThread_0.start();
                 Handler cloneHandler = new Handler(cloneThread_0.getLooper());
                 cloneHandler.post(cloneThread);
-                dbAction.closeDatabase();
+                rdbAction.closeDatabase();
                 refreshList();
                 mainAdapter.notifyDataSetChanged();
                 break;
             case CM_DELETE:
                 /* Do something */
                 try {
-                    dbAction.openDatabase(true);
+                    rdbAction.openDatabase(true);
                 } catch (SQLException s) {
                     Toast.makeText(
                             MainActivity.this,
                             getString(R.string.database_error_open),
                             Toast.LENGTH_SHORT
                     ).show();
-                    dbAction.closeDatabase();
+                    rdbAction.closeDatabase();
                     break;
                 }
-                List<Repo> repos_1 = dbAction.listRepos();
+                List<Repo> repos_1 = rdbAction.listRepos();
                 String path = repos_1.get(info.position).getPath();
                 FileUtils.deleteQuietly(new File(path));
-                dbAction.deleteRepo(repos_1.get(info.position));
+                rdbAction.deleteRepo(repos_1.get(info.position));
                 mainItems.remove(info.position);
-                dbAction.closeDatabase();
+                rdbAction.closeDatabase();
                 refreshList();
                 mainAdapter.notifyDataSetChanged();
                 break;
@@ -256,10 +255,10 @@ public class MainActivity extends Activity implements ActionBar.OnNavigationList
     /* Refresh ListView */
     public void refreshList() {
         mainItems.clear();
-        DBAction dbAction = new DBAction(MainActivity.this);
+        RDBAction RDBAction = new RDBAction(MainActivity.this);
         try {
-            dbAction.openDatabase(false);
-            List<Repo> repos = dbAction.listRepos();
+            RDBAction.openDatabase(false);
+            List<Repo> repos = RDBAction.listRepos();
             for (int i = 0; i < repos.size(); i++) {
                 mainItems.add(
                         new MainItem(
@@ -276,7 +275,7 @@ public class MainActivity extends Activity implements ActionBar.OnNavigationList
                     Toast.LENGTH_SHORT
             ).show();
         }
-        dbAction.closeDatabase();
+        RDBAction.closeDatabase();
     }
 
     /* 开启一个新线程用于git clone */
@@ -317,10 +316,10 @@ public class MainActivity extends Activity implements ActionBar.OnNavigationList
 
             /* 开始git clone */
             boolean isSuccessful = true;
-            DBAction dbAction = new DBAction(MainActivity.this);
+            RDBAction RDBAction = new RDBAction(MainActivity.this);
             try {
                 /* 打开数据库 */
-                dbAction.openDatabase(true);
+                RDBAction.openDatabase(true);
                 /* 检查Repo是否重复（根据来源） */
                 try {
                     try {
@@ -353,8 +352,8 @@ public class MainActivity extends Activity implements ActionBar.OnNavigationList
                 }
                 /* 如果Repo在数据库中重复，则更新信息 */
                 if (isSuccessful) {
-                    if (!dbAction.checkRepo(content)) {
-                        dbAction.newRepo(repo);
+                    if (!RDBAction.checkRepo(content)) {
+                        RDBAction.newRepo(repo);
                     }
                     refreshList();
                     progressDialog.dismiss();
@@ -371,7 +370,7 @@ public class MainActivity extends Activity implements ActionBar.OnNavigationList
                         Toast.LENGTH_SHORT
                 ).show();
             }
-            dbAction.closeDatabase();
+            RDBAction.closeDatabase();
         }
     };
 }

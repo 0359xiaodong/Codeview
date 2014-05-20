@@ -56,17 +56,32 @@ public class ShowMarkActivity extends Activity {
                     File file = new File(marks.get(position).getPath());
                     if (file.isDirectory()) {
                         Intent intent_filechooser = new Intent(ShowMarkActivity.this, FileChooserActivity.class);
-                        String str[] = marks.get(position).getContent().split("/");
-                        intent_filechooser.putExtra("folder_name", str[0]);
-                        intent_filechooser.putExtra("folder_path", marks.get(position).getPath());
+                        if ((marks.get(position).getContent().startsWith("http://") || marks.get(position).getContent().startsWith("https://"))
+                                && marks.get(position).getContent().endsWith(".git")) {
+                            String str[] = marks.get(position).getContent().split("/");
+                            String name = str[str.length - 1].substring(0, str[str.length - 1].length() - 4);
+                            System.out.println(name);
+                            intent_filechooser.putExtra("folder_name", name);
+                            intent_filechooser.putExtra("folder_path", marks.get(position).getPath());
+                        } else {
+                            String str[] = marks.get(position).getContent().split("/");
+                            intent_filechooser.putExtra("folder_name", str[0]);
+                            intent_filechooser.putExtra("folder_path", marks.get(position).getPath());
+                        }
                         startActivity(intent_filechooser);
                     } else if (file.isFile()) {
+
+
+
                         /* Need do more */
                         Intent intent_codeview = new Intent(ShowMarkActivity.this, CodeviewActivity.class);
                         intent_codeview.putExtra("title", marks.get(position).getTitle());
                         intent_codeview.putExtra("sub_title", marks.get(position).getContent());
                         intent_codeview.putExtra("path", marks.get(position).getPath());
                         startActivity(intent_codeview);
+
+
+
                     }
                 } catch (SQLException s) {
                     Toast.makeText(

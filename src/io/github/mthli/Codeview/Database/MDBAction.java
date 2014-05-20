@@ -64,11 +64,7 @@ public class MDBAction {
     }
 
     public void unMark(String path) {
-        database.delete(
-                Mark.TABLE,
-                Mark.PATH + "=?",
-                new String[] {path}
-        );
+        database.execSQL("DELETE FROM mark WHERE PATH like \"" + path + "%\"");
     }
 
     public List<Mark> listMarks() {

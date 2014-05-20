@@ -88,7 +88,7 @@ public class MainActivity extends Activity {
             @Override
             public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
                 menu.add(0, CM_MARK, 0, getString(R.string.cm_mark));
-                menu.add(0, CM_COMMIT, 0, getString(R.string.cm_commit));
+                // menu.add(0, CM_COMMIT, 0, getString(R.string.cm_commit));
                 menu.add(0, CM_UPDATE, 0, getString(R.string.cm_update));
                 menu.add(0, CM_DELETE, 0, getString(R.string.cm_delete));
             }
@@ -140,9 +140,10 @@ public class MainActivity extends Activity {
                 rdbAction.closeDatabase();
                 mdbAction.closeDatabase();
                 break;
+            /*
             case CM_COMMIT:
-                /* Do something */
                 break;
+            */
             case CM_UPDATE:
                 try {
                     rdbAction.openDatabase(true);
@@ -196,10 +197,14 @@ public class MainActivity extends Activity {
                 }
                 List<Repo> repos_3 = rdbAction.listRepos();
                 String path = repos_3.get(info.position).getPath();
+
                 FileUtils.deleteQuietly(new File(path));
                 mdbAction.unMark(path);
+                System.out.println(path);
                 rdbAction.deleteRepo(repos_3.get(info.position));
+
                 mainItems.remove(info.position);
+
                 mdbAction.closeDatabase();
                 rdbAction.closeDatabase();
                 refreshList();

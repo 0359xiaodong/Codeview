@@ -16,6 +16,29 @@
     <string name="fc_label">FileChooser</string>
     <string name="fc_item_icon">Icon</string>
 
+    <!-- WebView -->
+    <string-array name="webview_support">
+        <item>.c</item>
+        <item>.cpp</item>
+        <item>.cs</item>
+        <item>.css</item>
+        <item>.h</item>
+        <item>.hs</item>
+        <item>.html</item>
+        <item>.java</item>
+        <item>.js</item>
+        <item>.php</item>
+        <item>.pm</item>
+        <item>.pl</item>
+        <item>.perl</item>
+        <item>.py</item>
+        <item>.rb</item>
+        <item>.rtf</item>
+        <item>.sh</item>
+        <item>.tex</item>
+        <item>.xml</item>
+    </string-array>
+
     <!-- About and Mark interface -->
     <string name="mark_successful">Mark Successful.</string>
     <string name="showmark_label">Mark</string>

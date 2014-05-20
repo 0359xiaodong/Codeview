@@ -92,7 +92,7 @@ public class SettingActivity extends Activity {
                     builder_fontsize.show();
                 } else {
                     highlight_num = sharedPreferences.getInt("highlight_num", 0);
-                    AlertDialog.Builder builder_highlight = new AlertDialog.Builder(SettingActivity.this)
+                    final AlertDialog.Builder builder_highlight = new AlertDialog.Builder(SettingActivity.this)
                             .setSingleChoiceItems(
                                     R.array.setting_array_highlight,
                                     highlight_num,

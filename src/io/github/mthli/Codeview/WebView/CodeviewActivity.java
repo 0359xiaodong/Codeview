@@ -11,11 +11,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.Toast;
 import io.github.mthli.Codeview.R;
 import io.github.mthli.Codeview.Setting.SettingActivity;
 
 public class CodeviewActivity extends Activity {
     private WebView webView;
+    private SharedPreferences sharedPreferences;
+    private int fontsize;
+    private String highlight;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,9 +37,9 @@ public class CodeviewActivity extends Activity {
         webSettings.setLoadWithOverviewMode(true);
         webView.setVisibility(View.VISIBLE);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("Setting", MODE_PRIVATE);
-        int fontsize = sharedPreferences.getInt("fontsize", 12);
-        String highlight = sharedPreferences.getString("highlight", "default.css");
+        sharedPreferences = getSharedPreferences("Setting", MODE_PRIVATE);
+        fontsize = sharedPreferences.getInt("fontsize", 12);
+        highlight = sharedPreferences.getString("highlight", "default.css");
         /* Maybe use thread would better */
         String content = SyntaxSetting.setCodeAsHtml(fontsize, highlight, getIntent().getStringExtra("path"));
         webView.loadDataWithBaseURL(
@@ -61,7 +65,17 @@ public class CodeviewActivity extends Activity {
                 finish();
                 return true;
             case R.id.webview_menu_refresh:
-                /* Do something */
+                sharedPreferences = getSharedPreferences("Setting", MODE_PRIVATE);
+                fontsize = sharedPreferences.getInt("fontsize", 12);
+                highlight = sharedPreferences.getString("highlight", "default.css");
+                String content = SyntaxSetting.setCodeAsHtml(fontsize, highlight, getIntent().getStringExtra("path"));
+                webView.loadDataWithBaseURL(
+                        SyntaxSetting.baseUrl,
+                        content,
+                        null,
+                        null,
+                        null
+                );
                 break;
             case R.id.webview_menu_setting:
                 Intent intent_setting = new Intent(this, SettingActivity.class);

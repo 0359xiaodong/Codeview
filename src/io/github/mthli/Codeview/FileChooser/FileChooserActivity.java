@@ -3,6 +3,7 @@ package io.github.mthli.Codeview.FileChooser;
 import android.app.ActionBar;
 import android.app.ListActivity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.AdapterView;
@@ -149,6 +150,30 @@ public class FileChooserActivity extends ListActivity {
             current = new File(item.getPath());
             listAll(current);
         } else {
+            /*
+            String str[] = getResources().getStringArray(R.array.webview_support);
+            boolean isSupport = false;
+            for (int i = 0; i < str.length; i++) {
+                if (item.getPath().endsWith(str[i])) {
+                    isSupport = true;
+                    break;
+                }
+            }
+            if (isSupport) {
+                fileSelected = new File(item.getPath());
+                String title = fileSelected.getName();
+                String sub_title = relativePath(fileSelected.getAbsolutePath());
+                Intent intent = new Intent(FileChooserActivity.this, CodeviewActivity.class);
+                intent.putExtra("title", title);
+                intent.putExtra("sub_title", sub_title);
+                intent.putExtra("path", fileSelected.getAbsolutePath());
+                startActivity(intent);
+            } else {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                Uri uri = Uri.parse("file://" + item.getPath());
+                intent.setDataAndType(uri, "application/*");
+                startActivity(intent);
+            } */
             fileSelected = new File(item.getPath());
             String title = fileSelected.getName();
             String sub_title = relativePath(fileSelected.getAbsolutePath());

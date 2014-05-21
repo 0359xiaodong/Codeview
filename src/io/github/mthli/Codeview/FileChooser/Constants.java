@@ -1,37 +1,31 @@
 package io.github.mthli.Codeview.FileChooser;
 
 public interface Constants {
-    /* Need more */
+    /* Support */
     String C = ".c";
     String CPP = ".cpp";
     String CS = ".cs";
     String CSS = ".css";
-
     String H = ".h";
     String HS = ".hs";
     String HTML = ".html";
-
     String JAVA = ".java";
     String JS = ".js";
-
-    String PDF = ".pdf";
+    String MD = ".md";
     String PHP = ".php";
-
     String PM = ".pm";
     String PL = ".pl";
     String PERL = ".perl";
-
     String PY = ".py";
-
     String RB = ".rb";
     String RTF = ".rtf";
-
     String SH = ".sh";
     String SQL = ".sql";
     String TEX = ".tex";
-
     String XML = ".xml";
 
+    /* Intent */
+    String PDF = ".pdf";
     String SZ = ".7z";
     String ZIP = ".zip";
     String TAR = ".tar";

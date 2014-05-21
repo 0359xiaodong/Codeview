@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.text.InputType;
 import android.view.*;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
